@@ -21,12 +21,6 @@ export default function Main({ navigation }) {
   const [userMessages, setUserMessages] = useState([]);
   const [botMessages, setBotMessages] = useState([]);
 
-  const DUMB_DATA = [
-    { id: 1, name: "Space65" },
-    { id: 2, name: "Think65" },
-    { id: 3, name: "RK71" },
-  ];
-
   const handleSendMessage = (user_message) => {
     const messageData = new FormData();
     messageData.append("msg", JSON.stringify(user_message));
