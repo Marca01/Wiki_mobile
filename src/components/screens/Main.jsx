@@ -54,20 +54,6 @@ export default function Main({ navigation }) {
       });
   };
 
-  // const handleGetBotMessage = () => {
-  //   getBotMessage()
-  //     .then((res) => {
-  //       console.log(res.data + "from bot");
-  //       setBotMessages([
-  //         ...botMessages,
-  //         { id: nextBotId++, message: res.data },
-  //       ]);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   return (
     <View style={globalStyles.container}>
       <Header title="Wiki" navigation={navigation} />
