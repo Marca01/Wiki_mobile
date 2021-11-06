@@ -27,11 +27,6 @@ export default function Main({ navigation }) {
     { id: 3, name: "RK71" },
   ];
 
-  // const handleSendMessage = () => {
-  //   setMessage("");
-  //   setUserMessages([...userMessages, { id: nextUserId++, message: message }]);
-  // };
-
   const handleSendMessage = (user_message) => {
     const messageData = new FormData();
     messageData.append("msg", JSON.stringify(user_message));
