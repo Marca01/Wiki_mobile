@@ -117,6 +117,7 @@ def bow(sentence, words, show_details=True):
                     print(f'found in bag {w}')
     return np.array(bag)
 
+# predict
 def predict_class(sentence, model):
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0] # generate probabilities from the model
