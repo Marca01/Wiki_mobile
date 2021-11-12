@@ -23,7 +23,7 @@ export default function Main({ navigation }) {
 
   const handleSendMessage = (user_message) => {
     const messageData = new FormData();
-    messageData.append("msg", JSON.stringify(user_message));
+    messageData.append("msg", user_message);
 
     sendUserMessage(messageData)
       .then((res) => {
