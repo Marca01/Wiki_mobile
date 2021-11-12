@@ -11,6 +11,7 @@ from nltk.stem import WordNetLemmatizer
 from googlesearch import search
 import pytesseract
 from PIL import Image
+import datetime
 
 lemmatizer = WordNetLemmatizer()
 
@@ -51,6 +52,30 @@ def chatbot_response():
         res = 'Xin chào chủ nhân của tôi'
         return res
 
+    # ask time, day, date
+    time_ints = predict_class(msg, model)
+    time_res = getResponse(time_ints, intents, show_details=True)
+    if time_ints[0]['intent'] == 'thứ':
+        day = datetime.datetime.now().strftime('%A')
+        if day == 'Monday':
+            return time_res.replace("{n}", 'thứ hai')
+        if day == 'Tuesday':
+            return time_res.replace("{n}", 'thứ ba')
+        if day == 'Wednesday':
+            return time_res.replace("{n}", 'thứ tư')
+        if day == 'Thursday':
+            return time_res.replace("{n}", 'thứ năm')
+        if day == 'Friday':
+            return time_res.replace("{n}", 'thứ sáu')
+        if day == 'Saturday':
+            return time_res.replace("{n}", 'thứ bảy')
+        if day == 'Sunday':
+            return time_res.replace("{n}", 'chủ nhật')
+    if time_ints[0]['intent'] == 'ngày':
+        return time_res.replace('{n}', datetime.datetime.now().strftime('%d/%m/%Y'))
+    if time_ints[0]['intent'] == 'giờ':
+        return time_res.replace('{n}', datetime.datetime.now().strftime('%T'))
+
     # image to text feature
     vie = 'vie'
     eng = 'eng'
@@ -61,7 +86,7 @@ def chatbot_response():
 
     fallback = 'Xin lỗi tôi không tìm thấy kết quả'
     for w in nltk.word_tokenize(msg):
-        if w not in words:
+        if w.lower() not in words:
             search_result_list = list(search(msg, lang='vi', num_results=10))
             if len(search_result_list) > 0:
                 return str(search_result_list)
@@ -77,15 +102,15 @@ def chatbot_response():
 # @app.route('/recognize', defaults={'lang': 'vie'}, methods=['POST'])
 @app.route('/recognize/vie', methods=['POST'])
 def recognize_vietext_img():
-    imageFile = request.files.get('file', '')
-    image = Image.open(imageFile)
+    image_file = request.files.get('file', '')
+    image = Image.open(image_file)
     text = pytesseract.image_to_string(image, lang='vie')
     return text
 
 @app.route('/recognize/eng', methods=['POST'])
 def recognize_engtext_img():
-    imageFile = request.files.get('file', '')
-    image = Image.open(imageFile)
+    image_file = request.files.get('file', '')
+    image = Image.open(image_file)
     text = pytesseract.image_to_string(image, lang='eng')
     return text
 

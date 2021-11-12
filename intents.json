@@ -106,6 +106,24 @@
             "patterns": ["bạn có thể làm gì?", "bạn có thể làm được những gì?", "khả năng của bạn là gì?", "cậu làm được gì?", "bạn có những khả năng gì?"],
             "responses": ["Tôi có thể trò chuyện với bạn cả ngày 🥰", "Bạn có thể hỏi tôi bất cứ thứ gì"],
             "context": [""]
+        },
+        {
+            "tag": "ngày",
+            "patterns": ["hôm nay ngày mấy nhỉ?", "bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
+            "responses": ["Hôm nay là {n}"],
+            "context": [""]
+        },
+        {
+            "tag": "thứ",
+            "patterns": ["hôm nay thứ mấy nhỉ?", "bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
+            "responses": ["Hôm nay là {n}"],
+            "context": [""]
+        },
+        {
+            "tag": "giờ",
+            "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?"],
+            "responses": ["Bây giờ là {n}"],
+            "context": [""]
         }
     ]
 }
