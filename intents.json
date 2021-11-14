@@ -91,7 +91,7 @@
         },
         {
             "tag": "cânnặng",
-            "patterns": ["bạn nặng mấy ký?", "bạn bao nhiêu ký?", "mấy ký?", "bạn nặng bao nhiêu?", "Cân nặng của bạn là bao nhiêu?"],
+            "patterns": ["bạn nặng mấy ký?", "bạn bao nhiêu ký?", "mấy ký?", "bạn nặng bao nhiêu?", "Cân nặng của bạn là bao nhiêu?", "bạn nặng bn ký?"],
             "responses": ["Tôi chỉ là phần mềm nên không có cân nặng", "Nhẹ như lông hồng 🪶", "Khoảng 3MB 😉", "Một câu hỏi khá nặng đấy", "Tôi nhẹ dạ cả tin 😔", "Hùmmm, tôi không có cân nặng nhưng tôi luôn cân nhắc mỗi khi giúp đỡ bạn 😃"],
             "context": [""]
         },
@@ -110,19 +110,25 @@
         {
             "tag": "ngày",
             "patterns": ["hôm nay ngày mấy nhỉ?", "bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
-            "responses": ["Hôm nay là {n}"],
+            "responses": ["Hôm nay là ngày {n}", "Ngày ni là ngày {n}", "Ngày {n}"],
             "context": [""]
         },
         {
             "tag": "thứ",
             "patterns": ["hôm nay thứ mấy nhỉ?", "bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
-            "responses": ["Hôm nay là {n}"],
+            "responses": ["Hôm nay là {n}", "Bữa nay là {n}", "Bữa ni là {n}", "Hôm ni là {n}", "{n}"],
             "context": [""]
         },
         {
             "tag": "giờ",
-            "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?"],
-            "responses": ["Bây giờ là {n}"],
+            "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
+            "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}"],
+            "context": [""]
+        },
+        {
+            "tag": "tínhtoán",
+            "patterns": ["bằng mấy?", "tính xem nào", "kết quả của bằng mấy?", "tính thử", "bằng bao nhiêu?", "ni bằng bao nhiêu?", "kq bằng mấy?", "bằng bn?"],
+            "responses": ["{m} bằng {n}", "{m} là {n}", "kết quả là {n}", "kết quả của {m} bằng {n}"],
             "context": [""]
         }
     ]

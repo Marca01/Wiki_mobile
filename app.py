@@ -12,6 +12,10 @@ from googlesearch import search
 import pytesseract
 from PIL import Image
 import datetime
+import wolframalpha
+
+# wolfram alpha client ID
+client = wolframalpha.Client('993EV6-2RT77RVW8V')
 
 lemmatizer = WordNetLemmatizer()
 
@@ -75,6 +79,16 @@ def chatbot_response():
         return time_res.replace('{n}', datetime.datetime.now().strftime('%d/%m/%Y'))
     if time_ints[0]['intent'] == 'giờ':
         return time_res.replace('{n}', datetime.datetime.now().strftime('%T'))
+
+    # calculator
+    signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
+    calculator_ints = predict_class(msg, model)
+    calculator_res = getResponse(calculator_ints, intents, show_details=True)
+    if calculator_ints[0]['intent'] == 'tínhtoán':
+        lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric()]
+        res = client.query(' '.join(lst_patterns))
+        output = next(res.results).text
+        return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
 
     # image to text feature
     vie = 'vie'
