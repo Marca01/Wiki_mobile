@@ -13,6 +13,8 @@ import pytesseract
 from PIL import Image
 import datetime
 import wolframalpha
+import wikipedia
+
 
 # wolfram alpha client ID
 client = wolframalpha.Client('993EV6-2RT77RVW8V')
@@ -84,11 +86,36 @@ def chatbot_response():
     signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
     calculator_ints = predict_class(msg, model)
     calculator_res = getResponse(calculator_ints, intents, show_details=True)
+    # check float number
+    def isfloat(num):
+        try:
+            float(num)
+            return True
+        except ValueError:
+            return False
+
+    # if the user input is text
     if calculator_ints[0]['intent'] == 'tínhtoán':
-        lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric()]
+        lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit()]
         res = client.query(' '.join(lst_patterns))
         output = next(res.results).text
         return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
+    else:
+        for c in nltk.word_tokenize(msg):
+            if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit():
+                res = client.query(msg)
+                output = next(res.results).text
+                return output
+
+
+    # summary search result from wikipedia
+    wikipedia.set_lang('vi')
+    if 'sum' in msg:
+        try:
+            rs = wikipedia.summary(msg.replace('sum', ''))
+            return rs
+        except wikipedia.exceptions.PageError:
+            return 'Xin lỗi tôi không tìm thấy kết quả'
 
     # image to text feature
     vie = 'vie'
@@ -99,6 +126,8 @@ def chatbot_response():
         return flask.redirect(flask.url_for('recognize_engtext_img'), code=307)
 
     fallback = 'Xin lỗi tôi không tìm thấy kết quả'
+
+    # google search
     for w in nltk.word_tokenize(msg):
         if w.lower() not in words:
             search_result_list = list(search(msg, lang='vi', num_results=10))
