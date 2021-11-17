@@ -61,26 +61,35 @@ def chatbot_response():
     # ask time, day, date
     time_ints = predict_class(msg, model)
     time_res = getResponse(time_ints, intents, show_details=True)
-    if time_ints[0]['intent'] == 'thứ':
-        day = datetime.datetime.now().strftime('%A')
+    # change day from english to vietnamese
+    def change_day(day):
         if day == 'Monday':
-            return time_res.replace("{n}", 'thứ hai')
-        if day == 'Tuesday':
-            return time_res.replace("{n}", 'thứ ba')
-        if day == 'Wednesday':
-            return time_res.replace("{n}", 'thứ tư')
-        if day == 'Thursday':
-            return time_res.replace("{n}", 'thứ năm')
-        if day == 'Friday':
-            return time_res.replace("{n}", 'thứ sáu')
-        if day == 'Saturday':
-            return time_res.replace("{n}", 'thứ bảy')
-        if day == 'Sunday':
-            return time_res.replace("{n}", 'chủ nhật')
+            return 'Thứ hai'
+        elif day == 'Tuesday':
+            return 'Thứ ba'
+        elif day == 'Wednesday':
+            return 'Thứ tư'
+        elif day == 'Thursday':
+            return 'Thứ năm'
+        elif day == 'Friday':
+            return 'Thứ sáu'
+        elif day == 'Saturday':
+            return 'Thứ bảy'
+        elif day == 'Sunday':
+            return 'Chủ nhật'
+
+    # ask date
+    day = datetime.datetime.now().strftime('%A')
+    changed_day = change_day(day)
+
+    if time_ints[0]['intent'] == 'thứ':
+        return time_res.replace("{n}", changed_day)
     if time_ints[0]['intent'] == 'ngày':
         return time_res.replace('{n}', datetime.datetime.now().strftime('%d/%m/%Y'))
     if time_ints[0]['intent'] == 'giờ':
         return time_res.replace('{n}', datetime.datetime.now().strftime('%T'))
+    if time_ints[0]['intent'] == 'thờigianđầyđủ':
+        return time_res.replace('{n}', datetime.datetime.now().strftime(f'{changed_day}, ngày %d tháng %m, %Y, %H giờ %M phút %S giây'.encode('unicode_escape').decode('utf-8')).encode('utf-8').decode('unicode_escape'))
 
     # calculator
     signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
@@ -125,9 +134,8 @@ def chatbot_response():
     if msg == f':=totext&{eng}':
         return flask.redirect(flask.url_for('recognize_engtext_img'), code=307)
 
-    fallback = 'Xin lỗi tôi không tìm thấy kết quả'
-
     # google search
+    fallback = 'Xin lỗi tôi không tìm thấy kết quả'
     for w in nltk.word_tokenize(msg):
         if w.lower() not in words:
             search_result_list = list(search(msg, lang='vi', num_results=10))

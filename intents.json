@@ -30,6 +30,24 @@
             "context": [""]
         },
         {
+            "tag": "khen",
+            "patterns": ["Bạn giỏi thật đấy", "Bạn đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời bạn đỉnh vậy", "Wao bạn siêu thật đấy", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "Bạn thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "Bạn thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
+            "responses": ["Haha cũng bình thường thôi k đến mức đấy đâu :v", ":v quá khen", ":v", "Xịn hong :3", "Được Kha với Quân tạo ra thì sao mà không vip được :3", "Bạn quá khen", "Cảm ơn bạn, bạn cũng rất tuyệt đấy 💕", "Bạn cũng đỉnh lắm đấy", "Đó là vinh dự của tôi", "Xin nhận lấy lời khen của bạn", ":v có gì đâu trời, bình thường mà"],
+            "context": [""]
+        },
+        {
+            "tag": "chê",
+            "patterns": ["Haizz có vậy mà cũng không biết nữa", "Bạn chẳng hữu ích gì cả", "Tệ quá", "Hỏi có vậy thôi mà cũng không biết", "Chê"],
+            "responses": ["😔 tôi sẽ cố gắng trong lần sau", "Xin lỗi nếu làm bạn không hài lòng", "Không, nói điều đó không tốt chút nào", "Tôi sẽ không trả lời lại câu hỏi đó"],
+            "context": ["che"]
+        },
+        {
+            "tag": "hếtchê",
+            "patterns": ["Thôi được rồi không nói nữa", "Thôi không nói nữa", "OK", "Có gì lần sau phải trả lời tốt hơn nhé", "Cải thiện lần sau nhé", "Cố gắng cải thiện", "Không muốn trả lời lại thì thôi, chả sao cả", "Ok thì thôi"],
+            "responses": ["OK không nói nữa", "Ùm", "Ừ", "Ok tôi sẽ cải thiện tốt hơn"],
+            "context_filter": ["che"]
+        },
+        {
             "tag": "khôngtrảlời",
             "patterns": [""],
             "responses": ["Xin lỗi, tôi không hiểu câu hỏi của bạn", "Xin lỗi, bạn có thể nói lại không?", "Alo bạn có thể nói lại được không?", "Tôi không hiểu bạn nói gì cả", "Người đừng lặng im đến thế...", "Nói đi bạn", "Sao không nói gì hết vậy???", "Ủa bạn đâu rồi?", "Sao im lặng thể?", "Nói gì thì nói đi bạn", "Mình đang lắng nghe bạn đây"],
@@ -63,19 +81,19 @@
             "tag": "ngườitạora",
             "patterns": ["ai là người đã tạo ra bạn?", "vậy ai đã tạo ra bạn?", "bạn được tạo ra bởi ai?"],
             "responses": ["Tôi được tạo ra bởi Lê Văn Kha và Trần Anh Quân"],
-            "context": ["tạora", "bamẹ"]
+            "context_filter": ["tạora", "bamẹ"]
         },
         {
             "tag": "ngườitạorabamẹ",
             "patterns": ["ba mẹ bạn là ai?", "bạn có gia đình không?"],
             "responses": ["Tôi không có gia đình như con người", "Tôi không có gia đình như con người nhưng những người tạo ra tôi là Lê Văn Kha và Trần Anh Quân cũng giống như người nhà tôi vậy"],
-            "context": ["tạora", "bamẹ"]
+            "context_filter": ["tạora", "bamẹ"]
         },
         {
             "tag": "thờigiantạora",
             "patterns": ["bạn được tạo ra khi nào?", "bạn được tạo ra vào ngày mấy?", "bạn có mặt trên đời này khi nào?", "ngày mấy là bạn được tạo ra?"],
             "responses": ["Vào ngày 28 tháng 10 năm 2021", "Tôi được tạo ra vào ngày 28 tháng 10 năm 2021", "Ngày 28 tháng 10 năm 2021 là ngày tôi được nói chuyện với bạn 🥰", "Tôi không thực sự được sinh ra mà là được đến với thế giới này một cách từ từ. À nhưng mà ngày đầu tiên của tôi với tư cách là một trợ lý ảo là vào ngày 28 tháng 10 năm 2021"],
-            "context": ["tạora"]
+            "context_filter": ["tạora"]
         },
         {
             "tag": "ngônngữ",
@@ -109,13 +127,13 @@
         },
         {
             "tag": "ngày",
-            "patterns": ["hôm nay ngày mấy nhỉ?", "bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
+            "patterns": ["à hôm nay ngày mấy nhỉ?", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
             "responses": ["Hôm nay là ngày {n}", "Ngày ni là ngày {n}", "Ngày {n}"],
             "context": [""]
         },
         {
             "tag": "thứ",
-            "patterns": ["hôm nay thứ mấy nhỉ?", "bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
+            "patterns": ["à hôm nay thứ mấy nhỉ?", "à bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
             "responses": ["Hôm nay là {n}", "Bữa nay là {n}", "Bữa ni là {n}", "Hôm ni là {n}", "{n}"],
             "context": [""]
         },
@@ -123,6 +141,11 @@
             "tag": "giờ",
             "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}"],
+            "context": [""]
+        },{
+            "tag": "thờigianđầyđủ",
+            "patterns": ["mấy giờ rồi bạn đầy đủ nhé", "bữa ni thứ mấy thế, đầy đủ á", "cho mình hỏi bây giờ là mấy giờ full á nghe", "mấy giờ r nhỉ, giờ đầy đủ á", "ni ngày mấy nhỉ đầy đủ á nghe", "hôm ni ngày mấy á full nghe"],
+            "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}", "{n}"],
             "context": [""]
         },
         {
