@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { View, Text, FlatList } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import NodeChat from "./NodeChat";
@@ -14,12 +14,15 @@ export default function ChatList({ user_messages, bot_messages }) {
 
   const messages = zip([user_messages, bot_messages]);
 
+  const renderItem = useCallback(({ item }) => <NodeChat data={item} />, []);
+  const keyExtractor = useCallback((item) => item.id, []);
+
   return (
     <View style={globalStyles.messages}>
       <FlatList
         data={messages}
-        renderItem={({ item }) => <NodeChat data={item} />}
-        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       ></FlatList>
