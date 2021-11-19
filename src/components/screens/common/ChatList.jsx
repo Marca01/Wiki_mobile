@@ -4,7 +4,7 @@ import { globalStyles } from "../../../styles/global";
 import NodeChat from "./NodeChat";
 
 export default function ChatList({ user_messages, bot_messages }) {
-  const zip = (arrays) => {
+  const zip = arrays => {
     return arrays[0].map(function (_, i) {
       return arrays.map(function (array) {
         return array[i];
@@ -15,7 +15,7 @@ export default function ChatList({ user_messages, bot_messages }) {
   const messages = zip([user_messages, bot_messages]);
 
   const renderItem = useCallback(({ item }) => <NodeChat data={item} />, []);
-  const keyExtractor = useCallback((item) => item.id, []);
+  const keyExtractor = useCallback(item => item.id, []);
 
   return (
     <View style={globalStyles.messages}>
@@ -25,7 +25,8 @@ export default function ChatList({ user_messages, bot_messages }) {
         keyExtractor={keyExtractor}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-      ></FlatList>
+        inverted
+        contentContainerStyle={{ flexDirection: "column-reverse" }}></FlatList>
     </View>
   );
 }
