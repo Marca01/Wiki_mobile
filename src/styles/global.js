@@ -38,7 +38,7 @@ export const globalStyles = StyleSheet.create({
     marginTop: 10
   },
   messages_botStyle: {
-    backgroundColor: "#e3e3e3",
+    backgroundColor: "#fff",
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingVertical: 10,
@@ -77,7 +77,8 @@ export const globalStyles = StyleSheet.create({
     // backgroundColor: 'red'
   },
   headerDiv: {
-    marginTop: 30,
+    paddingVertical: 15,
+    marginTop: 10,
     paddingHorizontal: 10,
     flexDirection: "row",
     alignItems: "center"
@@ -90,7 +91,7 @@ export const globalStyles = StyleSheet.create({
     flexDirection: "row"
   },
   headerTitle_title: {
-    fontSize: 39,
+    fontSize: 24,
     fontWeight: "bold"
   },
 

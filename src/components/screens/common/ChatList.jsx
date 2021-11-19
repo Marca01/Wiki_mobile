@@ -26,7 +26,8 @@ export default function ChatList({ user_messages, bot_messages }) {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         inverted
-        contentContainerStyle={{ flexDirection: "column-reverse" }}></FlatList>
+        contentContainerStyle={{ flexDirection: "column-reverse" }}
+      />
     </View>
   );
 }
