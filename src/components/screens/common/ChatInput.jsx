@@ -6,7 +6,13 @@ export default function ChatInput({ message, onChangeText, onPress }) {
   return (
     <View style={globalStyles.textInput}>
       <TouchableOpacity style={globalStyles.textInputMessageContainer}>
-        <TextInput value={message} onChangeText={onChangeText} placeholder="Say something..." multiline style={globalStyles.textInput_message} />
+        <TextInput
+          value={message}
+          onChangeText={onChangeText}
+          placeholder="Cho wiki biết bạn đang nghĩ gì nè..."
+          multiline
+          style={globalStyles.textInput_message}
+        />
         <TouchableOpacity onPress={onPress} disabled={!message}>
           <Feather name="send" size={24} color={!message ? "gray" : "blue"} />
         </TouchableOpacity>

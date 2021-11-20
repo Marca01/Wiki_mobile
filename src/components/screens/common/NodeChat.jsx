@@ -8,24 +8,29 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
       {
         <View style={globalStyles.messages_user}>
           <View style={globalStyles.messages_userStyle}>
-            <Text style={globalStyles.messages_userText}>{data[0].message}</Text>
+            <Text style={globalStyles.messages_userText}>
+              {data[0].message}
+            </Text>
           </View>
         </View>
       }
       {
         <View style={globalStyles.messages_bot}>
           <View style={globalStyles.messages_botStyle}>
-            {data[1]?.message.replace(/\[|\]/g, "").split(",").length > 1 ? (
-              data[1]?.message
-                .replace(/\[|\]/g, "")
-                .split(",")
-                .map((url, i) => (
-                  <Text key={i} style={{ color: "blue" }} onPress={() => Linking.openURL(JSON.parse(url.replace(/'/g, '"')))}>
-                    {JSON.parse(url.replace(/'/g, '"'))}
-                  </Text>
-                ))
+            {Array.isArray(data[1]?.message) ? (
+              data[1]?.message.map((url, i) => (
+                <Text
+                  key={i}
+                  style={{ color: "blue" }}
+                  onPress={() => Linking.openURL(url)}
+                >
+                  {url}
+                </Text>
+              ))
             ) : (
-              <Text style={globalStyles.messages_botText}>{data[1]?.message}</Text>
+              <Text style={globalStyles.messages_botText}>
+                {data[1]?.message}
+              </Text>
             )}
           </View>
         </View>
