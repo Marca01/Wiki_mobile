@@ -3,7 +3,6 @@ import { View, Text, Linking, FlatList } from "react-native";
 import { globalStyles } from "../../../styles/global";
 
 export default function NodeChat({ user_message, bot_message, data, tag }) {
-  console.log(data);
   return (
     <View>
       {
