@@ -30,6 +30,9 @@ words = pickle.load(open('./words.pkl', 'rb'))
 classes = pickle.load(open('./classes.pkl', 'rb'))
 
 app = Flask(__name__)
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
 
 @app.route('/')
 def home():
@@ -89,7 +92,7 @@ def chatbot_response():
     if time_ints[0]['intent'] == 'giờ':
         return time_res.replace('{n}', datetime.datetime.now().strftime('%T'))
     if time_ints[0]['intent'] == 'thờigianđầyđủ':
-        return time_res.replace('{n}', datetime.datetime.now().strftime(f'{changed_day}, ngày %d tháng %m, %Y, %H giờ %M phút %S giây'.encode('unicode_escape').decode('utf-8')).encode('utf-8').decode('unicode_escape'))
+        return time_res.replace('{n}', datetime.datetime.now().strftime(f'{changed_day}, ngày %d tháng %m năm %Y, %H giờ %M phút %S giây'.encode('unicode_escape').decode('utf-8')).encode('utf-8').decode('unicode_escape'))
 
     # calculator
     signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
@@ -108,7 +111,10 @@ def chatbot_response():
         lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit()]
         res = client.query(' '.join(lst_patterns))
         output = next(res.results).text
-        return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
+        if isfloat(output):
+            return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', str(round(float(output), 5)))
+        else:
+            return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
     else:
         for c in nltk.word_tokenize(msg):
             if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit():
@@ -119,9 +125,9 @@ def chatbot_response():
 
     # summary search result from wikipedia
     wikipedia.set_lang('vi')
-    if 'sum' in msg:
+    if ':wiki' in msg:
         try:
-            rs = wikipedia.summary(msg.replace('sum', ''))
+            rs = wikipedia.summary(msg.replace(':wiki', '').strip())
             return rs
         except wikipedia.exceptions.PageError:
             return 'Xin lỗi tôi không tìm thấy kết quả'
@@ -129,25 +135,28 @@ def chatbot_response():
     # image to text feature
     vie = 'vie'
     eng = 'eng'
-    if msg == ':=totext':
+    if msg == ':totext':
         return flask.redirect(flask.url_for('recognize_vietext_img'), code=307)
-    if msg == f':=totext&{eng}':
+    if msg == f':totext&{eng}':
         return flask.redirect(flask.url_for('recognize_engtext_img'), code=307)
 
     # google search
-    fallback = 'Xin lỗi tôi không tìm thấy kết quả'
+    fallback = 'Xin lỗi, tôi không tìm thấy kết quả'
+    if ':search' in msg:
+        search_result_list = list(search(msg, lang='vi', num_results=10))
+        if len(search_result_list) > 0:
+            return json.dumps(search_result_list)
+        else:
+            return fallback
+
+    # don't understand words
     for w in nltk.word_tokenize(msg):
         if w.lower() not in words:
-            search_result_list = list(search(msg, lang='vi', num_results=10))
-            if len(search_result_list) > 0:
-                return str(search_result_list)
-            else:
-                return fallback
+            return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
         else:
             ints = predict_class(msg, model)
             res = getResponse(ints, intents, show_details=True)
             return res
-
 
 # image to text
 # @app.route('/recognize', defaults={'lang': 'vie'}, methods=['POST'])

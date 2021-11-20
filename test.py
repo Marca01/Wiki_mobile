@@ -16,3 +16,4 @@ def get_smallest_number(list):
     print(smallest)
 
 get_smallest_number(list)
+
