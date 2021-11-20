@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  KeyboardAvoidingView,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { View, Text, KeyboardAvoidingView, ScrollView, FlatList } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { globalStyles } from "../../styles/global";
 import ChatList from "./common/ChatList";
@@ -21,42 +15,28 @@ export default function Main({ navigation }) {
   const [userMessages, setUserMessages] = useState([]);
   const [botMessages, setBotMessages] = useState([]);
 
-  const handleSendMessage = (user_message) => {
+  const handleSendMessage = user_message => {
     const messageData = new FormData();
     messageData.append("msg", user_message);
 
     sendUserMessage(messageData)
-      .then((res) => {
+      .then(res => {
         setMessage("");
-        setUserMessages([
-          ...userMessages,
-          { id: nextUserId++, message: message, tag: "userMessage" },
-        ]);
-        setBotMessages([
-          ...botMessages,
-          { id: nextBotId++, message: res.data, tag: "botMessage" },
-        ]);
+        setUserMessages([...userMessages, { id: nextUserId++, message: message, tag: "userMessage" }]);
+        setBotMessages([...botMessages, { id: nextBotId++, message: res.data, tag: "botMessage" }]);
         console.log(...botMessages);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
 
   return (
     <View style={globalStyles.container}>
-      <Header title="Wiki" navigation={navigation} />
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={8}
-      >
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }} keyboardVerticalOffset={8}>
+        <Header title="Wiki" navigation={navigation} />
         <ChatList user_messages={userMessages} bot_messages={botMessages} />
-        <ChatInput
-          message={message}
-          onChangeText={(message) => setMessage(message)}
-          onPress={() => handleSendMessage(message)}
-        />
+        <ChatInput message={message} onChangeText={message => setMessage(message)} onPress={() => handleSendMessage(message)} />
       </KeyboardAvoidingView>
     </View>
   );
