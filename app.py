@@ -149,7 +149,7 @@ def chatbot_response():
         else:
             return fallback
 
-    # don't understand words
+    # if don't understand words
     for w in nltk.word_tokenize(msg):
         if w.lower() not in words:
             return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
