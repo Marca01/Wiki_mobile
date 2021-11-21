@@ -238,13 +238,6 @@ def getResponse(ints, intents_json, userID='123', show_details=False):
                         if show_details: print('tag: ', i['tag'])
                         return random.choice(i['responses'])          # random response from the intent
             return result_context
-    # tag = ints[0]['intent']
-    # list_of_intents = intents_json['intents']
-    # for i in list_of_intents:
-    #     if i['tag'] == tag:
-    #         result = random.choice(i['responses'])
-    # return result
-
 
 if __name__ == "__main__":
     app.run(debug=True)
