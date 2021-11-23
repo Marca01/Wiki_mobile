@@ -15,7 +15,6 @@ import datetime
 import wolframalpha
 import wikipedia
 
-
 # wolfram alpha client ID
 client = wolframalpha.Client('993EV6-2RT77RVW8V')
 
@@ -148,6 +147,11 @@ def chatbot_response():
             return json.dumps(search_result_list)
         else:
             return fallback
+
+    # recommendation
+    if 'Bạn đề xuất cho mình một vài bộ phim được không' in msg:
+        from recommender import make_recommendation
+        return json.dumps(make_recommendation())
 
     # if don't understand words
     for w in nltk.word_tokenize(msg):
