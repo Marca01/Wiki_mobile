@@ -5,13 +5,23 @@ from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
 import numpy as np
 
-movieData = pd.read_csv('Data/movies_metadata.csv', low_memory=False)
-ratings = pd.read_csv('Data/ratings.csv')
-credits = pd.read_csv('Data/credits.csv')
-keywords = pd.read_csv('Data/keywords.csv')
+# url from google drive
+movieData_url = 'https://drive.google.com/file/d/1COQ8cuUUCP9jPpbRwqEjZbyqFzO6sx1b/view?usp=sharing'
+credits_url = 'https://drive.google.com/file/d/1bYJ-s2JML1Ha9I9HezWiMUyGtM442sio/view?usp=sharing'
+keywords_url = 'https://drive.google.com/file/d/1TLLQczoE8Rxl6YNoGNGKH5vZEyOjS9eF/view?usp=sharing'
 
-# get only 10000 movies
+movieData_download_url = 'https://drive.google.com/uc?id=' + movieData_url.split('/')[-2]
+credits_download_url = 'https://drive.google.com/uc?id=' + credits_url.split('/')[-2]
+keywords_download_url = 'https://drive.google.com/uc?id=' + keywords_url.split('/')[-2]
+
+movieData = pd.read_csv(movieData_download_url, low_memory=False)
+credits = pd.read_csv(credits_download_url, low_memory=False)
+keywords = pd.read_csv(keywords_download_url, low_memory=False)
+
+# get only first 10000 movies
 movieData = movieData.iloc[0:10000, :]
+credits = credits.iloc[0:10000, :]
+keywords = keywords.iloc[0:10000, :]
 
 # convert IDs to int. Required for merging on id using pandas .merge() command
 keywords['id'] = keywords['id'].astype('int')
