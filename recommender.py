@@ -7,7 +7,7 @@ import numpy as np
 
 # url from google drive
 movieData_url = 'https://drive.google.com/file/d/1COQ8cuUUCP9jPpbRwqEjZbyqFzO6sx1b/view?usp=sharing'
-credits_url = 'https://drive.google.com/file/d/1bYJ-s2JML1Ha9I9HezWiMUyGtM442sio/view?usp=sharing'
+credits_url = 'https://drive.google.com/file/d/19pAfSrnwtMWraw5m1oSRhAi9e7wR3deu/view?usp=sharing'
 keywords_url = 'https://drive.google.com/file/d/1TLLQczoE8Rxl6YNoGNGKH5vZEyOjS9eF/view?usp=sharing'
 
 movieData_download_url = 'https://drive.google.com/uc?id=' + movieData_url.split('/')[-2]
@@ -20,13 +20,16 @@ keywords = pd.read_csv(keywords_download_url, low_memory=False)
 
 # get only first 10000 movies
 movieData = movieData.iloc[0:10000, :]
-credits = credits.iloc[0:10000, :]
 keywords = keywords.iloc[0:10000, :]
+
+# # replace NaN with an empty string
+# credits['id'] = credits['id'].fillna('')
 
 # convert IDs to int. Required for merging on id using pandas .merge() command
 keywords['id'] = keywords['id'].astype('int')
 credits['id'] = credits['id'].astype('int')
 movieData['id'] = movieData['id'].astype('int')
+
 
 # Merge keywords and credits into your main movieData dataframe: this will look for candidates
 # on the credits and keywords tables and have ids that match those in the movieData table, which we will use as
