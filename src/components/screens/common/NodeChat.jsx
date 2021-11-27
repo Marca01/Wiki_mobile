@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text, Linking, FlatList } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Linking, FlatList, ToastAndroid } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import * as Clipboard from "expo-clipboard";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function NodeChat({ user_message, bot_message, data, tag }) {
-  const URL = str => {
+  const URL = (str) => {
     let pattern = new RegExp(
       "^(https?:\\/\\/)?" + // protocol
         "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
@@ -17,16 +17,24 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
     ); // fragment locator
     return pattern.test(str);
   };
-  const copyToClipborad = str => {
+
+  const copyToClipboard = (str) => {
     Clipboard.setString(str);
+    ToastAndroid.show("Đã sao chép tin nhắn 😉", ToastAndroid.SHORT);
     console.log(str);
   };
+
   return (
     <View>
       {
         <View style={globalStyles.messages_user}>
           <View style={globalStyles.messages_userStyle}>
-            <Text style={globalStyles.messages_userText}>{data[0].message}</Text>
+            <Text
+              style={globalStyles.messages_userText}
+              onLongPress={() => copyToClipboard(data[0].message)}
+            >
+              {data[0].message}
+            </Text>
           </View>
         </View>
       }
@@ -36,15 +44,36 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
             {Array.isArray(data[1]?.message) ? (
               data[1]?.message.map((url, i) =>
                 URL(url) ? (
-                  <Text onLongPress={() => copyToClipborad(data[0].message)} key={i} style={{ color: "blue" }} onPress={() => Linking.openURL(url)}>
+                  <Text
+                    onLongPress={() => copyToClipboard(url)}
+                    key={i}
+                    style={{ color: "blue" }}
+                    onPress={() => Linking.openURL(url)}
+                  >
                     {url}
                   </Text>
                 ) : (
-                  <Text style={globalStyles.messages_botText}>{url}</Text>
+                  <TouchableOpacity style={globalStyles.messages_botFilmText}>
+                    <Text style={globalStyles.messages_botText}>{url[0]}</Text>
+                    {/* // movie title */}
+                    <Text style={globalStyles.messages_botText}>{url[1]}</Text>
+                    {/* // imdb id */}
+                    <Text style={globalStyles.messages_botText}>{url[2]}</Text>
+                    {/* // runtime (hrs) */}
+                    <Text style={globalStyles.messages_botText}>{url[3]}</Text>
+                    {/* // release date */}
+                    <Text style={globalStyles.messages_botText}>{url[4]}</Text>
+                    {/* // vote average */}
+                  </TouchableOpacity>
                 )
               )
             ) : (
-              <Text style={globalStyles.messages_botText}>{data[1]?.message}</Text>
+              <Text
+                style={globalStyles.messages_botText}
+                onLongPress={() => copyToClipboard(data[1]?.message)}
+              >
+                {data[1]?.message}
+              </Text>
             )}
           </View>
         </View>
