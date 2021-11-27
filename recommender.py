@@ -4,22 +4,24 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
 import numpy as np
+from multiprocessing import Process
 
 # url from google drive
 movieData_url = 'https://drive.google.com/file/d/1COQ8cuUUCP9jPpbRwqEjZbyqFzO6sx1b/view?usp=sharing'
-credits_url = 'https://drive.google.com/file/d/19pAfSrnwtMWraw5m1oSRhAi9e7wR3deu/view?usp=sharing'
+credits_url = 'https://drive.google.com/file/d/127Q7AYuisHeACdcDE_C1MXDOf6Ue77vX/view?usp=sharing'
 keywords_url = 'https://drive.google.com/file/d/1TLLQczoE8Rxl6YNoGNGKH5vZEyOjS9eF/view?usp=sharing'
-
+# download url
 movieData_download_url = 'https://drive.google.com/uc?id=' + movieData_url.split('/')[-2]
 credits_download_url = 'https://drive.google.com/uc?id=' + credits_url.split('/')[-2]
 keywords_download_url = 'https://drive.google.com/uc?id=' + keywords_url.split('/')[-2]
 
 movieData = pd.read_csv(movieData_download_url, low_memory=False)
-credits = pd.read_csv(credits_download_url, low_memory=False)
-keywords = pd.read_csv(keywords_download_url, low_memory=False)
+credits = pd.read_csv(credits_download_url)
+keywords = pd.read_csv(keywords_download_url)
 
 # get only first 10000 movies
 movieData = movieData.iloc[0:10000, :]
+credits = credits.iloc[0:10000, :]
 keywords = keywords.iloc[0:10000, :]
 
 # # replace NaN with an empty string
@@ -104,53 +106,68 @@ def create_soup(x):
 movieData['soup'] = movieData.apply(create_soup, axis=1)
 
 # getting the user's input for genre, actors and directors of their liking
-def get_genres():
-    genres = input('Bạn thích thể loại phim nào? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
+def ask_genres():
+    return 'Bạn thích thể loại phim nào? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này'
+
+def ask_actors():
+    return 'Bạn có thể cho biết tên các diễn viên của bộ phim được không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này'
+
+def ask_directors():
+    return 'Bạn có thể cho biết tên đạo diễn của bộ phim được không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này'
+
+def ask_keywords():
+    return 'Bạn có từ khóa nào mô tả về bộ phim bạn muốn xem không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này'
+
+def get_genres(genres):
+    # genres = input('Bạn thích thể loại phim nào? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
     genres = ' '.join([''.join(n.split()) for n in genres.lower().split(',')])
     return genres
 
-def get_actors():
-    actors = input('Bạn có thể cho biết tên các diễn viên của bộ phim được không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
+def get_actors(actors):
+    # actors = input('Bạn có thể cho biết tên các diễn viên của bộ phim được không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
     actors = ' '.join([''.join(n.split()) for n in actors.lower().split(',')])
     return actors
 
-def get_directors():
-    direcrtors = input('Bạn có thể cho biết tên đạo diễn của bộ phim được không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
-    directors = ' '.join([''.join(n.split()) for n in direcrtors.lower().split(',')])
+def get_directors(directors):
+    # directors = input('Bạn có thể cho biết tên đạo diễn của bộ phim được không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
+    directors = ' '.join([''.join(n.split()) for n in directors.lower().split(',')])
     return directors
 
-def get_keywords():
-    keywords = input('Bạn có từ khóa nào mô tả về bộ phim bạn muốn xem không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
+def get_keywords(keywords):
+    # keywords = input('Bạn có từ khóa nào mô tả về bộ phim bạn muốn xem không? Nếu không thì bạn có thể nhắn "Bỏ qua" để bỏ qua câu hỏi này')
     keywords = ' '.join([''.join(n.split()) for n in keywords.lower().split(',')])
     return keywords
 
-def get_searchTerms():
+def get_searchTerms(msg):
     searchTerms = []
-    genres = get_genres()
+
+    ask_genre = ask_genres()
+    genres = get_genres(msg)
     if genres != 'Bỏ qua':
+        ask_genre
         searchTerms.append(genres)
 
-    actors = get_actors()
+    actors = get_actors(msg)
     if actors != 'Bỏ qua':
         searchTerms.append(actors)
 
-    directors = get_directors()
+    directors = get_directors(msg)
     if directors != 'Bỏ qua':
         searchTerms.append(directors)
 
-    keywords = get_keywords()
+    keywords = get_keywords(msg)
     if keywords != 'Bỏ qua':
         searchTerms.append(keywords)
 
     return searchTerms
 
 # make recommendation
-def make_recommendation(movieData=movieData):
+def make_recommendation(msg, movieData=movieData):
     new_row = movieData.iloc[-1, :].copy() # creating a copy of the last row of the dataset
                                            # which we will use to input the user's input
 
     # grabbing the new wordsoup from the user
-    searchTerms = get_searchTerms()
+    searchTerms = get_searchTerms(msg)
     new_row.iloc[-1] = ' '.join(searchTerms) # adding the input to our new row
 
     # adding the new row to the dataset
@@ -171,10 +188,11 @@ def make_recommendation(movieData=movieData):
     ranked_titles = []
     for i in range(1, 11):
         indx = sim_scores[i][0]
-        ranked_titles.append([movieData['title'].iloc[indx], movieData['imdb_id'].iloc[indx]])
+        ranked_titles.append([movieData['title'].iloc[indx], movieData['imdb_id'].iloc[indx], movieData['runtime'].iloc[indx], movieData['release_date'].iloc[indx], movieData['vote_average'].iloc[indx]])
 
-    ranked_titles = np.array(ranked_titles)
-    return list(ranked_titles[:, 0])
+    # ranked_titles = np.array(ranked_titles)
+    print(type(ranked_titles))
+    return ranked_titles
 
 
 

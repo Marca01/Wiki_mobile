@@ -15,6 +15,8 @@ import datetime
 import wolframalpha
 import wikipedia
 
+from recommender import make_recommendation, get_genres, get_actors, get_directors, get_keywords
+
 # wolfram alpha client ID
 client = wolframalpha.Client('993EV6-2RT77RVW8V')
 
@@ -41,18 +43,17 @@ def home():
 @app.route('/chat', methods=['POST'])
 def chatbot_response():
     msg = request.form['msg']
-    if msg.startswith('Tôi tên là '):
-        name = msg[11:]
-        ints = predict_class(msg, model)
-        res1 = getResponse(ints, intents, show_details=True)
-        res = res1.replace('{n}', name)
-        return res
-    elif msg.startswith('Xin chào tôi tên là '):
-        name = msg[20:]
-        ints = predict_class(msg, model)
-        res1 = getResponse(ints, intents, show_details=True)
-        res = res1.replace('{n}', name)
-        return res
+
+    # get tag 'giớithiệu' patterns
+    patterns = intents['intents'][4]['patterns']
+    intro_ints = predict_class(msg, model)
+    intro_res = getResponse(intro_ints, intents, show_details=True)
+
+    if intro_ints[0]['intent'] == 'giớithiệu':
+        for pattern in patterns:
+            if msg.find(pattern) > -1:
+                return intro_res.replace('{n}', msg.replace(pattern, ''))
+
     elif 'Lê Văn Kha' in msg:
         res = 'Xin chào chủ nhân của tôi'
         return res
@@ -149,9 +150,13 @@ def chatbot_response():
             return fallback
 
     # recommendation
-    if 'Bạn đề xuất cho mình một vài bộ phim được không' in msg:
-        from recommender import make_recommendation
-        return json.dumps(make_recommendation())
+    if ':movie' in msg:
+        # return 'Được rồi bắt đầu thôi'
+        # get_genres(msg)
+        # get_actors(msg)
+        # get_directors(msg)
+        # get_keywords(msg)
+        return json.dumps(make_recommendation(msg.replace(':movie', '').strip()))
 
     # if don't understand words
     for w in nltk.word_tokenize(msg):
