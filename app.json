@@ -25,7 +25,10 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [
-        "android.permission.RECORD_AUDIO"
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.CAMERA"
+
       ],
       "package": "com.mavis2103.wiki"
     },
@@ -34,10 +37,11 @@
     },
     "plugins": [
       [
-        "@react-native-voice/voice",
+        "expo-image-picker",
         {
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
-          "speechRecogntionPermission": "Allow $(PRODUCT_NAME) to securely recognize user speech"
+          "speechRecogntionPermission": "Allow $(PRODUCT_NAME) to securely recognize user speech",
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
     ]
