@@ -171,14 +171,14 @@ def chatbot_response():
 # @app.route('/recognize', defaults={'lang': 'vie'}, methods=['POST'])
 @app.route('/recognize/vie', methods=['POST'])
 def recognize_vietext_img():
-    image_file = request.files.get('file', '')
+    image_file = request.files.get('file')
     image = Image.open(image_file)
     text = pytesseract.image_to_string(image, lang='vie')
     return text
 
 @app.route('/recognize/eng', methods=['POST'])
 def recognize_engtext_img():
-    image_file = request.files.get('file', '')
+    image_file = request.files.get('file')
     image = Image.open(image_file)
     text = pytesseract.image_to_string(image, lang='eng')
     return text
