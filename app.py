@@ -15,7 +15,7 @@ import datetime
 import wolframalpha
 import wikipedia
 
-from recommender import make_recommendation, get_genres, get_actors, get_directors, get_keywords
+from recommender import make_recommendation, movieGenres
 
 # wolfram alpha client ID
 client = wolframalpha.Client('993EV6-2RT77RVW8V')
@@ -156,7 +156,10 @@ def chatbot_response():
         # get_actors(msg)
         # get_directors(msg)
         # get_keywords(msg)
-        return json.dumps(make_recommendation(msg.replace(':movie', '').strip()))
+        if msg.replace(':movie', '').strip() in movieGenres:
+            return json.dumps(make_recommendation(msg.replace(':movie', '').strip()))
+        else:
+            return 'Xin lỗi, tôi không tìm thấy phim nào phù hợp với thể loại này'
 
     # if don't understand words
     for w in nltk.word_tokenize(msg):

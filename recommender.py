@@ -32,6 +32,12 @@ keywords['id'] = keywords['id'].astype('int')
 credits['id'] = credits['id'].astype('int')
 movieData['id'] = movieData['id'].astype('int')
 
+# get all genres
+movieGenres = []
+for i in range(len(movieData)):
+  for genre in literal_eval(movieData['genres'][i]):
+    movieGenres.append(genre['name'].lower())
+
 
 # Merge keywords and credits into your main movieData dataframe: this will look for candidates
 # on the credits and keywords tables and have ids that match those in the movieData table, which we will use as
