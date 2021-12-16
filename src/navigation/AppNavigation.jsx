@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Main from "../components/screens/Main";
 import Welcome from "../components/screens/common/Welcome";
+import Guide from "../components/screens/common/Guide";
+import { TransitionPresets } from "@react-navigation/stack";
 
 const MainStack = createStackNavigator();
 
@@ -25,6 +27,21 @@ const home = ({ navigation }) => {
           headerShown: false,
         }}
       />
+      <MainStack.Group
+        screenOptions={{
+          presentation: "modal",
+          gestureEnabled: true,
+          ...TransitionPresets.ModalPresentationIOS,
+        }}
+      >
+        <MainStack.Screen
+          name="Guide"
+          component={Guide}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </MainStack.Group>
     </MainStack.Navigator>
   );
 };

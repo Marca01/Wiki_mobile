@@ -7,14 +7,16 @@ let width = Dimensions.get("window").width;
 let statusBarHeight = StatusBar.currentHeight;
 
 export const globalStyles = StyleSheet.create({
-    // =================================================================
-    // Main.jsx
     container: {
         flex: 1,
         backgroundColor: "#F1F2F6",
         paddingHorizontal: 15,
         marginTop: statusBarHeight
     },
+
+    // =================================================================
+    // Main.jsx
+
     messages: {
         flex: 1,
         // backgroundColor: 'grey',
@@ -99,6 +101,11 @@ export const globalStyles = StyleSheet.create({
         marginTop: 10,
         paddingHorizontal: 10,
         flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
+    },
+    headerLeft: {
+        flexDirection: "row",
         alignItems: "center"
     },
     header_backIcon: {
@@ -112,7 +119,37 @@ export const globalStyles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "bold"
     },
+    headerRight: {},
+    header_questionIcon: {
+        padding: 2
+    },
 
+    // =================================================================
+    // Guide.jsx
+    guideHeader: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+    guideHeader_title: {
+
+    },
+    guideFeature: {
+
+    },
+    guideFeature_title: {
+        fontSize: 32,
+        fontWeight: "bold"
+    },
+    guideFeature_body: {
+
+    },
+    guideFeature_syntax: {
+
+    },
+    guideFeature_description: {
+
+    },
     // test style
     testStyle: {
         backgroundColor: "gray",
