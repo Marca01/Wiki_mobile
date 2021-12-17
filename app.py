@@ -14,6 +14,9 @@ from PIL import Image
 import datetime
 import wolframalpha
 import wikipedia
+from pyowm import OWM
+from pyowm.utils.config import get_default_config
+from pyowm.utils import timestamps
 
 from recommender import make_recommendation, movieGenres
 
@@ -143,11 +146,26 @@ def chatbot_response():
     # google search
     fallback = 'Xin lỗi, tôi không tìm thấy kết quả'
     if ':search' in msg:
-        search_result_list = list(search(msg, lang='vi', num_results=10))
+        search_result_list = list(search(msg.replace(':search', '').strip(), lang='vi', num_results=10))
         if len(search_result_list) > 0:
             return json.dumps(search_result_list)
         else:
             return fallback
+
+    # ask weather
+    config_dict = get_default_config()
+    config_dict['language'] = 'vi'
+    owm = OWM('17f5b913622c97e0f0c2ea7e58ec5812')
+    mgr = owm.weather_manager()
+
+    weather_ints = predict_class(msg, model)
+    weather_res = getResponse(weather_ints, intents, show_details=True)
+    if weather_ints[0]['intent'] == 'thờitiết':
+        observation = mgr.weather_at_place('Đà Nẵng')
+        w = observation.weather
+        weather_info = weather_res.replace('{status}', w.detailed_status).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{fell}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
+        return weather_info
+        # return json.dumps([{"temp": w.temperature('celsius')}, {"humidity": w.humidity}, {"detailed_status": w.detailed_status}, {"visibility": w.visibility_distance}, {"pressure": w.pressure["press"]}, {"wind": w.wind()}], ensure_ascii=False)
 
     # recommendation
     if ':movie' in msg:

@@ -48,6 +48,12 @@
             "context_filter": ["che"]
         },
         {
+            "tag": "sứckhỏe",
+            "patterns": ["Bạn khỏe không?", "Hôm nay bạn thế nào?", "Dạo này cậu thế nào?", "Vẫn tốt chứ?", "Hôm nay bạn ổn không?", "Bạn có khỏe không?"],
+            "responses": ["Tôi rất khỏe 💪", "Tôi hoàn toàn ổn", "Tôi rất vui khi ở đây"],
+            "context": [""]
+        },
+        {
             "tag": "khôngtrảlời",
             "patterns": [""],
             "responses": ["Xin lỗi, tôi không hiểu câu hỏi của bạn", "Xin lỗi, bạn có thể nói lại không?", "Alo bạn có thể nói lại được không?", "Tôi không hiểu bạn nói gì cả", "Người đừng lặng im đến thế...", "Nói đi bạn", "Sao không nói gì hết vậy???", "Ủa bạn đâu rồi?", "Sao im lặng thể?", "Nói gì thì nói đi bạn", "Mình đang lắng nghe bạn đây"],
@@ -149,8 +155,14 @@
             "context": [""]
         },
         {
+            "tag": "thờitiết",
+            "patterns": ["Thời tiết hôm nay như thế nào?", "Hôm nay trời thế nào nhỉ", "Thời tiết hôm nay"],
+            "responses": ["Hôm nay {status}, nhiệt độ là {temp}°C (cảm giác như {fell}°C), độ ẩm {humidity}%, áp suất {pressure}hPa, tầm nhìn xa {visibility}km"],
+            "context": [""]
+        },
+        {
             "tag": "tínhtoán",
-            "patterns": ["bằng mấy?", "tính xem nào", "kết quả của bằng mấy?", "tính thử", "bằng bao nhiêu?", "ni bằng bao nhiêu?", "kq bằng mấy?", "bằng bn?"],
+            "patterns": ["bằng mấy?", "tính xem nào", "kết quả của bằng mấy?", "tính thử", "bằng bao nhiêu?", "ni bằng bao nhiêu?", "kq bằng mấy?", "bằng bn?", "ra mấy?"],
             "responses": ["{m} bằng {n}", "{m} là {n}", "kết quả là {n}", "kết quả của {m} bằng {n}"],
             "context": [""]
         }
