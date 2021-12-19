@@ -132,6 +132,12 @@
             "context": [""]
         },
         {
+            "tag": "đùa",
+            "patterns": ["Nói điều gì đó vui nhộn đi nào", "Chọc cười tôi đi", "Nói gì vui vui đi", "Bạn nói gì đó vui vui đi", "Bạn thử nói một câu đùa xem nào", "Nói câu joke xem nào :)))", "Kể cái gì vui vui nghe na", "Nói cái gì khó đỡ thử nào :v"],
+            "responses": ["{joke}"],
+            "context": [""]
+        },
+        {
             "tag": "ngày",
             "patterns": ["à hôm nay ngày mấy nhỉ?", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
             "responses": ["Hôm nay là ngày {n}", "Ngày ni là ngày {n}", "Ngày {n}"],
@@ -148,11 +154,36 @@
             "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}"],
             "context": [""]
-        },{
+        },
+        {
             "tag": "thờigianđầyđủ",
             "patterns": ["mấy giờ rồi bạn đầy đủ nhé", "bữa ni thứ mấy thế, đầy đủ á", "cho mình hỏi bây giờ là mấy giờ full á nghe", "mấy giờ r nhỉ, giờ đầy đủ á", "ni ngày mấy nhỉ đầy đủ á nghe", "hôm ni ngày mấy á full nghe"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}", "{n}"],
             "context": [""]
+        },
+        {
+            "tag": "chúcngủngon",
+            "patterns": ["Chúc bạn ngủ ngon nhé", "Thôi đi ngủ đã, chúc bạn ngủ ngon", "Ngủ ngon nhá", "zzzzz", "thoi ngủ đây bye", "thôi đi ngủ"],
+            "responses": ["Chúc bạn ngủ ngon", "😴", "G9", "Có một giấc mơ đẹp nhé", "Cảm ơn, bạn cũng vậy nha"],
+            "context": [""]
+        },
+        {
+            "tag": "chán",
+            "patterns": ["haizzz, chán qué", "chán quá đi", "chán quá chả có gì làm hết", "haizzz", "😫", "chánnnnnnn"],
+            "responses": ["{n}"],
+            "context": ["chántiếp"]
+        },
+        {
+            "tag": "vẫnchán",
+            "patterns": ["tiếp đi", "chưa vui lắm, tiếp", "vẫn chán", "chả khá hơn được", "vẫn thế à"],
+            "responses": ["{n}", "Hmm, bạn có thể làm những việc bạn yêu thích như xem phim, nấu ăn, đọc sách...", "Thì đừng chán nữa 🐧"],
+            "context_filter": ["chántiếp"]
+        },
+        {
+            "tag": "hếtchán",
+            "patterns": ["cảm ơn nhé, tôi khá hơn rồi", "haha chuyện của bạn vui lắm, tôi khá hơn rồi", "oke tôi đỡ rồi", "thôi hết chán rồi, thanks nhé"],
+            "responses": ["Oh, rất vui vì đã giúp bạn", "Đúng rồi đừng chán nữa :v", "Yepp, đứng lên làm việc khác thôi nào", "Phải vậy chứ", "Hãy luôn vui vẻ bạn nhé 🥰"],
+            "context_filter": ["chántiếp"]
         },
         {
             "tag": "thờitiết",

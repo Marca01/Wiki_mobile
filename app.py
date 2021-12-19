@@ -16,7 +16,8 @@ import wolframalpha
 import wikipedia
 from pyowm import OWM
 from pyowm.utils.config import get_default_config
-from pyowm.utils import timestamps
+import requests
+from bs4 import BeautifulSoup
 
 from recommender import make_recommendation, movieGenres
 
@@ -165,7 +166,40 @@ def chatbot_response():
         w = observation.weather
         weather_info = weather_res.replace('{status}', w.detailed_status).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{fell}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
         return weather_info
-        # return json.dumps([{"temp": w.temperature('celsius')}, {"humidity": w.humidity}, {"detailed_status": w.detailed_status}, {"visibility": w.visibility_distance}, {"pressure": w.pressure["press"]}, {"wind": w.wind()}], ensure_ascii=False)
+
+
+    # fun stories/quotes
+    URL = 'https://elead.com.vn/nhung-cau-noi-hai-nao-khien-ban-cuoi-nghieng-nga-hay-nhat'
+    requestt = requests.get(URL)
+    content = requestt.content
+    soup = BeautifulSoup(content, 'lxml')
+
+    # Extract data of books
+    quotes = []
+    # quote_num = []
+    # ignores = [str(i) + '.' + ' ' for i in range(1, 21)]
+    quote_data = soup.find_all('blockquote', class_='wp-block-quote')
+    for i in range(len(quote_data)):
+        for quote in quote_data[i].find_all('p'):
+            quotes.append(quote.text.replace('-', '').replace('– ', '').replace('+ ', ''))
+
+    funstr_ints = predict_class(msg, model)
+    funstr_res = getResponse(funstr_ints, intents, show_details=True)
+    if funstr_ints[0]['intent'] == 'đùa':
+        return funstr_res.replace('{joke}', random.choice(quotes))
+
+    # bored
+    bored_ints = predict_class(msg, model)
+    bored_res = getResponse(bored_ints, intents, show_details=True)
+    if bored_ints[0]['intent'] == 'chán':
+        return bored_res.replace('{n}', random.choice(quotes))
+
+    # still bored
+    stillbored_ints = predict_class(msg, model)
+    stillbored_res = getResponse(stillbored_ints, intents, show_details=True)
+    if stillbored_ints[0]['intent'] == 'vẫnchán':
+        return stillbored_res.replace('{n}', random.choice(quotes))
+
 
     # recommendation
     if ':movie' in msg:
