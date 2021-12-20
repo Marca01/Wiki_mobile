@@ -139,8 +139,11 @@ export const globalStyles = StyleSheet.create({
     fontSize: 18,
     marginTop: 12,
     marginBottom: 8,
+    paddingBottom: 10,
     fontWeight: "bold",
-    color: "#141414"
+    color: "#141414",
+    borderBottomWidth: 1,
+    borderBottomColor: "#E0E0E0"
   },
   guideFeature_body: {
     color: "#404040"
