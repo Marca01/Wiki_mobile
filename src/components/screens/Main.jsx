@@ -112,7 +112,12 @@ export default function Main({ navigation }) {
                 ]);
                 setBotMessages([
                   ...botMessages,
-                  { id: nextBotId++, message: res.data, tag: "botMessage" },
+                  {
+                    id: nextBotId++,
+                    message: res.data.text,
+                    image: res.data.image,
+                    tag: "botMessage",
+                  },
                 ]);
               })
               .catch((err) => console.log(err));
@@ -133,7 +138,12 @@ export default function Main({ navigation }) {
                 ]);
                 setBotMessages([
                   ...botMessages,
-                  { id: nextBotId++, message: res.data, tag: "botMessage" },
+                  {
+                    id: nextBotId++,
+                    message: res.data.text,
+                    image: res.data.image,
+                    tag: "botMessage",
+                  },
                 ]);
               })
               .catch((err) => console.log(err));

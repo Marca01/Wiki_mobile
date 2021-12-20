@@ -6,10 +6,14 @@ import {
   FlatList,
   ToastAndroid,
   Image,
+  Modal,
+  TouchableNativeFeedback,
 } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import * as Clipboard from "expo-clipboard";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { PinchGestureHandler } from "react-native-gesture-handler";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function NodeChat({ user_message, bot_message, data, tag }) {
   const URL = (str) => {
@@ -30,6 +34,8 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
     ToastAndroid.show("Đã sao chép tin nhắn 😉", ToastAndroid.SHORT);
     console.log(str);
   };
+
+  const [dialog, setDialog] = useState(null);
 
   return (
     <View>
@@ -103,6 +109,41 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
                   </TouchableOpacity>
                 )
               )
+            ) : data[1]?.image ? (
+              <>
+                <TouchableOpacity onPress={() => setDialog(0)}>
+                  <Image
+                    style={globalStyles.messages_botImage}
+                    source={{ uri: `data:image/png;base64,${data[1]?.image}` }}
+                  />
+                </TouchableOpacity>
+                <Text
+                  style={globalStyles.messages_botText}
+                  onLongPress={() => copyToClipboard(data[1]?.message)}
+                >
+                  {data[1]?.message}
+                </Text>
+                <Modal visible={dialog !== null} animationType="slide">
+                  <TouchableNativeFeedback onPress={() => setDialog(null)}>
+                    <MaterialIcons
+                      name="cancel"
+                      size={30}
+                      color="black"
+                      style={globalStyles.messages_botImage_modal_closeButton}
+                    />
+                  </TouchableNativeFeedback>
+                  <View style={globalStyles.messages_botImage_modal}>
+                    <Image
+                      style={globalStyles.messages_botImage_modal}
+                      source={
+                        dialog !== null
+                          ? { uri: `data:image/png;base64,${data[1]?.image}` }
+                          : null
+                      }
+                    />
+                  </View>
+                </Modal>
+              </>
             ) : (
               <Text
                 style={globalStyles.messages_botText}
