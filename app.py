@@ -18,6 +18,8 @@ from pyowm import OWM
 from pyowm.utils.config import get_default_config
 import requests
 from bs4 import BeautifulSoup
+from base64 import b64encode
+import io
 
 from recommender import make_recommendation, movieGenres
 
@@ -229,14 +231,24 @@ def recognize_vietext_img():
     image_file = request.files.get('file')
     image = Image.open(image_file)
     text = pytesseract.image_to_string(image, lang='vie')
-    return text
+    # base64 image
+    byte_image = io.BytesIO()
+    image.save(byte_image, format='PNG')
+    byte_image_value = byte_image.getvalue()
+    base64_image = b64encode(byte_image_value)
+    return json.dumps({'image': str(base64_image.decode('utf-8')), 'text': text}, ensure_ascii=False)
 
 @app.route('/recognize/eng', methods=['POST'])
 def recognize_engtext_img():
     image_file = request.files.get('file')
     image = Image.open(image_file)
     text = pytesseract.image_to_string(image, lang='eng')
-    return text
+    # base64 image
+    byte_image = io.BytesIO()
+    image.save(byte_image, format='PNG')
+    byte_image_value = byte_image.getvalue()
+    base64_image = b64encode(byte_image_value)
+    return json.dumps({'image': str(base64_image.decode('utf-8')), 'text': text}, ensure_ascii=False)
 
 @app.route('/botMessages', methods=['GET'])
 def chatbot_messages():
