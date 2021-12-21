@@ -20,11 +20,18 @@ import requests
 from bs4 import BeautifulSoup
 from base64 import b64encode
 import io
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 from recommender import make_recommendation, movieGenres
 
+# SECRET_KEYS
+WOLFRAMALPHA_APPID = os.getenv('WOLFRAMALPHA_APPID')
+OPENWEATHERMAP_APIKEY = os.getenv('OPENWEATHERMAP_APIKEY')
+
 # wolfram alpha client ID
-client = wolframalpha.Client('993EV6-2RT77RVW8V')
+client = wolframalpha.Client(WOLFRAMALPHA_APPID)
 
 lemmatizer = WordNetLemmatizer()
 
@@ -158,7 +165,7 @@ def chatbot_response():
     # ask weather
     config_dict = get_default_config()
     config_dict['language'] = 'vi'
-    owm = OWM('17f5b913622c97e0f0c2ea7e58ec5812')
+    owm = OWM(OPENWEATHERMAP_APIKEY)
     mgr = owm.weather_manager()
 
     weather_ints = predict_class(msg, model)
@@ -178,17 +185,28 @@ def chatbot_response():
 
     # Extract data of books
     quotes = []
-    # quote_num = []
-    # ignores = [str(i) + '.' + ' ' for i in range(1, 21)]
     quote_data = soup.find_all('blockquote', class_='wp-block-quote')
     for i in range(len(quote_data)):
         for quote in quote_data[i].find_all('p'):
             quotes.append(quote.text.replace('-', '').replace('– ', '').replace('+ ', ''))
 
+    # joke
     funstr_ints = predict_class(msg, model)
     funstr_res = getResponse(funstr_ints, intents, show_details=True)
     if funstr_ints[0]['intent'] == 'đùa':
         return funstr_res.replace('{joke}', random.choice(quotes))
+
+    # continue the joke
+    jokeCon_ints = predict_class(msg, model)
+    jokeCon_res = getResponse(jokeCon_ints, intents, show_details=True)
+    if jokeCon_ints[0]['intent'] == 'đùatiếp':
+        return jokeCon_res.replace('{joke}', random.choice(quotes))
+
+    # joke again
+    jokeAgain_ints = predict_class(msg, model)
+    jokeAgain_res = getResponse(jokeAgain_ints, intents, show_details=True)
+    if jokeAgain_ints[0]['intent'] == 'đùalại':
+        return jokeAgain_res.replace('{joke}', random.choice(quotes))
 
     # bored
     bored_ints = predict_class(msg, model)

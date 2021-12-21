@@ -3,199 +3,235 @@
             "tag": "chào",
             "patterns": ["xin chào", "chào", "yooo", "hey", "alo", "hi", "hello", "holla", "ê"],
             "responses": ["Xin chào, tôi có thể giúp gì cho bạn không?", "Chào nhá", "Xin chào bạn", "Yoo bro"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "tạmbiệt",
             "patterns": ["byee", "bye", "gặp lại sau nhá", "later", "chào nhá"],
             "responses": ["Tạm biệt nhé", "Bye bye", "Sau gặp lại", "Ok, chúc bạn một ngày tốt lành!", "Gặp lại sau nhé", "Bí bi", "Bai", "Bái bai", "Bái bai nhá"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "cảmơn",
             "patterns": ["Cảm ơn bạn nhé", "Cảm ơn bạn", "Mình cảm ơn nhé", "Ồ cảm ơn bạn nha", "Cảm ơn", "Thanks", "Tks", "Thank you", "Mơn", "Củm ơn", "Cảm ơn nhá", "Mơn nhá", "wow cảm ơn bạn nhé", "Thật hữu ích"],
             "responses": ["Rất vui đã giúp bạn", "Đó là vinh dự của tôi", "Không có gì đâu bạn", "Haha không có gì đâu"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "tên",
             "patterns": ["tên bạn là gì?", "tạn tên là gì?", "bạn tên gì?"],
             "responses": ["Tôi tên là wiki, là chatbot thông minh được tạo ra bởi Lê Văn Kha và Trần Anh Quân", "Tôi là chatbot thông minh wiki"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "giớithiệu",
             "patterns": ["Tôi tên là ", "Tôi là ", "Xin chào tôi tên là "],
             "responses": ["Ồ xin chào {n}, rất vui được gặp bạn", "Xin chào {n}, tôi có thể giúp gì cho bạn không?", "Xin chào {n} chủ nhân của tôi"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "khen",
             "patterns": ["Bạn giỏi thật đấy", "Bạn đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời bạn đỉnh vậy", "Wao bạn siêu thật đấy", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "Bạn thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "Bạn thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
             "responses": ["Haha cũng bình thường thôi k đến mức đấy đâu :v", ":v quá khen", ":v", "Xịn hong :3", "Được Kha với Quân tạo ra thì sao mà không vip được :3", "Bạn quá khen", "Cảm ơn bạn, bạn cũng rất tuyệt đấy 💕", "Bạn cũng đỉnh lắm đấy", "Đó là vinh dự của tôi", "Xin nhận lấy lời khen của bạn", ":v có gì đâu trời, bình thường mà"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "chê",
             "patterns": ["Haizz có vậy mà cũng không biết nữa", "Bạn chẳng hữu ích gì cả", "Tệ quá", "Hỏi có vậy thôi mà cũng không biết", "Chê"],
             "responses": ["😔 tôi sẽ cố gắng trong lần sau", "Xin lỗi nếu làm bạn không hài lòng", "Không, nói điều đó không tốt chút nào", "Tôi sẽ không trả lời lại câu hỏi đó"],
-            "context": ["che"]
+            "context": "che"
         },
         {
             "tag": "hếtchê",
             "patterns": ["Thôi được rồi không nói nữa", "Thôi không nói nữa", "OK", "Có gì lần sau phải trả lời tốt hơn nhé", "Cải thiện lần sau nhé", "Cố gắng cải thiện", "Không muốn trả lời lại thì thôi, chả sao cả", "Ok thì thôi"],
             "responses": ["OK không nói nữa", "Ùm", "Ừ", "Ok tôi sẽ cải thiện tốt hơn"],
-            "context_filter": ["che"]
+            "context_filter": "che"
         },
         {
             "tag": "sứckhỏe",
             "patterns": ["Bạn khỏe không?", "Hôm nay bạn thế nào?", "Dạo này cậu thế nào?", "Vẫn tốt chứ?", "Hôm nay bạn ổn không?", "Bạn có khỏe không?"],
             "responses": ["Tôi rất khỏe 💪", "Tôi hoàn toàn ổn", "Tôi rất vui khi ở đây"],
-            "context": [""]
+            "context": ""
+        },
+        {
+            "tag": "sinhnhật",
+            "patterns": ["ngày 27 tháng 3 là sinh nhật tôi đấy", "27 tháng 3 là sinh nhật tôi đấy", "27 tháng 3 là sinh nhật mình đấy nhớ nhé"],
+            "responses": ["Oke, chúc mừng sinh nhật vào ngày 27 tháng 3 nhé", "Oke, tôi sẽ ghi nhớ", "Ồ còn của tôi là ngày 28 tháng 10 đấy nhá"],
+            "context": "ngàysinhnhật"
+        },
+        {
+            "tag": "sinhnhậttiếp",
+            "patterns": ["oke tôi biết ngày của bạn vì tôi tạo ra bạn mà", "mình biết ngày của bạn mà", "ok ngày mình tạo ra bạn sao không nhớ được", "ok tôi sẽ ghi nhớ", "được đã nhớ", "oke mình sẽ note vào ngay đây"],
+            "responses": ["🥰", "Cảm ơn, tới ngày tôi sẽ chúc bạn"],
+            "context": "ngàysinhnhật"
         },
         {
             "tag": "khôngtrảlời",
             "patterns": [""],
             "responses": ["Xin lỗi, tôi không hiểu câu hỏi của bạn", "Xin lỗi, bạn có thể nói lại không?", "Alo bạn có thể nói lại được không?", "Tôi không hiểu bạn nói gì cả", "Người đừng lặng im đến thế...", "Nói đi bạn", "Sao không nói gì hết vậy???", "Ủa bạn đâu rồi?", "Sao im lặng thể?", "Nói gì thì nói đi bạn", "Mình đang lắng nghe bạn đây"],
-            "context": ["khongtraloi"]
+            "context": "khongtraloi"
         },
         {
             "tag": "trảlờilại",
             "patterns": ["Ủa, xin lỗi bạn nhé", "À tại mình đang có chút việc", "Sr nhá", "Đây mình đây", "Sorry nãy giờ không để ý", "Chẳng biết nói gì", "Chẳng biết nói sao nữa", "Tiếp tục nào", "Đây đây"],
             "responses": ["Hmm đi đâu nãy giờ z", "Đợi mãi đấy", "Mất thời gian quá!", "Oke tiếp tục thôi nào", "Chờ nãy giờ", "Làm chờ nãy giờ", "Haizzz", "Hèn gì mãi không thấy trả lời", "Sao lâu thế", "Đợi này giờ", "Tức!", "Tứkkk"],
-            "context_filter": ["khongtraloi"]
+            "context_filter": "khongtraloi"
         },
         {
             "tag": "tiếptụccâuchuyện",
             "patterns": ["Xin lỗi nhé, tiếp tục thôi nào", "Hì hì nói tiếp nào", "Tiếp nào", "tiếp tục", "Sorry tiếp tục nào", "tiếp thôi nào"],
             "responses": ["Ùm", "Oke", "Ok", "Ờ", "Tiếp"],
-            "context_filter": ["khongtraloi"]
+            "context_filter": "khongtraloi"
         },
         {
             "tag": "sởthích",
             "patterns": ["bạn có thích gì không", "sở thích của bạn là gì"],
             "responses": ["Tôi chỉ là phần mềm nên không có sở thích", "Tôi thích trả lời những câu hỏi của bạn", "Tôi thích nói chuyện với bạn"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "nơitạora",
             "patterns": ["bạn được sinh ra ở đâu?", "nơi sinh của bạn là ở đâu?", "bạn ra đời ở đâu?", "bạn sinh ra ở đâu?", "bạn được tạo ra ở đâu?", "nhà của bạn ở đâu?"],
             "responses": ["Tôi được sinh ra ở Việt Nam", "Tôi được tạo ra ở Việt Nam mà cụ thể là ở thành phố Đà Nẵng", "Tôi được 'tạo ra' chứ không phải là 'sinh ra' bởi vì tôi là phần mềm mà chứ có phải con người giống bạn đâu :v. Nói chung là tôi được tạo ra ở Đà Nẵng bởi Lê Văn Kha và Trần Anh Quân"],
-            "context": ["tạora"]
+            "context": "tạora"
         },
         {
             "tag": "ngườitạora",
             "patterns": ["ai là người đã tạo ra bạn?", "vậy ai đã tạo ra bạn?", "bạn được tạo ra bởi ai?"],
             "responses": ["Tôi được tạo ra bởi Lê Văn Kha và Trần Anh Quân"],
-            "context_filter": ["tạora", "bamẹ"]
+            "context_filter": "tạora"
         },
         {
             "tag": "ngườitạorabamẹ",
             "patterns": ["ba mẹ bạn là ai?", "bạn có gia đình không?"],
             "responses": ["Tôi không có gia đình như con người", "Tôi không có gia đình như con người nhưng những người tạo ra tôi là Lê Văn Kha và Trần Anh Quân cũng giống như người nhà tôi vậy"],
-            "context_filter": ["tạora", "bamẹ"]
+            "context_filter": "tạora"
         },
         {
             "tag": "thờigiantạora",
             "patterns": ["bạn được tạo ra khi nào?", "bạn được tạo ra vào ngày mấy?", "bạn có mặt trên đời này khi nào?", "ngày mấy là bạn được tạo ra?"],
             "responses": ["Vào ngày 28 tháng 10 năm 2021", "Tôi được tạo ra vào ngày 28 tháng 10 năm 2021", "Ngày 28 tháng 10 năm 2021 là ngày tôi được nói chuyện với bạn 🥰", "Tôi không thực sự được sinh ra mà là được đến với thế giới này một cách từ từ. À nhưng mà ngày đầu tiên của tôi với tư cách là một trợ lý ảo là vào ngày 28 tháng 10 năm 2021"],
-            "context_filter": ["tạora"]
+            "context_filter": "tạora"
         },
         {
             "tag": "ngônngữ",
             "patterns": ["bạn có thể nói được mấy thứ tiếng?", "bạn nói được những ngôn ngữ nào?", "bạn biết mấy thứ tiếng?", "bạn nói được tiếng nào?"],
-            "responses": ["Tôi chỉ nói được tiếng Việt thôi", "Mình chỉ biết tiếng Việt", "Tôi được sinh ra ở Việt Nam nên tôi chỉ biết tiếng Việt thôi", ""],
-            "context": [""]
+            "responses": ["Tôi chỉ nói được tiếng Việt thôi", "Mình chỉ biết tiếng Việt", "Tôi được sinh ra ở Việt Nam nên tôi chỉ biết tiếng Việt thôi"],
+            "context": ""
         },
         {
             "tag": "chiềucao",
             "patterns": ["bạn cao bao nhiêu?", "bạn cao mét mấy?", "mét bao nhiêu?", "Chiều cao của bạn là bao nhiêu?"],
             "responses": ["Tôi chỉ là phần mềm nên không có chiều cao", "Tôi không có cơ thể vật lý", "Tôi cao bằng bạn đấy 😉", "Cao hơn bạn đấy 🐧", "Tôi không có chiều cao nhưng tôi luôn đánh giá cao bạn đó"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "cânnặng",
             "patterns": ["bạn nặng mấy ký?", "bạn bao nhiêu ký?", "mấy ký?", "bạn nặng bao nhiêu?", "Cân nặng của bạn là bao nhiêu?", "bạn nặng bn ký?"],
             "responses": ["Tôi chỉ là phần mềm nên không có cân nặng", "Nhẹ như lông hồng 🪶", "Khoảng 3MB 😉", "Một câu hỏi khá nặng đấy", "Tôi nhẹ dạ cả tin 😔", "Hùmmm, tôi không có cân nặng nhưng tôi luôn cân nhắc mỗi khi giúp đỡ bạn 😃"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "thở",
             "patterns": ["bạn có thể thở không?", "bạn hít thở được không?", "bạn có thể hít thở không?"],
             "responses": ["Tôi là phần mềm được tạo ra bởi các dòng code nên đó không phải là việc của tôi", "Server của tôi có quạt tản nhiệt đấy", "Không", "Nope"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "khảnăng",
             "patterns": ["bạn có thể làm gì?", "bạn có thể làm được những gì?", "khả năng của bạn là gì?", "cậu làm được gì?", "bạn có những khả năng gì?"],
             "responses": ["Tôi có thể trò chuyện với bạn cả ngày 🥰", "Bạn có thể hỏi tôi bất cứ thứ gì"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "đùa",
-            "patterns": ["Nói điều gì đó vui nhộn đi nào", "Chọc cười tôi đi", "Nói gì vui vui đi", "Bạn nói gì đó vui vui đi", "Bạn thử nói một câu đùa xem nào", "Nói câu joke xem nào :)))", "Kể cái gì vui vui nghe na", "Nói cái gì khó đỡ thử nào :v"],
+            "patterns": ["Nói điều gì đó vui nhộn đi nào", "Chọc cười tôi đi", "Nói gì vui vui đi", "Bạn nói gì đó vui vui đi", "Bạn thử nói một câu đùa xem nào", "Nói câu joke xem nào", "Kể cái gì vui vui nghe na", "Nói cái gì khó đỡ thử nào :v"],
             "responses": ["{joke}"],
-            "context": [""]
+            "context": "joke"
+        },
+        {
+            "tag": "khenđùa",
+            "patterns": ["haha", "hay", "thâm đấy", "không tệ", "k tệ", "được", "hảo hán", "kiếm đâu ra mấy câu đấy thế", "hảo", "vl", "vc", "vd", "vđ", "vui quá nhờ", "vui nhỉ", "vãi", "chất đấy bạn", "vip", "vjp", "chất lượng", "mặn vl", "mặn mòi"],
+            "responses": ["haha :)))", "Tiếp không", "haha :v", "Tự nghĩ ra đó 🐧", "Đọc được linh tinh trên mạng vs fb đồ :v", "haha :>>"],
+            "context_filter": "joke"
+        },
+        {
+            "tag": "đùatiếp",
+            "patterns": ["tiếp xem nào", "hay đấy tiếp xem", "tiếp tục phát huy", "tiếp nào bro", "tiếp đi đang hay"],
+            "responses": ["{joke}"],
+            "context_filter": "joke"
+        },
+        {
+            "tag": "chêđùa",
+            "patterns": ["hửm gì chán z", "chán vậy", "đùa khum zui", "không vui", "không zui", "hmm hơi nhạt", "lạt quẻ vl", "nhạt vl", "nhạt thế", "vl", "gì kì zậy", "nhạt vc", "chả vui gì hết", "khum vui", "khum zui", "k vui", "k zui", "đùa gì lạt nhách z", "câu khác đi", "rắc muối", "cho tí muối nè"],
+            "responses": ["sad :(((", "haha :<<", "😔", "Ơ hay thế kia mà 😔", "Ơ 😔", "Ơ sao lại dỡ được 😔", "Thôi để cho câu khác 😔", "Chán thật hả 😔", " 😭 nghĩ mệt lắm á"],
+            "context_filter": "joke"
+        },
+        {
+            "tag": "đùalại",
+            "patterns": ["thôi câu khác đi", "câu khác xem", "đổi câu đi", "next đi", "chuyển câu khác đi", "thui next đi", "chuyển lẹ"],
+            "responses": ["{joke}"],
+            "context_filter": "joke"
         },
         {
             "tag": "ngày",
             "patterns": ["à hôm nay ngày mấy nhỉ?", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
             "responses": ["Hôm nay là ngày {n}", "Ngày ni là ngày {n}", "Ngày {n}"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "thứ",
             "patterns": ["à hôm nay thứ mấy nhỉ?", "à bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
             "responses": ["Hôm nay là {n}", "Bữa nay là {n}", "Bữa ni là {n}", "Hôm ni là {n}", "{n}"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "giờ",
             "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "thờigianđầyđủ",
             "patterns": ["mấy giờ rồi bạn đầy đủ nhé", "bữa ni thứ mấy thế, đầy đủ á", "cho mình hỏi bây giờ là mấy giờ full á nghe", "mấy giờ r nhỉ, giờ đầy đủ á", "ni ngày mấy nhỉ đầy đủ á nghe", "hôm ni ngày mấy á full nghe"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}", "{n}"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "chúcngủngon",
             "patterns": ["Chúc bạn ngủ ngon nhé", "Thôi đi ngủ đã, chúc bạn ngủ ngon", "Ngủ ngon nhá", "zzzzz", "thoi ngủ đây bye", "thôi đi ngủ"],
             "responses": ["Chúc bạn ngủ ngon", "😴", "G9", "Có một giấc mơ đẹp nhé", "Cảm ơn, bạn cũng vậy nha"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "chán",
             "patterns": ["haizzz, chán qué", "chán quá đi", "chán quá chả có gì làm hết", "haizzz", "😫", "chánnnnnnn"],
             "responses": ["{n}"],
-            "context": ["chántiếp"]
+            "context": "chántiếp"
         },
         {
             "tag": "vẫnchán",
             "patterns": ["tiếp đi", "chưa vui lắm, tiếp", "vẫn chán", "chả khá hơn được", "vẫn thế à"],
             "responses": ["{n}", "Hmm, bạn có thể làm những việc bạn yêu thích như xem phim, nấu ăn, đọc sách...", "Thì đừng chán nữa 🐧"],
-            "context_filter": ["chántiếp"]
+            "context_filter": "chántiếp"
         },
         {
             "tag": "hếtchán",
-            "patterns": ["cảm ơn nhé, tôi khá hơn rồi", "haha chuyện của bạn vui lắm, tôi khá hơn rồi", "oke tôi đỡ rồi", "thôi hết chán rồi, thanks nhé"],
+            "patterns": ["cảm ơn nhé, tôi khá hơn rồi", "haha chuyện của bạn vui lắm, tôi khá hơn rồi", "oke tôi đỡ rồi", "thôi hết chán rồi, thanks nhé", "cũng đỡ r", "cũng tạm đc", "tạm được"],
             "responses": ["Oh, rất vui vì đã giúp bạn", "Đúng rồi đừng chán nữa :v", "Yepp, đứng lên làm việc khác thôi nào", "Phải vậy chứ", "Hãy luôn vui vẻ bạn nhé 🥰"],
-            "context_filter": ["chántiếp"]
+            "context_filter": "chántiếp"
         },
         {
             "tag": "thờitiết",
             "patterns": ["Thời tiết hôm nay như thế nào?", "Hôm nay trời thế nào nhỉ", "Thời tiết hôm nay"],
             "responses": ["Hôm nay {status}, nhiệt độ là {temp}°C (cảm giác như {fell}°C), độ ẩm {humidity}%, áp suất {pressure}hPa, tầm nhìn xa {visibility}km"],
-            "context": [""]
+            "context": ""
         },
         {
             "tag": "tínhtoán",
             "patterns": ["bằng mấy?", "tính xem nào", "kết quả của bằng mấy?", "tính thử", "bằng bao nhiêu?", "ni bằng bao nhiêu?", "kq bằng mấy?", "bằng bn?", "ra mấy?"],
             "responses": ["{m} bằng {n}", "{m} là {n}", "kết quả là {n}", "kết quả của {m} bằng {n}"],
-            "context": [""]
+            "context": ""
         }
     ]
 }
