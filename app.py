@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 from base64 import b64encode
 import io
 import os
+import holidayapi
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -56,11 +57,11 @@ def home():
 @app.route('/chat', methods=['POST'])
 def chatbot_response():
     msg = request.form['msg']
-
+    
     # get tag 'giớithiệu' patterns
     patterns = intents['intents'][4]['patterns']
     intro_ints = predict_class(msg, model)
-    intro_res = getResponse(intro_ints, intents, show_details=True)
+    intro_res = getResponse(intro_ints, show_details=True)
 
     if intro_ints[0]['intent'] == 'giớithiệu':
         for pattern in patterns:
@@ -76,7 +77,7 @@ def chatbot_response():
 
     # ask time, day, date
     time_ints = predict_class(msg, model)
-    time_res = getResponse(time_ints, intents, show_details=True)
+    time_res = getResponse(time_ints, show_details=True)
     # change day from english to vietnamese
     def change_day(day):
         if day == 'Monday':
@@ -110,7 +111,7 @@ def chatbot_response():
     # calculator
     signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
     calculator_ints = predict_class(msg, model)
-    calculator_res = getResponse(calculator_ints, intents, show_details=True)
+    calculator_res = getResponse(calculator_ints, show_details=True)
     # check float number
     def isfloat(num):
         try:
@@ -169,11 +170,11 @@ def chatbot_response():
     mgr = owm.weather_manager()
 
     weather_ints = predict_class(msg, model)
-    weather_res = getResponse(weather_ints, intents, show_details=True)
+    weather_res = getResponse(weather_ints, show_details=True)
     if weather_ints[0]['intent'] == 'thờitiết':
         observation = mgr.weather_at_place('Đà Nẵng')
         w = observation.weather
-        weather_info = weather_res.replace('{status}', w.detailed_status).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{fell}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
+        weather_info = weather_res.replace('{status}', w.detailed_status).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{max}', str(w.temperature('celsius')['temp_max'])).replace('{min}', str(w.temperature('celsius')['temp_min'])).replace('{feel}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
         return weather_info
 
 
@@ -192,31 +193,31 @@ def chatbot_response():
 
     # joke
     funstr_ints = predict_class(msg, model)
-    funstr_res = getResponse(funstr_ints, intents, show_details=True)
+    funstr_res = getResponse(funstr_ints, show_details=True)
     if funstr_ints[0]['intent'] == 'đùa':
         return funstr_res.replace('{joke}', random.choice(quotes))
 
     # continue the joke
     jokeCon_ints = predict_class(msg, model)
-    jokeCon_res = getResponse(jokeCon_ints, intents, show_details=True)
+    jokeCon_res = getResponse(jokeCon_ints, show_details=True)
     if jokeCon_ints[0]['intent'] == 'đùatiếp':
         return jokeCon_res.replace('{joke}', random.choice(quotes))
 
     # joke again
     jokeAgain_ints = predict_class(msg, model)
-    jokeAgain_res = getResponse(jokeAgain_ints, intents, show_details=True)
+    jokeAgain_res = getResponse(jokeAgain_ints, show_details=True)
     if jokeAgain_ints[0]['intent'] == 'đùalại':
         return jokeAgain_res.replace('{joke}', random.choice(quotes))
 
     # bored
     bored_ints = predict_class(msg, model)
-    bored_res = getResponse(bored_ints, intents, show_details=True)
+    bored_res = getResponse(bored_ints, show_details=True)
     if bored_ints[0]['intent'] == 'chán':
         return bored_res.replace('{n}', random.choice(quotes))
 
     # still bored
     stillbored_ints = predict_class(msg, model)
-    stillbored_res = getResponse(stillbored_ints, intents, show_details=True)
+    stillbored_res = getResponse(stillbored_ints, show_details=True)
     if stillbored_ints[0]['intent'] == 'vẫnchán':
         return stillbored_res.replace('{n}', random.choice(quotes))
 
@@ -239,7 +240,7 @@ def chatbot_response():
             return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
         else:
             ints = predict_class(msg, model)
-            res = getResponse(ints, intents, show_details=True)
+            res = getResponse(ints, show_details=True)
             return res
 
 # image to text
@@ -296,6 +297,9 @@ def bow(sentence, words, show_details=True):
                     print(f'found in bag {w}')
     return np.array(bag)
 
+
+context = {} # create a data structure to hold user context
+
 # predict
 def predict_class(sentence, model):
     p = bow(sentence, words, show_details=False)
@@ -309,20 +313,18 @@ def predict_class(sentence, model):
         return_list.append({'intent': classes[r[0]], 'probability': str(r[1])})
     return return_list
 
-# result = ''
-def getResponse(ints, intents_json, userID='123', show_details=False):
+# response to user
+def getResponse(ints, userID='123', show_details=False):
     result_context = None
-    context = {} # create a data structure to hold user context
 
     tag = ints[0]['intent']
-    list_of_intents = intents_json['intents']
+    list_of_intents = intents['intents']
 
     if ints:
         while ints:
             for i in list_of_intents:
                 if i['tag'] == tag:
                     # set context for this intent if necessary
-                    result_context = random.choice(i['responses'])
                     if 'context' in i:
                         if show_details: print('context: ', i['context'])
                         context[userID] = i['context']
@@ -331,7 +333,12 @@ def getResponse(ints, intents_json, userID='123', show_details=False):
                     if not 'context_filter' in i or (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
                         if show_details: print('tag: ', i['tag'])
                         return random.choice(i['responses'])          # random response from the intent
-            return result_context
+
+                    # result_context = random.choice(i['responses'])
+
+            # ints.pop(0)
+            # return 'normal ' + result_context
+            return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
 
 if __name__ == "__main__":
     app.run(debug=True)

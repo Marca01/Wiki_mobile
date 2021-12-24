@@ -157,7 +157,7 @@
         },
         {
             "tag": "đùatiếp",
-            "patterns": ["tiếp xem nào", "hay đấy tiếp xem", "tiếp tục phát huy", "tiếp nào bro", "tiếp đi đang hay"],
+            "patterns": ["tiếp xem nào", "hay đấy tiếp xem", "tiếp tục phát huy", "tiếp nào bro", "tiếp đi đang hay", "hay đùa tiếp nào bro", "đùa tiếp đi", "joke tiếp nào", "đỉnh tiếp đi nào", "hay vl đùa tiếp đi", "vc tiếp tục nào bro", "nói gì vui vui tiếp đi", "đùa tiếp nào"],
             "responses": ["{joke}"],
             "context_filter": "joke"
         },
@@ -224,7 +224,7 @@
         {
             "tag": "thờitiết",
             "patterns": ["Thời tiết hôm nay như thế nào?", "Hôm nay trời thế nào nhỉ", "Thời tiết hôm nay"],
-            "responses": ["Hôm nay {status}, nhiệt độ là {temp}°C (cảm giác như {fell}°C), độ ẩm {humidity}%, áp suất {pressure}hPa, tầm nhìn xa {visibility}km"],
+            "responses": ["Hôm nay {status}, nhiệt độ là {temp}°C - cao nhất {max}°C - thấp nhất {min}°C (cảm giác như {feel}°C), độ ẩm {humidity}%, áp suất {pressure}hPa, tầm nhìn xa {visibility}km"],
             "context": ""
         },
         {
