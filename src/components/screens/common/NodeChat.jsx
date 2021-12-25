@@ -29,6 +29,15 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
     return pattern.test(str);
   };
 
+  const imgUrl = (str) => {
+    return str.match(/(https?:\/\/[^ ]*)/)[1].replace(",", "");
+  };
+
+  const splitText = (str) => {
+    let text_split = str.split(imgUrl(str));
+    return text_split;
+  };
+
   const copyToClipboard = (str) => {
     Clipboard.setString(str);
     ToastAndroid.show("Đã sao chép tin nhắn 😉", ToastAndroid.SHORT);
@@ -149,7 +158,20 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
                 style={globalStyles.messages_botText}
                 onLongPress={() => copyToClipboard(data[1]?.message)}
               >
-                {data[1]?.message}
+                {data[1]?.message.indexOf(".png") > -1
+                  ? splitText(data[1]?.message).reduce((first, second) => (
+                      <>
+                        {first}
+                        <Image
+                          style={globalStyles.message_botText_icon}
+                          source={{
+                            uri: imgUrl(data[1]?.message),
+                          }}
+                        />
+                        {second}
+                      </>
+                    ))
+                  : data[1]?.message}
               </Text>
             )}
           </View>

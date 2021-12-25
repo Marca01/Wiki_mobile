@@ -72,6 +72,11 @@ export const globalStyles = StyleSheet.create({
     messages_botText: {
         color: "black"
     },
+    message_botText_icon: {
+        width: 35,
+        height: 35,
+        backgroundColor: "red"
+    },
     messages_botImage_modal_closeButton: {
         alignSelf: 'flex-end',
         position: 'absolute',
