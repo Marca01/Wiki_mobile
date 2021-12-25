@@ -1,19 +1,19 @@
 {
     "intents": [{
             "tag": "chào",
-            "patterns": ["xin chào", "chào", "yooo", "hey", "alo", "hi", "hello", "holla", "ê"],
+            "patterns": ["xin chào", "chào", "yooo", "hey", "alo", "hi", "hello", "holla", "ê", "yo bro"],
             "responses": ["Xin chào, tôi có thể giúp gì cho bạn không?", "Chào nhá", "Xin chào bạn", "Yoo bro"],
             "context": ""
         },
         {
             "tag": "tạmbiệt",
-            "patterns": ["byee", "bye", "gặp lại sau nhá", "later", "chào nhá"],
-            "responses": ["Tạm biệt nhé", "Bye bye", "Sau gặp lại", "Ok, chúc bạn một ngày tốt lành!", "Gặp lại sau nhé", "Bí bi", "Bai", "Bái bai", "Bái bai nhá"],
+            "patterns": ["byee", "bye", "gặp lại sau nhá", "later", "tạm biệt nhá", "chào nhá", "bai nha", "bái bai", "lần tới nhá", "tôi tắt đây bye nha", "tôi tắt đã", "mình off đây", "mình out đây tạm biệt", "tôi out đã", "mình thoát đã bye nha", "tôi thoát nhé", "mình thoát đây"],
+            "responses": ["Tạm biệt nhé", "Bye bye", "Sau gặp lại", "Ok, chúc bạn một ngày tốt lành!", "Gặp lại sau nhé", "Bí bi", "Bai", "Bái bai", "Bái bai nhá", "Bye nha", "Bye hẹn gặp lại"],
             "context": ""
         },
         {
             "tag": "cảmơn",
-            "patterns": ["Cảm ơn bạn nhé", "Cảm ơn bạn", "Mình cảm ơn nhé", "Ồ cảm ơn bạn nha", "Cảm ơn", "Thanks", "Tks", "Thank you", "Mơn", "Củm ơn", "Cảm ơn nhá", "Mơn nhá", "wow cảm ơn bạn nhé", "Thật hữu ích"],
+            "patterns": ["Cảm ơn bạn nhé", "Cảm ơn bạn", "Mình cảm ơn nhé", "Ồ cảm ơn bạn nha", "Cảm ơn", "Thanks", "Tks", "Thank you", "Mơn", "Oh thanks nhá", "Củm ơn", "Cảm ơn nhá", "Mơn nhá", "wow cảm ơn bạn nhé", "Thật hữu ích"],
             "responses": ["Rất vui đã giúp bạn", "Đó là vinh dự của tôi", "Không có gì đâu bạn", "Haha không có gì đâu"],
             "context": ""
         },
@@ -57,13 +57,13 @@
             "tag": "sinhnhật",
             "patterns": ["ngày 27 tháng 3 là sinh nhật tôi đấy", "27 tháng 3 là sinh nhật tôi đấy", "27 tháng 3 là sinh nhật mình đấy nhớ nhé"],
             "responses": ["Oke, chúc mừng sinh nhật vào ngày 27 tháng 3 nhé", "Oke, tôi sẽ ghi nhớ", "Ồ còn của tôi là ngày 28 tháng 10 đấy nhá"],
-            "context": "ngàysinhnhật"
+            "context": ""
         },
         {
             "tag": "sinhnhậttiếp",
             "patterns": ["oke tôi biết ngày của bạn vì tôi tạo ra bạn mà", "mình biết ngày của bạn mà", "ok ngày mình tạo ra bạn sao không nhớ được", "ok tôi sẽ ghi nhớ", "được đã nhớ", "oke mình sẽ note vào ngay đây"],
             "responses": ["🥰", "Cảm ơn, tới ngày tôi sẽ chúc bạn"],
-            "context": "ngàysinhnhật"
+            "context": ""
         },
         {
             "tag": "khôngtrảlời",
@@ -91,8 +91,8 @@
         },
         {
             "tag": "nơitạora",
-            "patterns": ["bạn được sinh ra ở đâu?", "nơi sinh của bạn là ở đâu?", "bạn ra đời ở đâu?", "bạn sinh ra ở đâu?", "bạn được tạo ra ở đâu?", "nhà của bạn ở đâu?"],
-            "responses": ["Tôi được sinh ra ở Việt Nam", "Tôi được tạo ra ở Việt Nam mà cụ thể là ở thành phố Đà Nẵng", "Tôi được 'tạo ra' chứ không phải là 'sinh ra' bởi vì tôi là phần mềm mà chứ có phải con người giống bạn đâu :v. Nói chung là tôi được tạo ra ở Đà Nẵng bởi Lê Văn Kha và Trần Anh Quân"],
+            "patterns": ["bạn được tạo ra ở đâu?", "nơi tạo ra bạn là ở đâu?", "nhà của bạn ở đâu?"],
+            "responses": ["Tôi được tạo ra ở Việt Nam", "Tôi được tạo ra ở Việt Nam mà cụ thể là ở thành phố Đà Nẵng", "Tôi được tạo ra ở Đà Nẵng bởi Lê Văn Kha và Trần Anh Quân"],
             "context": "tạora"
         },
         {
@@ -140,7 +140,7 @@
         {
             "tag": "khảnăng",
             "patterns": ["bạn có thể làm gì?", "bạn có thể làm được những gì?", "khả năng của bạn là gì?", "cậu làm được gì?", "bạn có những khả năng gì?"],
-            "responses": ["Tôi có thể trò chuyện với bạn cả ngày 🥰", "Bạn có thể hỏi tôi bất cứ thứ gì"],
+            "responses": ["Tôi có các tính năng chính là Tìm kiếm trên Google, tìm kiếm trên Wikipedia, Tính toán các phép toán đơn giản, Chuyển hình ảnh có chữ thành văn bản, Gợi ý phim dựa trên thể loại"],
             "context": ""
         },
         {
@@ -224,7 +224,7 @@
         {
             "tag": "thờitiết",
             "patterns": ["Thời tiết hôm nay như thế nào?", "Hôm nay trời thế nào nhỉ", "Thời tiết hôm nay"],
-            "responses": ["Hôm nay {status}, nhiệt độ là {temp}°C - cao nhất {max}°C - thấp nhất {min}°C (cảm giác như {feel}°C), độ ẩm {humidity}%, áp suất {pressure}hPa, tầm nhìn xa {visibility}km"],
+            "responses": ["Hôm nay {status} {icon}, nhiệt độ là {temp}°C - cao nhất {max}°C - thấp nhất {min}°C (cảm giác như {feel}°C), độ ẩm {humidity}%, áp suất {pressure}hPa, tầm nhìn xa {visibility}km"],
             "context": ""
         },
         {

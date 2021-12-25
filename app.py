@@ -174,7 +174,7 @@ def chatbot_response():
     if weather_ints[0]['intent'] == 'thờitiết':
         observation = mgr.weather_at_place('Đà Nẵng')
         w = observation.weather
-        weather_info = weather_res.replace('{status}', w.detailed_status).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{max}', str(w.temperature('celsius')['temp_max'])).replace('{min}', str(w.temperature('celsius')['temp_min'])).replace('{feel}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
+        weather_info = weather_res.replace('{status}', w.detailed_status).replace('{icon}', w.weather_icon_url()).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{max}', str(w.temperature('celsius')['temp_max'])).replace('{min}', str(w.temperature('celsius')['temp_min'])).replace('{feel}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
         return weather_info
 
 
@@ -329,15 +329,12 @@ def getResponse(ints, userID='123', show_details=False):
                         if show_details: print('context: ', i['context'])
                         context[userID] = i['context']
 
-                        # check if this intent is contextual and applies to this user's conversation]
+                    # check if this intent is contextual and applies to this user's conversation]
                     if not 'context_filter' in i or (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
                         if show_details: print('tag: ', i['tag'])
-                        return random.choice(i['responses'])          # random response from the intent
-
-                    # result_context = random.choice(i['responses'])
+                        return random.choice(i['responses'])  # random response from the intent
 
             # ints.pop(0)
-            # return 'normal ' + result_context
             return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
 
 if __name__ == "__main__":
