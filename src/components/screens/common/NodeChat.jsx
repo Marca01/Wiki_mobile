@@ -99,7 +99,8 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
                     />
                     <View>
                       <Text style={globalStyles.messages_botText}>
-                        {url[0]} ({url[3].split("-")[0]})
+                        {url[0]}{" "}
+                        {isNaN(url[3]) ? `(${url[3].split("-")[0]})` : "?"}
                       </Text>
                       {/* // movie title */}
                       {/* <Text style={globalStyles.messages_botText}>{url[1]}</Text> */}
