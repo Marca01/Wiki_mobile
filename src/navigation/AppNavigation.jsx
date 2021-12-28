@@ -6,6 +6,7 @@ import Main from "../components/screens/Main";
 import Welcome from "../components/screens/common/Welcome";
 import Guide from "../components/screens/common/Guide";
 import { TransitionPresets } from "@react-navigation/stack";
+import Webview from "../components/screens/common/Webview";
 
 const MainStack = createStackNavigator();
 
@@ -42,6 +43,13 @@ const home = ({ navigation }) => {
           }}
         />
       </MainStack.Group>
+      <MainStack.Screen
+        name="Webview"
+        component={Webview}
+        options={{
+          headerShown: false,
+        }}
+      />
     </MainStack.Navigator>
   );
 };

@@ -33,6 +33,10 @@ export const globalStyles = StyleSheet.create({
         paddingVertical: 10,
         marginVertical: 3
     },
+    messages_userText_link: {
+        color: 'white',
+        textDecorationLine: 'underline'
+    },
     messages_userText: {
         color: "white"
     },
@@ -178,6 +182,23 @@ export const globalStyles = StyleSheet.create({
     },
     guideFeature_syntax: {},
     guideFeature_description: {},
+
+    // =================================================================
+    // Webview.jsx
+    webview: {
+        flex: 1
+    },
+    webview_header: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingTop: 25,
+        paddingLeft: 20
+    },
+    webview_header_backIcon: {
+        marginLeft: -10,
+        marginRight: 8
+    },
+
     // test style
     testStyle: {
         backgroundColor: "gray",

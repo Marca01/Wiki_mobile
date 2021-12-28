@@ -8,6 +8,7 @@ import {
   Image,
   Modal,
   TouchableNativeFeedback,
+  Dimensions,
 } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import * as Clipboard from "expo-clipboard";
@@ -15,7 +16,13 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { PinchGestureHandler } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export default function NodeChat({ user_message, bot_message, data, tag }) {
+export default function NodeChat({
+  user_message,
+  bot_message,
+  data,
+  tag,
+  navigation,
+}) {
   const URL = (str) => {
     let pattern = new RegExp(
       "^(https?:\\/\\/)?" + // protocol
@@ -51,12 +58,24 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
       {
         <View style={globalStyles.messages_user}>
           <View style={globalStyles.messages_userStyle}>
-            <Text
-              style={globalStyles.messages_userText}
-              onLongPress={() => copyToClipboard(data[0].message)}
-            >
-              {data[0].message}
-            </Text>
+            {URL(data[0].message) ? (
+              <Text
+                style={globalStyles.messages_userText_link}
+                onLongPress={() => copyToClipboard(data[0].message)}
+                onPress={() =>
+                  navigation.navigate("Webview", { url: data[0].message })
+                }
+              >
+                {data[0].message}
+              </Text>
+            ) : (
+              <Text
+                style={globalStyles.messages_userText}
+                onLongPress={() => copyToClipboard(data[0].message)}
+              >
+                {data[0].message}
+              </Text>
+            )}
           </View>
         </View>
       }
@@ -69,8 +88,8 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
                   <Text
                     onLongPress={() => copyToClipboard(url)}
                     key={i}
-                    style={{ color: "blue" }}
-                    onPress={() => Linking.openURL(url)}
+                    style={{ color: "blue", textDecorationLine: "underline" }}
+                    onPress={() => navigation.navigate("Webview", { url: url })}
                   >
                     {url}
                   </Text>
@@ -88,8 +107,11 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
                       },
                     ]}
                     onPress={() =>
-                      Linking.openURL(`https://www.imdb.com/title/${url[1]}`)
+                      navigation.navigate("Webview", {
+                        url: `https://www.imdb.com/title/${url[1]}`,
+                      })
                     }
+                    key={i}
                   >
                     <Image
                       style={globalStyles.messages_botFilmPoster}
@@ -124,7 +146,9 @@ export default function NodeChat({ user_message, bot_message, data, tag }) {
                 <TouchableOpacity onPress={() => setDialog(0)}>
                   <Image
                     style={globalStyles.messages_botImage}
-                    source={{ uri: `data:image/png;base64,${data[1]?.image}` }}
+                    source={{
+                      uri: `data:image/png;base64,${data[1]?.image}`,
+                    }}
                   />
                 </TouchableOpacity>
                 <Text
