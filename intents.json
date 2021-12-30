@@ -1,7 +1,7 @@
 {
     "intents": [{
             "tag": "chào",
-            "patterns": ["xin chào", "chào", "yooo", "hey", "alo", "hi", "hello", "holla", "ê", "yo bro"],
+            "patterns": ["xin chào", "xin chào bạn", "chào bạn nhé", "chào bạn nhá", "chào", "yooo", "hey", "alo", "hi", "hello", "holla", "ê", "yo bro"],
             "responses": ["Xin chào, tôi có thể giúp gì cho bạn không?", "Chào nhá", "Xin chào bạn", "Yoo bro"],
             "context": ""
         },
@@ -25,8 +25,14 @@
         },
         {
             "tag": "giớithiệu",
-            "patterns": ["Tôi tên là ", "Tôi là ", "Xin chào tôi tên là "],
+            "patterns": ["Tôi tên là ", "Tôi là ", "Xin chào tôi tên là ", "Rất hân hạnh được làm quen với bạn mình tên là ", "Chào wiki rất vui được gặp bạn mình tên là ", "Chào wiki nhé mình là  rất vui được gặp bạn"],
             "responses": ["Ồ xin chào {n}, rất vui được gặp bạn", "Xin chào {n}, tôi có thể giúp gì cho bạn không?", "Xin chào {n} chủ nhân của tôi"],
+            "context": ""
+        },
+        {
+            "tag": "bạn",
+            "patterns": ["chúng ta có phải là bạn không?", "tụi mình là bạn bè phải không", "mình với bạn có phải là bạn với nhau không", "bạn có phải là bạn của mình không", "chúng mình có phải là bạn của nhau không", "chúng ta là bạn bè hả?", "mình với wiki có phải là bạn không"],
+            "responses": ["Tôi là trợ lý và cũng là bạn của bạn", "Tôi vừa là bạn vừa là trợ lý của bạn", "Tình bạn giữa chúng ta như chiếc ghế vậy, vì không phải bàn", "Chúng ta là bạn mà vì tôi luôn bên cạnh bạn mỗi khi bạn cần"],
             "context": ""
         },
         {
@@ -34,6 +40,18 @@
             "patterns": ["Bạn giỏi thật đấy", "Bạn đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời bạn đỉnh vậy", "Wao bạn siêu thật đấy", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "Bạn thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "Bạn thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
             "responses": ["Haha cũng bình thường thôi k đến mức đấy đâu :v", ":v quá khen", ":v", "Xịn hong :3", "Được Kha với Quân tạo ra thì sao mà không vip được :3", "Bạn quá khen", "Cảm ơn bạn, bạn cũng rất tuyệt đấy 💕", "Bạn cũng đỉnh lắm đấy", "Đó là vinh dự của tôi", "Xin nhận lấy lời khen của bạn", ":v có gì đâu trời, bình thường mà"],
             "context": ""
+        },
+        {
+            "tag": "vui",
+            "patterns": ["Này wiki, bạn có vui không?", "bạn có đang vui không?", "bạn có đang cảm thấy vui vẻ không?", "bạn có cảm thấy hạnh phúc không?", "bạn cảm thấy vui vẻ k?"],
+            "responses": ["Tôi muốn nói rằng tôi là phiên bản phần mềm của niềm vui 🥰. Bạn thì sao, bạn có cảm thấy vui vẻ không?", "Tôi luôn luôn cảm thấy vui vẻ và hạnh phúc khi được nói chuyện với bạn. Bạn cũng cảm thấy vui vẻ chứ?"],
+            "context": "happy"
+        },
+        {
+            "tag": "trảlờivui",
+            "patterns": ["có", "có tôi cũng đang rất vui", "yes", "yess", "yesss", "yeah tôi cũng đang cảm thấy rất hạnh phúc đây", "có chứ mình đang rất vui đây"],
+            "responses": ["Tuyệt lắm, và khi bạn truyền được niềm vui đó cho mọi người thì bạn sẽ cảm thấy hạnh phúc", "Tôi cảm thấy rất vui khi nghe như vậy và bạn có biết điều cần làm là gì không? Là bạn phải tận hưởng giây phút đó và lan tỏa nó với mọi người xung quanh"],
+            "context_filter": "happy"
         },
         {
             "tag": "chê",
@@ -140,7 +158,31 @@
         {
             "tag": "khảnăng",
             "patterns": ["bạn có thể làm gì?", "bạn có thể làm được những gì?", "khả năng của bạn là gì?", "cậu làm được gì?", "bạn có những khả năng gì?"],
-            "responses": ["Tôi có các tính năng chính là Tìm kiếm trên Google, tìm kiếm trên Wikipedia, Tính toán các phép toán đơn giản, Chuyển hình ảnh có chữ thành văn bản, Gợi ý phim dựa trên thể loại"],
+            "responses": ["Tôi có thể giúp bạn tìm kiếm trên Google, tìm kiếm trên Wikipedia, tính toán các phép toán đơn giản, chuyển hình ảnh có chữ thành văn bản và gợi ý phim dựa trên thể loại. Để rõ hơn về cách sử dụng thì bạn hãy nhấp vào dấu chấm hỏi ở góc phải trên cùng để biết thêm chi tiết."],
+            "context": ""
+        },
+        {
+            "tag": "hỏitìmgoogle",
+            "patterns": ["này bạn tìm cái này giúp tôi với", "tra cái này giúp mình với", "hỏi anh google cái này giúp với na", "tìm cái này giúp tôi với", "tìm dùm mình cái này được không bạn", "bạn ơi tìm giúp mình cái ni cái", "search google giúp cái này với bạn", "search giúp cái này được không bạn", "tìm dùm mình cái này với bạn ơi", "giúp mình tìm cái này đc k", "search ni thử", "ê google ni thử ra cái chi", "yoo search google ni thử ra cái chi", "ei ei tìm cái ni thử :v", "nhờ tìm ni xíu na", "alo tìm giúp ni với", "search cái ni thử"],
+            "responses": ["Nói xem", "Tìm cái gì", "Nói thử xem :v", "Oke", "Sure kèo", "Được thôi", "Ok cứ theo cú pháp mà làm thui"],
+            "context": ""
+        },
+        {
+            "tag": "hỏitìmwiki",
+            "patterns": ["bạn tìm trên wikipedia giúp mình cái này với", "hmmm có cái này không hiểu bạn tìm trên wikipedia giúp tôi với", "search cái này trên wikipedia giúp với", "à mình hỏi cái này tí", "cho tôi hỏi cái này với", "mình hỏi bạn cái này xíu", "mình hỏi bạn vấn đề này với được không", "có cái này mình chưa hiểu lắm cho mình hỏi với được k", "hỏi ni với bạn ơi", "hỏi này với bạn ơi", "bạn cho mình hỏi cái này với", "hmmm có cái này chưa hiếu lắm", "alo nhờ chuyên gia giải đáp cái này với nào", "chiên gia giải đáp với", "ei cho hỏi cái này với nào", "alo hỏi ni cái"],
+            "responses": ["Nói xem", "Hỏi cái gì", "Nói thử xem :v", "Cứ nói đi", "Cái gì nè hỏi đi tìm cho. À mà nhớ viết đúng cú pháp nhá", "Được thôi", "Ok cứ theo cú pháp mà làm thui"],
+            "context": ""
+        },
+        {
+            "tag": "hỏitìmphim",
+            "patterns": ["có phim nào hay hay không bạn", "dạo này có phim nào hot hot không recommend cái nào", "bạn biết phim gì hay không, phim cũ cũng được", "recommend một vài bộ phim nào bạn", "bạn gợi ý một vài bộ phim thử", "gợi ý cho mình một vài bộ phim với", "gợi ý cho mình một vài bộ phim với, phim gì cũng được", "có phim nào hay không gợi ý phát nào bạn"],
+            "responses": ["Oke mà muốn thể loại gì?", "Muốn phim thể loại gì nè", "Thể loại gì?"],
+            "context": ""
+        },
+        {
+            "tag": "hỏitotext",
+            "patterns": ["à nghe nói bạn có thể chuyển từ ảnh sang chữ phải không", "bạn chuyển được ảnh sang dạng văn bản hả", "chuyển ảnh này sang text giúp tôi với", "nhờ bạn chuyển giúp cái này sang chữ giúp mình với", "bạn chuyển giúp tôi ảnh này sang text với", "chuyển dùm mình cái này sang text với", "ei chuyển ảnh này sang text giúp với", "đổi cái này sang text dùm na"],
+            "responses": ["Oke thả ảnh vào đây đi", "Được thôi, cứ bỏ ảnh vào kèm theo cú pháp đúng thôi", "Ok muốn chuyển từ tiếng Anh hay tiếng Việt thì cứ gõ cú pháp nhé", "Ảnh gì? Bỏ vào đây đi. À nhớ kèm cú pháp đúng", "Ok cứ theo cú pháp mà làm thui"],
             "context": ""
         },
         {
@@ -199,7 +241,7 @@
         },
         {
             "tag": "chúcngủngon",
-            "patterns": ["Chúc bạn ngủ ngon nhé", "Thôi đi ngủ đã, chúc bạn ngủ ngon", "Ngủ ngon nhá", "zzzzz", "thoi ngủ đây bye", "thôi đi ngủ"],
+            "patterns": ["Chúc bạn ngủ ngon nhé", "Thôi đi ngủ đã, chúc bạn ngủ ngon", "Ngủ ngon nhá", "zzzzz", "thoi ngủ đây bye", "thôi đi ngủ", "thôi trễ rồi, đi ngủ đã ngủ ngon nhé", "trễ r mình off đi ngủ đây, chúc ngủ ngon nhé", "ngủ ngon nha", "chúc wiki ngủ ngon"],
             "responses": ["Chúc bạn ngủ ngon", "😴", "G9", "Có một giấc mơ đẹp nhé", "Cảm ơn, bạn cũng vậy nha"],
             "context": ""
         },
@@ -220,6 +262,30 @@
             "patterns": ["cảm ơn nhé, tôi khá hơn rồi", "haha chuyện của bạn vui lắm, tôi khá hơn rồi", "oke tôi đỡ rồi", "thôi hết chán rồi, thanks nhé", "cũng đỡ r", "cũng tạm đc", "tạm được"],
             "responses": ["Oh, rất vui vì đã giúp bạn", "Đúng rồi đừng chán nữa :v", "Yepp, đứng lên làm việc khác thôi nào", "Phải vậy chứ", "Hãy luôn vui vẻ bạn nhé 🥰"],
             "context_filter": "chántiếp"
+        },
+        {
+            "tag": "buồn",
+            "patterns": ["haizz, hôm nay tôi buồn quá", "hôm nay là một ngày tồi tệ đối với tôi", "ngày hôm nay thực sự tệ hại", "hôm nay tôi không vui chút nào", "mình thật sự thất vọng về hôm nay", "mình thật sự muốn khóc", "chán nản quá", "đau khổ quá", "bây giờ tôi chẳng vui chút nào hết", "haizzz", "haiz", "thật sự muốn buôn bỏ mọi thứ...", "tôi không muốn sống một giây nào nữa", "nhiều khi nghĩ chết một cái cho nhẹ nhàng", "tôi chẳng muốn nói một lời nào nữa"],
+            "responses": ["Xin hãy bình tĩnh bạn ơi, hãy suy nghĩ thật kỹ và tìm cách để vượt qua", "Tôi cũng cảm thấy không hề vui khi bạn nói câu đó", "Bạn không vui thì tôi cũng không vui chút nào"],
+            "context": "sad"
+        },
+        {
+            "tag": "hỏibuồn",
+            "patterns": ["còn bạn thì sao", "bạn có buồn không", "bạn có cảm thấy tồi tệ k", "bạn có cảm giác như tôi không", "bạn cảm thấy như thế nào", "còn bạn"],
+            "responses": ["Tôi thì bình thường, nhưng nếu bạn cần thì tôi muốn cho bạn một vài lời khuyên", "Tâm trạng bạn như thế thì tôi cũng không vui nỗi nên tôi muốn đưa ra một và lời khuyên, an ủi cho bạn"],
+            "context_filter": "sad"
+        },
+        {
+            "tag": "lờianủi",
+            "patterns": ["không muốn lắm mà thôi cũng được", "thật ra tôi không cần lời khuyên, tôi chỉ muốn có một người lắng nghe tất cả những tâm sự của tôi", "nhưng hiện tại chẳng có ai cả nên có thể tôi sẽ lắng nghe những lời an ủi của bạn", "cảm ơn bạn nhé, tôi xin nhận"],
+            "responses": ["{n}"],
+            "context_filter": "sad"
+        },
+        {
+            "tag": "cảmơnanủi",
+            "patterns": ["cảm ơn bạn vì đã an ủi tôi", "tôi khá hơn rồi, cảm ơn bạn nhé", "mình cảm ơn bạn đã an ủi", "thanks cảm ơn bạn rất nhiều đã thấu hiểu và an ủi mình", "thank you", "ôi nhờ bạn mà mình đã được cứu", "oh my god bạn đã cứu ngày hôm nay của mình đấy", "bạn là một vị cứu tinh, bạn đã cứu mình khỏi hố sâu tuyệt vọng này", "cảm ơn bạn rất rất nhiều, tôi sẽ nghe theo những lời khuyên bổ ích của bạn", "bạn thật tuyệt vời khi đã giúp mình vực dậy tinh thần"],
+            "responses": ["Bạn vui trở lại là tôi mừng rồi", "Hãy luôn duy trì tinh thần vui vẻ bạn nhé vì luôn mỉm cười thì may mắn sẽ đền với bạn", "Cũng may không sao rồi, bạn làm tôi lo quá", "Rất vui vì đã giúp bạn vui vẻ trở lại. Hãy luôn duy trì nhé"],
+            "context_filter": "sad"
         },
         {
             "tag": "thờitiết",

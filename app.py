@@ -221,6 +221,30 @@ def chatbot_response():
     if stillbored_ints[0]['intent'] == 'vẫnchán':
         return stillbored_res.replace('{n}', random.choice(quotes))
 
+    # appease
+    URL2 = 'https://vinapool.vn/tin-tuc/nhung-cau-noi-an-ui-dong-vien-khich-le-tinh-than-ban-be'
+    requestt2 = requests.get(URL2)
+    content2 = requestt2.content
+    soup2 = BeautifulSoup(content2, 'lxml')
+
+    # Extract data of appeasement
+    sentences = soup2.find('h2')
+    bunch_of_sentences = sentences.find_next_siblings('p')
+    only_appeasement = [i.text for i in bunch_of_sentences]
+    rs = []
+
+    for s in only_appeasement:
+        not_num_st = ''.join([w for w in s if not w.isdigit()]).replace('.', '')
+        rs.append(not_num_st.strip())
+
+    lst = [sen for sen in rs if sen]
+    response_appeasement = lst[:53]
+
+    # joke
+    appease_ints = predict_class(msg, model)
+    appease_res = getResponse(appease_ints, show_details=True)
+    if appease_ints[0]['intent'] == 'lờianủi':
+        return appease_res.replace('{n}', random.choice(response_appeasement))
 
     # recommendation
     if ':movie' in msg:
