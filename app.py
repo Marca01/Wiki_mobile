@@ -186,40 +186,48 @@ def chatbot_response():
 
     # Extract data of books
     quotes = []
+    quot = []
     quote_data = soup.find_all('blockquote', class_='wp-block-quote')
     for i in range(len(quote_data)):
         for quote in quote_data[i].find_all('p'):
             quotes.append(quote.text.replace('-', '').replace('– ', '').replace('+ ', ''))
 
+    for quote in quotes:
+        quo = ''.join([w for w in quote if not w.isdigit()]).replace('.', '', 1)
+        quo = quo.split('.')
+        quo = [q for q in quo if q]
+        quo = '.'.join(quo).strip()
+        quot.append(quo)
+
     # joke
     funstr_ints = predict_class(msg, model)
     funstr_res = getResponse(funstr_ints, show_details=True)
     if funstr_ints[0]['intent'] == 'đùa':
-        return funstr_res.replace('{joke}', random.choice(quotes))
+        return funstr_res.replace('{joke}', random.choice(quot))
 
     # continue the joke
     jokeCon_ints = predict_class(msg, model)
     jokeCon_res = getResponse(jokeCon_ints, show_details=True)
     if jokeCon_ints[0]['intent'] == 'đùatiếp':
-        return jokeCon_res.replace('{joke}', random.choice(quotes))
+        return jokeCon_res.replace('{joke}', random.choice(quot))
 
     # joke again
     jokeAgain_ints = predict_class(msg, model)
     jokeAgain_res = getResponse(jokeAgain_ints, show_details=True)
     if jokeAgain_ints[0]['intent'] == 'đùalại':
-        return jokeAgain_res.replace('{joke}', random.choice(quotes))
+        return jokeAgain_res.replace('{joke}', random.choice(quot))
 
     # bored
     bored_ints = predict_class(msg, model)
     bored_res = getResponse(bored_ints, show_details=True)
     if bored_ints[0]['intent'] == 'chán':
-        return bored_res.replace('{n}', random.choice(quotes))
+        return bored_res.replace('{n}', random.choice(quot))
 
     # still bored
     stillbored_ints = predict_class(msg, model)
     stillbored_res = getResponse(stillbored_ints, show_details=True)
     if stillbored_ints[0]['intent'] == 'vẫnchán':
-        return stillbored_res.replace('{n}', random.choice(quotes))
+        return stillbored_res.replace('{n}', random.choice(quot))
 
     # appease
     URL2 = 'https://vinapool.vn/tin-tuc/nhung-cau-noi-an-ui-dong-vien-khich-le-tinh-than-ban-be'
@@ -234,13 +242,15 @@ def chatbot_response():
     rs = []
 
     for s in only_appeasement:
-        not_num_st = ''.join([w for w in s if not w.isdigit()]).replace('.', '')
-        rs.append(not_num_st.strip())
+        not_num_st = ''.join([w for w in s if not w.isdigit()]).replace('.', '', 1)
+        not_num_st = not_num_st.split('.')
+        not_num_st = [ss for ss in not_num_st if ss]
+        rs.append('.'.join(not_num_st))
 
-    lst = [sen for sen in rs if sen]
+    lst = [sen.strip() for sen in rs if sen]
     response_appeasement = lst[:53]
 
-    # joke
+    # appease
     appease_ints = predict_class(msg, model)
     appease_res = getResponse(appease_ints, show_details=True)
     if appease_ints[0]['intent'] == 'lờianủi':
