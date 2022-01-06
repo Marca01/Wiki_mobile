@@ -108,6 +108,74 @@ def chatbot_response():
     if time_ints[0]['intent'] == 'thờigianđầyđủ':
         return time_res.replace('{n}', datetime.datetime.now().strftime(f'{changed_day}, ngày %d tháng %m năm %Y, %H giờ %M phút %S giây'.encode('unicode_escape').decode('utf-8')).encode('utf-8').decode('unicode_escape'))
 
+    # day session
+    def day_time(time):
+        if (int(time) > 4) and (int(time) <= 8):
+            return 'Sáng sớm'
+        elif (int(time) > 8) and (int(time) <= 11):
+            return 'Sáng'
+        elif (int(time) > 11) and (int(time) <= 14):
+            return 'Trưa'
+        elif (int(time) > 14) and (int(time) <= 18):
+            return 'Chiều'
+        elif (int(time) > 18) and (int(time) <= 22):
+            return 'Tối'
+        elif (int(time) > 22) and (int(time) <= 24):
+            return 'Đêm'
+        elif (int(time) <= 4):
+            return 'Khuya'
+
+    t = datetime.datetime.now().strftime('%H')
+    session = day_time(t)
+
+    session_ints = predict_class(msg, model)
+    session_res = getResponse(session_ints, show_details=True)
+
+    morning_ressponse = intents['intents'][56]['responses']
+    noon_ressponse = intents['intents'][58]['responses']
+    afternoon_ressponse = intents['intents'][60]['responses']
+    night_ressponse = intents['intents'][62]['responses']
+
+    if session_ints[0]['intent'] == 'chàobuốisáng':
+        if session == 'Trưa':
+            return random.choice(noon_ressponse).replace('{time}', t)
+        if session == 'Chiều':
+            return random.choice(afternoon_ressponse).replace('{time}', t)
+        if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
+            return random.choice(night_ressponse).replace('{time}', t)
+
+        return session_res
+
+    if session_ints[0]['intent'] == 'chàobuốitrưa':
+        if session == 'Sáng' or session == 'Sáng sớm':
+            return random.choice(morning_ressponse).replace('{time}', t)
+        if session == 'Chiều':
+            return random.choice(afternoon_ressponse).replace('{time}', t)
+        if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
+            return random.choice(night_ressponse).replace('{time}', t)
+
+        return session_res
+
+    if session_ints[0]['intent'] == 'chàobuốichiều':
+        if session == 'Sáng' or session == 'Sáng sớm':
+            return random.choice(morning_ressponse).replace('{time}', t)
+        if session == 'Trưa':
+            return random.choice(noon_ressponse).replace('{time}', t)
+        if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
+            return random.choice(night_ressponse).replace('{time}', t)
+
+        return session_res
+
+    if session_ints[0]['intent'] == 'chàobuốitối':
+        if session == 'Sáng' or session == 'Sáng sớm':
+            return random.choice(morning_ressponse).replace('{time}', t)
+        if session == 'Trưa':
+            return random.choice(noon_ressponse).replace('{time}', t)
+        if session == 'Chiều':
+            return random.choice(afternoon_ressponse).replace('{time}', t)
+
+        return session_res
+
     # calculator
     signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
     calculator_ints = predict_class(msg, model)
@@ -129,13 +197,16 @@ def chatbot_response():
             return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', str(round(float(output), 5)))
         else:
             return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
-    else:
-        for c in nltk.word_tokenize(msg):
-            if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit():
-                res = client.query(msg)
-                output = next(res.results).text
-                return output
-
+    # else:
+    #     for c in nltk.word_tokenize(msg):
+    #         if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit():
+    #             res = client.query(msg)
+    #             output = next(res.results).text
+    #             return output
+    #         elif c not in signs and c.isnumeric():
+    #             ints = predict_class(msg, model)
+    #             res = getResponse(ints, show_details=True)
+    #             return res
 
     # summary search result from wikipedia
     wikipedia.set_lang('vi')
