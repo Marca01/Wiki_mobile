@@ -30,6 +30,8 @@ from recommender import make_recommendation, movieGenres
 # SECRET_KEYS
 WOLFRAMALPHA_APPID = os.getenv('WOLFRAMALPHA_APPID')
 OPENWEATHERMAP_APIKEY = os.getenv('OPENWEATHERMAP_APIKEY')
+RAPIDAPI_URLSHORTENER_KEY = os.getenv('RAPIDAPI_URLSHORTENER_KEY')
+RAPIDAPI_CURRENCYCONVERTER_KEY = os.getenv('RAPIDAPI_CURRENCYCONVERTER_KEY')
 
 # wolfram alpha client ID
 client = wolframalpha.Client(WOLFRAMALPHA_APPID)
@@ -57,296 +59,370 @@ def home():
 @app.route('/chat', methods=['POST'])
 def chatbot_response():
     msg = request.form['msg']
-    
+    not_recognize_words = nltk.word_tokenize(msg)
+
+    # currency converter ====================================================
+    if ':convert' in msg:
+        url_currencyconverter_tool = "https://currency-converter5.p.rapidapi.com/currency/convert"
+
+        fromm = msg.replace(':convert', '').strip().split(',')[0]
+        to = msg.replace(':convert', '').strip().split(',')[1]
+        amount = msg.replace(':convert', '').strip().split(',')[2]
+
+        querystring = {"format": "json", "from": fromm, "to": to, "amount": amount}
+        headers_currency_converter = {
+            'x-rapidapi-host': "currency-converter5.p.rapidapi.com",
+            'x-rapidapi-key': RAPIDAPI_CURRENCYCONVERTER_KEY
+        }
+
+        currency_converted = requests.get(url_currencyconverter_tool, headers=headers_currency_converter,
+                                          params=querystring)
+        currency_converter_json = json.loads(currency_converted.text)\
+
+        if currency_converter_json['status'] == 'failed':
+            return f"Xin hãy nhập đúng đơn vị tiền tệ '{fromm}'"
+        else:
+            if not currency_converter_json['rates']:
+                return f"Xin hãy nhập đúng đơn vị tiền tệ '{to}'"
+            else:
+                currency_converter_response = 'Đã chuyển {from_amount} {from_code} ({from_name}) sang {to_amount} {to_code} ({to_name}) với tỉ giá cập nhật ngày {updated_date} là {rate} {rate_code}'
+                return currency_converter_response.replace('{from_amount}', '{0:,.0f}'.format(
+                    float(currency_converter_json['amount']))).replace('{from_code}', currency_converter_json[
+                    'base_currency_code']).replace('{from_name}',
+                                                   currency_converter_json['base_currency_name']).replace(
+                    '{to_amount}',
+                    '{0:,.0f}'.format(float(currency_converter_json['rates']['VND']['rate_for_amount']))).replace(
+                    '{to_code}', ''.join(list(currency_converter_json['rates'].keys()))).replace('{to_name}',
+                                                                                                 currency_converter_json[
+                                                                                                     'rates'][
+                                                                                                     'VND'][
+                                                                                                     'currency_name']).replace(
+                    '{updated_date}', currency_converter_json['updated_date']).replace('{rate}', '{0:,.0f}'.format(
+                    float(currency_converter_json['rates']['VND']['rate']))).replace('{rate_code}', ''.join(
+                    list(currency_converter_json['rates'].keys())))
+
+    # ====================================================
+
     # get tag 'giớithiệu' patterns
-    patterns = intents['intents'][4]['patterns']
-    intro_ints = predict_class(msg, model)
-    intro_res = getResponse(intro_ints, show_details=True)
+    patterns = intents['intents'][5]['patterns']
+    for w in not_recognize_words:
+        if w.lower() in words:
 
-    if intro_ints[0]['intent'] == 'giớithiệu':
-        for pattern in patterns:
-            if msg.find(pattern) > -1:
-                return intro_res.replace('{n}', msg.replace(pattern, ''))
-
-    elif 'Lê Văn Kha' in msg:
-        res = 'Xin chào chủ nhân của tôi'
-        return res
-    elif 'Trần Anh Quân' in msg:
-        res = 'Xin chào chủ nhân của tôi'
-        return res
-
-    # ask time, day, date
-    time_ints = predict_class(msg, model)
-    time_res = getResponse(time_ints, show_details=True)
-    # change day from english to vietnamese
-    def change_day(day):
-        if day == 'Monday':
-            return 'Thứ hai'
-        elif day == 'Tuesday':
-            return 'Thứ ba'
-        elif day == 'Wednesday':
-            return 'Thứ tư'
-        elif day == 'Thursday':
-            return 'Thứ năm'
-        elif day == 'Friday':
-            return 'Thứ sáu'
-        elif day == 'Saturday':
-            return 'Thứ bảy'
-        elif day == 'Sunday':
-            return 'Chủ nhật'
-
-    # ask date
-    day = datetime.datetime.now().strftime('%A')
-    changed_day = change_day(day)
-
-    if time_ints[0]['intent'] == 'thứ':
-        return time_res.replace("{n}", changed_day)
-    if time_ints[0]['intent'] == 'ngày':
-        return time_res.replace('{n}', datetime.datetime.now().strftime('%d/%m/%Y'))
-    if time_ints[0]['intent'] == 'giờ':
-        return time_res.replace('{n}', datetime.datetime.now().strftime('%T'))
-    if time_ints[0]['intent'] == 'thờigianđầyđủ':
-        return time_res.replace('{n}', datetime.datetime.now().strftime(f'{changed_day}, ngày %d tháng %m năm %Y, %H giờ %M phút %S giây'.encode('unicode_escape').decode('utf-8')).encode('utf-8').decode('unicode_escape'))
-
-    # day session
-    def day_time(time):
-        if (int(time) > 4) and (int(time) <= 8):
-            return 'Sáng sớm'
-        elif (int(time) > 8) and (int(time) <= 11):
-            return 'Sáng'
-        elif (int(time) > 11) and (int(time) <= 14):
-            return 'Trưa'
-        elif (int(time) > 14) and (int(time) <= 18):
-            return 'Chiều'
-        elif (int(time) > 18) and (int(time) <= 22):
-            return 'Tối'
-        elif (int(time) > 22) and (int(time) <= 24):
-            return 'Đêm'
-        elif (int(time) <= 4):
-            return 'Khuya'
-
-    t = datetime.datetime.now().strftime('%H')
-    session = day_time(t)
-
-    session_ints = predict_class(msg, model)
-    session_res = getResponse(session_ints, show_details=True)
-
-    morning_ressponse = intents['intents'][56]['responses']
-    noon_ressponse = intents['intents'][58]['responses']
-    afternoon_ressponse = intents['intents'][60]['responses']
-    night_ressponse = intents['intents'][62]['responses']
-
-    if session_ints[0]['intent'] == 'chàobuốisáng':
-        if session == 'Trưa':
-            return random.choice(noon_ressponse).replace('{time}', t)
-        if session == 'Chiều':
-            return random.choice(afternoon_ressponse).replace('{time}', t)
-        if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
-            return random.choice(night_ressponse).replace('{time}', t)
-
-        return session_res
-
-    if session_ints[0]['intent'] == 'chàobuốitrưa':
-        if session == 'Sáng' or session == 'Sáng sớm':
-            return random.choice(morning_ressponse).replace('{time}', t)
-        if session == 'Chiều':
-            return random.choice(afternoon_ressponse).replace('{time}', t)
-        if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
-            return random.choice(night_ressponse).replace('{time}', t)
-
-        return session_res
-
-    if session_ints[0]['intent'] == 'chàobuốichiều':
-        if session == 'Sáng' or session == 'Sáng sớm':
-            return random.choice(morning_ressponse).replace('{time}', t)
-        if session == 'Trưa':
-            return random.choice(noon_ressponse).replace('{time}', t)
-        if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
-            return random.choice(night_ressponse).replace('{time}', t)
-
-        return session_res
-
-    if session_ints[0]['intent'] == 'chàobuốitối':
-        if session == 'Sáng' or session == 'Sáng sớm':
-            return random.choice(morning_ressponse).replace('{time}', t)
-        if session == 'Trưa':
-            return random.choice(noon_ressponse).replace('{time}', t)
-        if session == 'Chiều':
-            return random.choice(afternoon_ressponse).replace('{time}', t)
-
-        return session_res
-
-    # calculator
-    signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
-    calculator_ints = predict_class(msg, model)
-    calculator_res = getResponse(calculator_ints, show_details=True)
-    # check float number
-    def isfloat(num):
-        try:
-            float(num)
-            return True
-        except ValueError:
-            return False
-
-    # if the user input is text
-    if calculator_ints[0]['intent'] == 'tínhtoán':
-        lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit()]
-        res = client.query(' '.join(lst_patterns))
-        output = next(res.results).text
-        if isfloat(output):
-            return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', str(round(float(output), 5)))
-        else:
-            return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
-    # else:
-    #     for c in nltk.word_tokenize(msg):
-    #         if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit():
-    #             res = client.query(msg)
-    #             output = next(res.results).text
-    #             return output
-    #         elif c not in signs and c.isnumeric():
-    #             ints = predict_class(msg, model)
-    #             res = getResponse(ints, show_details=True)
-    #             return res
-
-    # summary search result from wikipedia
-    wikipedia.set_lang('vi')
-    if ':wiki' in msg:
-        try:
-            rs = wikipedia.summary(msg.replace(':wiki', '').strip())
-            return rs
-        except wikipedia.exceptions.PageError:
-            return 'Xin lỗi tôi không tìm thấy kết quả'
-
-    # image to text feature
-    vie = 'vie'
-    eng = 'eng'
-    if msg == ':totext':
-        return flask.redirect(flask.url_for('recognize_vietext_img'), code=307)
-    if msg == f':totext&{eng}':
-        return flask.redirect(flask.url_for('recognize_engtext_img'), code=307)
-
-    # google search
-    fallback = 'Xin lỗi, tôi không tìm thấy kết quả'
-    if ':search' in msg:
-        search_result_list = list(search(msg.replace(':search', '').strip(), lang='vi', num_results=10))
-        if len(search_result_list) > 0:
-            return json.dumps(search_result_list)
-        else:
-            return fallback
-
-    # ask weather
-    config_dict = get_default_config()
-    config_dict['language'] = 'vi'
-    owm = OWM(OPENWEATHERMAP_APIKEY)
-    mgr = owm.weather_manager()
-
-    weather_ints = predict_class(msg, model)
-    weather_res = getResponse(weather_ints, show_details=True)
-    if weather_ints[0]['intent'] == 'thờitiết':
-        observation = mgr.weather_at_place('Đà Nẵng')
-        w = observation.weather
-        weather_info = weather_res.replace('{status}', w.detailed_status).replace('{icon}', w.weather_icon_url()).replace('{temp}', str(w.temperature('celsius')['temp'])).replace('{max}', str(w.temperature('celsius')['temp_max'])).replace('{min}', str(w.temperature('celsius')['temp_min'])).replace('{feel}', str(w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace('{pressure}', str(w.pressure["press"])).replace('{visibility}', str(w.visibility_distance/1000))
-        return weather_info
-
-
-    # fun stories/quotes
-    URL = 'https://elead.com.vn/nhung-cau-noi-hai-nao-khien-ban-cuoi-nghieng-nga-hay-nhat'
-    requestt = requests.get(URL)
-    content = requestt.content
-    soup = BeautifulSoup(content, 'lxml')
-
-    # Extract data of books
-    quotes = []
-    quot = []
-    quote_data = soup.find_all('blockquote', class_='wp-block-quote')
-    for i in range(len(quote_data)):
-        for quote in quote_data[i].find_all('p'):
-            quotes.append(quote.text.replace('-', '').replace('– ', '').replace('+ ', ''))
-
-    for quote in quotes:
-        quo = ''.join([w for w in quote if not w.isdigit()]).replace('.', '', 1)
-        quo = quo.split('.')
-        quo = [q for q in quo if q]
-        quo = '.'.join(quo).strip()
-        quot.append(quo)
-
-    # joke
-    funstr_ints = predict_class(msg, model)
-    funstr_res = getResponse(funstr_ints, show_details=True)
-    if funstr_ints[0]['intent'] == 'đùa':
-        return funstr_res.replace('{joke}', random.choice(quot))
-
-    # continue the joke
-    jokeCon_ints = predict_class(msg, model)
-    jokeCon_res = getResponse(jokeCon_ints, show_details=True)
-    if jokeCon_ints[0]['intent'] == 'đùatiếp':
-        return jokeCon_res.replace('{joke}', random.choice(quot))
-
-    # joke again
-    jokeAgain_ints = predict_class(msg, model)
-    jokeAgain_res = getResponse(jokeAgain_ints, show_details=True)
-    if jokeAgain_ints[0]['intent'] == 'đùalại':
-        return jokeAgain_res.replace('{joke}', random.choice(quot))
-
-    # bored
-    bored_ints = predict_class(msg, model)
-    bored_res = getResponse(bored_ints, show_details=True)
-    if bored_ints[0]['intent'] == 'chán':
-        return bored_res.replace('{n}', random.choice(quot))
-
-    # still bored
-    stillbored_ints = predict_class(msg, model)
-    stillbored_res = getResponse(stillbored_ints, show_details=True)
-    if stillbored_ints[0]['intent'] == 'vẫnchán':
-        return stillbored_res.replace('{n}', random.choice(quot))
-
-    # appease
-    URL2 = 'https://vinapool.vn/tin-tuc/nhung-cau-noi-an-ui-dong-vien-khich-le-tinh-than-ban-be'
-    requestt2 = requests.get(URL2)
-    content2 = requestt2.content
-    soup2 = BeautifulSoup(content2, 'lxml')
-
-    # Extract data of appeasement
-    sentences = soup2.find('h2')
-    bunch_of_sentences = sentences.find_next_siblings('p')
-    only_appeasement = [i.text for i in bunch_of_sentences]
-    rs = []
-
-    for s in only_appeasement:
-        not_num_st = ''.join([w for w in s if not w.isdigit()]).replace('.', '', 1)
-        not_num_st = not_num_st.split('.')
-        not_num_st = [ss for ss in not_num_st if ss]
-        rs.append('.'.join(not_num_st))
-
-    lst = [sen.strip() for sen in rs if sen]
-    response_appeasement = lst[:53]
-
-    # appease
-    appease_ints = predict_class(msg, model)
-    appease_res = getResponse(appease_ints, show_details=True)
-    if appease_ints[0]['intent'] == 'lờianủi':
-        return appease_res.replace('{n}', random.choice(response_appeasement))
-
-    # recommendation
-    if ':movie' in msg:
-        # return 'Được rồi bắt đầu thôi'
-        # get_genres(msg)
-        # get_actors(msg)
-        # get_directors(msg)
-        # get_keywords(msg)
-        if msg.replace(':movie', '').strip() in movieGenres:
-            return json.dumps(make_recommendation(msg.replace(':movie', '').strip()))
-        else:
-            return 'Xin lỗi, tôi không tìm thấy phim nào phù hợp với thể loại này'
-
-    # if don't understand words
-    for w in nltk.word_tokenize(msg):
-        if w.lower() not in words:
-            return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
-        else:
+            # predict message
             ints = predict_class(msg, model)
-            res = getResponse(ints, show_details=True)
-            return res
+            if not ints:
+                return 'Xin lỗi, Wiki không hiểu bạn đang nói gì cả'
+            else:
+                intro_ints = predict_class(msg, model)
+                intro_res = getResponse(intro_ints, show_details=True)
+
+                if intro_ints[0]['intent'] == 'giớithiệu':
+                    for pattern in patterns:
+                        if msg.find(pattern) > -1:
+                            return intro_res.replace('{n}', msg.replace(pattern, ''))
+
+                # ask time, day, date
+                time_ints = predict_class(msg, model)
+                time_res = getResponse(time_ints, show_details=True)
+
+                # change day from english to vietnamese
+                def change_day(day):
+                    if day == 'Monday':
+                        return 'Thứ hai'
+                    elif day == 'Tuesday':
+                        return 'Thứ ba'
+                    elif day == 'Wednesday':
+                        return 'Thứ tư'
+                    elif day == 'Thursday':
+                        return 'Thứ năm'
+                    elif day == 'Friday':
+                        return 'Thứ sáu'
+                    elif day == 'Saturday':
+                        return 'Thứ bảy'
+                    elif day == 'Sunday':
+                        return 'Chủ nhật'
+
+                # ask date
+                day = datetime.datetime.now().strftime('%A')
+                changed_day = change_day(day)
+
+                if time_ints[0]['intent'] == 'thứ':
+                    return time_res.replace("{n}", changed_day)
+                if time_ints[0]['intent'] == 'ngày':
+                    return time_res.replace('{n}', datetime.datetime.now().strftime('%d/%m/%Y'))
+                if time_ints[0]['intent'] == 'giờ':
+                    return time_res.replace('{n}', datetime.datetime.now().strftime('%T'))
+                if time_ints[0]['intent'] == 'thờigianđầyđủ':
+                    return time_res.replace('{n}', datetime.datetime.now().strftime(
+                        f'{changed_day}, ngày %d tháng %m năm %Y, %H giờ %M phút %S giây'.encode(
+                            'unicode_escape').decode(
+                            'utf-8')).encode('utf-8').decode('unicode_escape'))
+
+                # day session
+                def day_time(time):
+                    if (int(time) > 4) and (int(time) <= 8):
+                        return 'Sáng sớm'
+                    elif (int(time) > 8) and (int(time) <= 11):
+                        return 'Sáng'
+                    elif (int(time) > 11) and (int(time) <= 14):
+                        return 'Trưa'
+                    elif (int(time) > 14) and (int(time) <= 18):
+                        return 'Chiều'
+                    elif (int(time) > 18) and (int(time) <= 22):
+                        return 'Tối'
+                    elif (int(time) > 22) and (int(time) <= 24):
+                        return 'Đêm'
+                    elif (int(time) <= 4):
+                        return 'Khuya'
+
+                t = datetime.datetime.now().strftime('%H')
+                session = day_time(t)
+
+                session_ints = predict_class(msg, model)
+                session_res = getResponse(session_ints, show_details=True)
+
+                morning_ressponse = intents['intents'][54]['responses']
+                noon_ressponse = intents['intents'][56]['responses']
+                afternoon_ressponse = intents['intents'][58]['responses']
+                night_ressponse = intents['intents'][60]['responses']
+
+                if session_ints[0]['intent'] == 'chàobuốisáng':
+                    if session == 'Trưa':
+                        return random.choice(noon_ressponse).replace('{time}', t)
+                    if session == 'Chiều':
+                        return random.choice(afternoon_ressponse).replace('{time}', t)
+                    if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
+                        return random.choice(night_ressponse).replace('{time}', t)
+
+                    return session_res
+
+                if session_ints[0]['intent'] == 'chàobuốitrưa':
+                    if session == 'Sáng' or session == 'Sáng sớm':
+                        return random.choice(morning_ressponse).replace('{time}', t)
+                    if session == 'Chiều':
+                        return random.choice(afternoon_ressponse).replace('{time}', t)
+                    if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
+                        return random.choice(night_ressponse).replace('{time}', t)
+
+                    return session_res
+
+                if session_ints[0]['intent'] == 'chàobuốichiều':
+                    if session == 'Sáng' or session == 'Sáng sớm':
+                        return random.choice(morning_ressponse).replace('{time}', t)
+                    if session == 'Trưa':
+                        return random.choice(noon_ressponse).replace('{time}', t)
+                    if session == 'Tối' or session == 'Đêm' or session == 'Khuya':
+                        return random.choice(night_ressponse).replace('{time}', t)
+
+                    return session_res
+
+                if session_ints[0]['intent'] == 'chàobuốitối':
+                    if session == 'Sáng' or session == 'Sáng sớm':
+                        return random.choice(morning_ressponse).replace('{time}', t)
+                    if session == 'Trưa':
+                        return random.choice(noon_ressponse).replace('{time}', t)
+                    if session == 'Chiều':
+                        return random.choice(afternoon_ressponse).replace('{time}', t)
+
+                    return session_res
+
+                # fun stories/quotes
+                URL = 'https://elead.com.vn/nhung-cau-noi-hai-nao-khien-ban-cuoi-nghieng-nga-hay-nhat'
+                requestt = requests.get(URL)
+                content = requestt.content
+                soup = BeautifulSoup(content, 'lxml')
+
+                # Extract data of books
+                quotes = []
+                quot = []
+                quote_data = soup.find_all('blockquote', class_='wp-block-quote')
+                for i in range(len(quote_data)):
+                    for quote in quote_data[i].find_all('p'):
+                        quotes.append(quote.text.replace('-', '').replace('– ', '').replace('+ ', ''))
+
+                for quote in quotes:
+                    quo = ''.join([w for w in quote if not w.isdigit()]).replace('.', '', 1)
+                    quo = quo.split('.')
+                    quo = [q for q in quo if q]
+                    quo = '.'.join(quo).strip()
+                    quot.append(quo)
+
+                # joke
+                funstr_ints = predict_class(msg, model)
+                funstr_res = getResponse(funstr_ints, show_details=True)
+                if funstr_ints[0]['intent'] == 'đùa':
+                    return funstr_res.replace('{joke}', random.choice(quot))
+
+                # continue the joke
+                jokeCon_ints = predict_class(msg, model)
+                jokeCon_res = getResponse(jokeCon_ints, show_details=True)
+                if jokeCon_ints[0]['intent'] == 'đùatiếp':
+                    return jokeCon_res.replace('{joke}', random.choice(quot))
+
+                # joke again
+                jokeAgain_ints = predict_class(msg, model)
+                jokeAgain_res = getResponse(jokeAgain_ints, show_details=True)
+                if jokeAgain_ints[0]['intent'] == 'đùalại':
+                    return jokeAgain_res.replace('{joke}', random.choice(quot))
+
+                # bored
+                bored_ints = predict_class(msg, model)
+                bored_res = getResponse(bored_ints, show_details=True)
+                if bored_ints[0]['intent'] == 'chán':
+                    return bored_res.replace('{n}', random.choice(quot))
+
+                # still bored
+                stillbored_ints = predict_class(msg, model)
+                stillbored_res = getResponse(stillbored_ints, show_details=True)
+                if stillbored_ints[0]['intent'] == 'vẫnchán':
+                    return stillbored_res.replace('{n}', random.choice(quot))
+
+                # appease
+                URL2 = 'https://vinapool.vn/tin-tuc/nhung-cau-noi-an-ui-dong-vien-khich-le-tinh-than-ban-be'
+                requestt2 = requests.get(URL2)
+                content2 = requestt2.content
+                soup2 = BeautifulSoup(content2, 'lxml')
+
+                # Extract data of appeasement
+                sentences = soup2.find('h2')
+                bunch_of_sentences = sentences.find_next_siblings('p')
+                only_appeasement = [i.text for i in bunch_of_sentences]
+                rs = []
+
+                for s in only_appeasement:
+                    not_num_st = ''.join([w for w in s if not w.isdigit()]).replace('.', '', 1)
+                    not_num_st = not_num_st.split('.')
+                    not_num_st = [ss for ss in not_num_st if ss]
+                    rs.append('.'.join(not_num_st))
+
+                lst = [sen.strip() for sen in rs if sen]
+                response_appeasement = lst[:53]
+
+                # appease
+                appease_ints = predict_class(msg, model)
+                appease_res = getResponse(appease_ints, show_details=True)
+                if appease_ints[0]['intent'] == 'lờianủi':
+                    return appease_res.replace('{n}', random.choice(response_appeasement))
+
+                # MAIN FEATURES
+                # ===============================================================================================================
+                # google search ========================================
+                fallback = 'Xin lỗi, Wiki không tìm thấy kết quả'
+                if ':search' in msg:
+                    search_result_list = list(search(msg.replace(':search', '').strip(), lang='vi', num_results=10))
+                    if len(search_result_list) > 0:
+                        return json.dumps(search_result_list)
+                    else:
+                        return fallback
+                # ====================================================
+
+                # summary search result from wikipedia ====================================================
+                wikipedia.set_lang('vi')
+                if ':wiki' in msg:
+                    try:
+                        rs = wikipedia.summary(msg.replace(':wiki', '').strip())
+                        return rs
+                    except wikipedia.exceptions.PageError:
+                        return fallback
+                # ====================================================
+
+                # url shortener ====================================================
+                if ':surl' in msg:
+                    url_shortener_tool = "https://url-shortener-service.p.rapidapi.com/shorten"
+                    headers_url_shortener = {
+                        'content-type': "application/x-www-form-urlencoded",
+                        'x-rapidapi-host': "url-shortener-service.p.rapidapi.com",
+                        'x-rapidapi-key': RAPIDAPI_URLSHORTENER_KEY
+                    }
+
+                    url_shortened = requests.post(url_shortener_tool, data={'url': msg.replace(':surl', '').strip()}, headers=headers_url_shortener)
+                    return json.loads(url_shortened.text)['result_url']
+                # ====================================================
+
+                # calculator ====================================================
+                signs = ['+', '-', '*', 'x', '/', '÷', '(', ')', '!', '=', '^', 'C', 'F']
+                calculator_ints = predict_class(msg, model)
+                calculator_res = getResponse(calculator_ints, show_details=True)
+
+                # check float number
+                def isfloat(num):
+                    try:
+                        float(num)
+                        return True
+                    except ValueError:
+                        return False
+
+                # if the user input is text
+                if calculator_ints[0]['intent'] == 'tínhtoán':
+                    lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit()]
+                    res = client.query(' '.join(lst_patterns))
+                    output = next(res.results).text
+                    if isfloat(output):
+                        return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', str(round(float(output), 5)))
+                    else:
+                        return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
+                # else:
+                #     for c in nltk.word_tokenize(msg):
+                #         if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit():
+                #             res = client.query(msg)
+                #             output = next(res.results).text
+                #             return output
+                # elif c not in signs and c.isnumeric():
+                #     ints = predict_class(msg, model)
+                #     res = getResponse(ints, show_details=True)
+                #     return res
+                # ====================================================
+
+                # image to text feature ====================================================
+                vie = 'vie'
+                eng = 'eng'
+                if msg == ':totext':
+                    return flask.redirect(flask.url_for('recognize_vietext_img'), code=307)
+                if msg == f':totext&{eng}':
+                    return flask.redirect(flask.url_for('recognize_engtext_img'), code=307)
+                # ====================================================
+
+                # recommendation ====================================================
+                if ':movie' in msg:
+                    # return 'Được rồi bắt đầu thôi'
+                    # get_genres(msg)
+                    # get_actors(msg)
+                    # get_directors(msg)
+                    # get_keywords(msg)
+                    if msg.replace(':movie', '').strip() in movieGenres:
+                        return json.dumps(make_recommendation(msg.replace(':movie', '').strip()))
+                    else:
+                        return 'Xin lỗi, tôi không tìm thấy phim nào phù hợp với thể loại này'
+                # ====================================================
+
+                # ask weather ====================================================
+                config_dict = get_default_config()
+                config_dict['language'] = 'vi'
+                owm = OWM(OPENWEATHERMAP_APIKEY)
+                mgr = owm.weather_manager()
+
+                weather_ints = predict_class(msg, model)
+                weather_res = getResponse(weather_ints, show_details=True)
+                if weather_ints[0]['intent'] == 'thờitiết':
+                    observation = mgr.weather_at_place('Đà Nẵng')
+                    w = observation.weather
+                    weather_info = weather_res.replace('{status}', w.detailed_status).replace('{icon}',
+                                                                                              w.weather_icon_url()).replace(
+                        '{temp}', str(w.temperature('celsius')['temp'])).replace('{max}', str(
+                        w.temperature('celsius')['temp_max'])).replace('{min}', str(
+                        w.temperature('celsius')['temp_min'])).replace('{feel}', str(
+                        w.temperature('celsius')['feels_like'])).replace('{humidity}', str(w.humidity)).replace(
+                        '{pressure}', str(w.pressure["press"])).replace('{visibility}',
+                                                                        str(w.visibility_distance / 1000))
+                    return weather_info
+                # ====================================================
+
+                # ===============================================================================================================
+
+                # answer general question
+                return getResponse(ints, show_details=True)
+        else:
+            return 'Xin lỗi, Wiki không hiểu bạn đang nói gì cả'
 
 # image to text
 # @app.route('/recognize', defaults={'lang': 'vie'}, methods=['POST'])
@@ -440,7 +516,7 @@ def getResponse(ints, userID='123', show_details=False):
                         return random.choice(i['responses'])  # random response from the intent
 
             # ints.pop(0)
-            return 'Xin lỗi, tôi không hiểu bạn đang nói gì cả'
+            return 'Xin lỗi, Wiki không hiểu bạn đang nói gì cả'
 
 if __name__ == "__main__":
     app.run(debug=True)

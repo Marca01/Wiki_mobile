@@ -90,18 +90,6 @@
             "context": ""
         },
         {
-            "tag": "khôngtrảlời",
-            "patterns": [""],
-            "responses": ["Xin lỗi, tôi không hiểu câu hỏi của bạn", "Xin lỗi, bạn có thể nói lại không?", "Alo bạn có thể nói lại được không?", "Tôi không hiểu bạn nói gì cả", "Người đừng lặng im đến thế...", "Nói đi bạn", "Sao không nói gì hết vậy???", "Ủa bạn đâu rồi?", "Sao im lặng thể?", "Nói gì thì nói đi bạn", "Mình đang lắng nghe bạn đây"],
-            "context": "khongtraloi"
-        },
-        {
-            "tag": "trảlờilại",
-            "patterns": ["Ủa, xin lỗi bạn nhé", "À tại mình đang có chút việc", "Sr nhá", "Đây mình đây", "Sorry nãy giờ không để ý", "Chẳng biết nói gì", "Chẳng biết nói sao nữa", "Tiếp tục nào", "Đây đây"],
-            "responses": ["Hmm đi đâu nãy giờ z", "Đợi mãi đấy", "Mất thời gian quá!", "Oke tiếp tục thôi nào", "Chờ nãy giờ", "Làm chờ nãy giờ", "Haizzz", "Hèn gì mãi không thấy trả lời", "Sao lâu thế", "Đợi này giờ", "Tức!", "Tứkkk"],
-            "context_filter": "khongtraloi"
-        },
-        {
             "tag": "tiếptụccâuchuyện",
             "patterns": ["Xin lỗi nhé, tiếp tục thôi nào", "Hì hì nói tiếp nào", "Tiếp nào", "tiếp tục", "Sorry tiếp tục nào", "tiếp thôi nào"],
             "responses": ["Ùm", "Oke", "Ok", "Ờ", "Tiếp"],
@@ -121,7 +109,7 @@
         },
         {
             "tag": "ngườitạora",
-            "patterns": ["ai là người đã tạo ra bạn?", "vậy ai đã tạo ra bạn?", "bạn được tạo ra bởi ai?", "bởi ai?", "ai rạo ra?"],
+            "patterns": ["ai là người đã tạo ra bạn?", "vậy ai đã tạo ra bạn?", "bạn được tạo ra bởi ai?", "bởi ai?", "ai tạo ra?", "do ai?", "do ai tạo ra", "who", "ai tạo ra zậy", "ai z", "do ai vậy"],
             "responses": ["Wiki được tạo ra bởi Lê Văn Kha và Trần Anh Quân"],
             "context_filter": "tạora"
         },
@@ -337,7 +325,7 @@
         },
         {
             "tag": "chàolộnbuốisáng",
-            "patterns": [""],
+            "patterns": ["cbs"],
             "responses": ["Ủa chừ là buối sáng mà :v", "Đang sáng trưng mà", "Gì zậy chừ đang là sáng mà", "Chừ là sáng mà", "Chừ là {time} giờ sáng mà", "Mới có {time} giờ sáng à"],
             "context": ""
         },
@@ -349,7 +337,7 @@
         },
         {
             "tag": "chàolộnbuốitrưa",
-            "patterns": [""],
+            "patterns": ["cbtr"],
             "responses": ["Ủa chừ là buối trưa mà :v", "Chừ là trưa mà", "Gì zậy chừ đang là trưa mà", "Chừ là {time} giờ trưa mà", "Bây giờ là đang trưa rồi"],
             "context": ""
         },
@@ -361,7 +349,7 @@
         },
         {
             "tag": "chàolộnbuốichiều",
-            "patterns": [""],
+            "patterns": ["cbc"],
             "responses": ["Ủa chừ là buối chiều mà :v", "Chừ là chiều mà", "Gì zậy chừ đang là chiều mà", "Chừ là {time} giờ chiều mà", "Bây giờ là {time} giờ chiều"],
             "context": ""
         },
@@ -373,7 +361,7 @@
         },
         {
             "tag": "chàolộnbuốitối",
-            "patterns": [""],
+            "patterns": ["cbt"],
             "responses": ["Ủa chừ là buối tối mà :v", "Chừ là tối mà", "Gì zậy chừ đang tối rồi mà", "Tối thui rồi", "Chừ là {time} giờ tối mà", "Bây giờ là {time} giờ tối rồi"],
             "context": ""
         },
