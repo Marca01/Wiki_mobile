@@ -15,6 +15,7 @@ import * as Clipboard from "expo-clipboard";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { PinchGestureHandler } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
+import RNUrlPreview from "react-native-url-preview";
 
 export default function NodeChat({
   user_message,
@@ -36,12 +37,12 @@ export default function NodeChat({
     return pattern.test(str);
   };
 
-  const imgUrl = (str) => {
+  const textContainUrl = (str) => {
     return str.match(/(https?:\/\/[^ ]*)/)[1].replace(",", "");
   };
 
   const splitText = (str) => {
-    let text_split = str.split(imgUrl(str));
+    let text_split = str.split(textContainUrl(str));
     return text_split;
   };
 
@@ -85,14 +86,58 @@ export default function NodeChat({
             {Array.isArray(data[1]?.message) ? (
               data[1]?.message.map((url, i) =>
                 URL(url) ? (
-                  <Text
-                    onLongPress={() => copyToClipboard(url)}
-                    key={i}
-                    style={{ color: "blue", textDecorationLine: "underline" }}
-                    onPress={() => navigation.navigate("Webview", { url: url })}
-                  >
-                    {url}
-                  </Text>
+                  i === 0 ? (
+                    <TouchableOpacity
+                      onLongPress={() => copyToClipboard(url)}
+                      onPress={() =>
+                        navigation.navigate("Webview", { url: url })
+                      }
+                    >
+                      <RNUrlPreview
+                        text={url}
+                        titleStyle={{
+                          fontSize: 18,
+                          fontWeight: "bold",
+                        }}
+                        containerStyle={{
+                          flexDirection: "column",
+                          height: 250,
+                          width: 270,
+                          backgroundColor: "#f7f7f8",
+                          borderRadius: 20,
+                          alignItems: "center",
+                          marginBottom: 10,
+                        }}
+                        imageStyle={{
+                          width: 200,
+                          height: 150,
+                          borderRadius: 20,
+                          marginBottom: 3,
+                          resizeMode: "cover",
+                          // backgroundColor: 'red'
+                        }}
+                        textContainerStyle={{
+                          padding: 10,
+                          // justifyContent: 'center',
+                          // alignItems: 'center'
+                        }}
+                      />
+                    </TouchableOpacity>
+                  ) : (
+                    <Text
+                      onLongPress={() => copyToClipboard(url)}
+                      key={i}
+                      style={{
+                        color: "blue",
+                        textDecorationLine: "underline",
+                      }}
+                      onPress={() =>
+                        navigation.navigate("Webview", { url: url })
+                      }
+                    >
+                      {url}
+                    </Text>
+                  )
                 ) : (
                   <TouchableOpacity
                     style={[
@@ -183,20 +228,80 @@ export default function NodeChat({
                 style={globalStyles.messages_botText}
                 onLongPress={() => copyToClipboard(data[1]?.message)}
               >
-                {data[1]?.message.indexOf(".png") > -1
-                  ? splitText(data[1]?.message).reduce((first, second) => (
-                      <>
-                        {first}
-                        <Image
-                          style={globalStyles.message_botText_icon}
-                          source={{
-                            uri: imgUrl(data[1]?.message),
-                          }}
-                        />
-                        {second}
-                      </>
-                    ))
-                  : data[1]?.message}
+                {data[1]?.message.indexOf(".png") > -1 ? (
+                  splitText(data[1]?.message).reduce((first, second) => (
+                    <>
+                      {first}
+                      <Image
+                        style={globalStyles.message_botText_icon}
+                        source={{
+                          uri: textContainUrl(data[1]?.message),
+                        }}
+                      />
+                      {second}
+                    </>
+                  ))
+                ) : URL(data[1]?.message) ? (
+                  <View>
+                    <Text
+                      onLongPress={() => copyToClipboard(data[1]?.message)}
+                      style={{
+                        color: "blue",
+                        textDecorationLine: "underline",
+                      }}
+                      onPress={() =>
+                        navigation.navigate("Webview", {
+                          url: data[1]?.message,
+                        })
+                      }
+                    >
+                      {data[1]?.message}
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate("Webview", {
+                          url: data[0]?.message.replace(":surl", ""),
+                        })
+                      }
+                      onLongPress={() =>
+                        copyToClipboard(data[0]?.message.replace(":surl", ""))
+                      }
+                    >
+                      <RNUrlPreview
+                        text={data[0]?.message.replace(":surl", "")}
+                        titleStyle={{
+                          fontSize: 18,
+                          fontWeight: "bold",
+                        }}
+                        containerStyle={{
+                          flexDirection: "column",
+                          height: 250,
+                          width: 200,
+                          backgroundColor: "#f7f7f8",
+                          borderRadius: 20,
+                          // justifyContent: 'center',
+                          alignItems: "center",
+                          // padding: 20
+                        }}
+                        imageStyle={{
+                          width: 200,
+                          height: 150,
+                          borderRadius: 20,
+                          marginBottom: 3,
+                          resizeMode: "cover",
+                          // backgroundColor: 'red'
+                        }}
+                        textContainerStyle={{
+                          padding: 10,
+                          // justifyContent: 'center',
+                          // alignItems: 'center'
+                        }}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                ) : (
+                  data[1]?.message
+                )}
               </Text>
             )}
           </View>
