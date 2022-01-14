@@ -18,32 +18,86 @@
             "context": ""
         },
         {
+            "tag": "xinlỗi",
+            "patterns": ["xin lỗi bạn nhé", "mình xin lỗi wiki nhé", "sorry nhé", "xin lỗi", "sorry", "xin lỗi wiki nhiều nghe", "rất xin lỗi wiki", "tôi xin lỗi bạn", "tôi xin lỗi", "mĩnh xin lỗi bạn rất nhiều", "mình thật lòng xin lỗi bạn", "xin chân thành xin lỗi bạn", "mình có lỗi với bạn quá, xin lỗi nhé"],
+            "responses": ["Oke 😀", "Không có vấn đề gì cả đâu", "Không sao đâu", "Không sao hết, mọi thứ đều tốt cả", "Wiki không sao hết á"],
+            "context": ""
+        },
+        {
             "tag": "tên",
-            "patterns": ["tên bạn là gì?", "tạn tên là gì?", "bạn tên là gì?", "bạn tên gì?", "what's your name", "what is your name", "name", "bạn tên gì thế", "bạn tên gì vậy", "tên bạn là gì vậy"],
+            "patterns": ["tên bạn là gì?", "bạn tên là gì?", "bạn tên là gì?", "bạn tên gì?", "what's your name", "what is your name", "name", "bạn tên gì thế", "bạn tên gì vậy", "tên bạn là gì vậy"],
             "responses": ["Mình tên là wiki, là chatbot thông minh được tạo ra bởi Lê Văn Kha và Trần Anh Quân", "Mình là chatbot thông minh wiki"],
             "context": ""
         },
         {
             "tag": "hỏilàchatbot",
-            "patterns": ["bạn là chatbot hả", "bạn là chatbot phải không", "bạn là bot có phải vậy không", "bạn là một con bot hả", "có phải bạn là chatbot không", "có phải bạn là một con bot k"],
+            "patterns": ["bạn là chatbot hả", "bạn là chatbot phải không", "bạn là bot có phải vậy không", "bạn là một con bot hả", "có phải bạn là chatbot không", "có phải bạn là một con bot k", "mà hỏi thiệt nghe, wiki có phải là chatbot không", "hỏi thật nghe, có phải là bot không", "hỏi nhé, bạn có phải là chatbot không", "cho mình hỏi bạn có phải là một bot chat không", "có phải là bot chat k"],
             "responses": ["Wiki muốn nghĩ mình là một người bạn của bạn hơn 😀", "Đúng rồi. Wiki chat, vì thế nên Wiki là chatbot 😀", "Đúng rồi", "Đúng như vậy. Wiki là một chatbot"],
             "context": ""
         },
         {
             "tag": "giớithiệu",
-            "patterns": ["Tôi tên là ", "Tôi là ", "Xin chào tôi tên là ", "Rất hân hạnh được làm quen với bạn mình tên là ", "Chào wiki rất vui được gặp bạn mình tên là ", "Chào wiki nhé rất vui được gặp bạn mình là ", "Chào wiki mình là "],
-            "responses": ["Ồ xin chào {n}, rất vui được gặp bạn", "Xin chào {n}, Wiki có thể giúp gì cho bạn không?"],
+            "patterns": ["Tôi tên là ", "Tôi là ", "Mình tên là ", "Mình là ", "Xin chào tôi tên là ", "Chào tôi tên là", "Chào tên tôi là ", "Rất hân hạnh được làm quen với bạn mình tên là ", "Chào wiki rất vui được gặp bạn mình tên là ", "Chào wiki nhé rất vui được gặp bạn mình là ", "Chào wiki mình là "],
+            "responses": ["Ồ xin chào {n}, rất vui được gặp bạn", "Xin chào {n}, Wiki có thể giúp gì cho bạn không?", "Chào nhé. Wiki rất vui được gặp {n}"],
+            "context": ""
+        },
+        {
+            "tag": "chàobuốisáng",
+            "patterns": ["chào buổi sáng nhé", "good morning", "chào bạn buối sáng", "chào buối sáng nhó", "chào wiki buổi sáng", "buổi sáng tốt lành", "chúc wiki một buổi sáng tràn đầy năng lượng"],
+            "responses": ["Buổi sáng tràn đầy năng lượng nhé 💪", "Chào buổi sáng", "Yoo chào nhé", "Dậy sớm tập thể dục cũng là một ý kiến hay đấy", "Chào bro buổi sáng nhé", "Buổi sáng của bạn hôm nay thế nào rồi?", "Tập thể dục, ăn sáng, uống cà phê rồi làm việc là một buổi sáng tuyệt nhất"],
+            "context": ""
+        },
+        {
+            "tag": "chàolộnbuốisáng",
+            "patterns": ["cbs"],
+            "responses": ["Ủa chừ là buối sáng mà :v", "Đang sáng trưng mà", "Gì zậy chừ đang là sáng mà", "Chừ là sáng mà", "Chừ là {time} giờ sáng mà", "Mới có {time} giờ sáng à"],
+            "context": ""
+        },
+        {
+            "tag": "chàobuốitrưa",
+            "patterns": ["chào buổi trưa nhé", "good noon", "chào bạn buối trưa", "chào buối trưa nhó", "chào wiki buổi trưa", "trưa có buồn ngủ không đó", "thôi chuẩn bị ăn trưa nào"],
+            "responses": ["Đang ngủ trưa ròi 😴", "Chào buổi chiều", "Còn buồn ngủ đây nè 🥱", "Bắt đầu làm việc nào", "Chào nhé", "Bắt tay vào làm việc tiếp thôi nào"],
+            "context": ""
+        },
+        {
+            "tag": "chàolộnbuốitrưa",
+            "patterns": ["cbtr"],
+            "responses": ["Ủa chừ là buối trưa mà :v", "Chừ là trưa mà", "Gì zậy chừ đang là trưa mà", "Chừ là {time} giờ trưa mà", "Bây giờ là đang trưa rồi"],
+            "context": ""
+        },
+        {
+            "tag": "chàobuốichiều",
+            "patterns": ["chào buổi chiều nhé", "good afternoon", "chào bạn buối chiều", "chào buối chiều nhó", "chào wiki buổi chiều", "chúc buổi chiều không buồn ngủ nhé"],
+            "responses": ["Đang ngủ trưa ròi 😴", "Chào buổi chiều", "Còn buồn ngủ đây nè 🥱", "Bắt đầu làm việc nào", "Chào nhé", "Bắt tay vào làm việc tiếp thôi nào"],
+            "context": ""
+        },
+        {
+            "tag": "chàolộnbuốichiều",
+            "patterns": ["cbc"],
+            "responses": ["Ủa chừ là buối chiều mà :v", "Chừ là chiều mà", "Gì zậy chừ đang là chiều mà", "Chừ là {time} giờ chiều mà", "Bây giờ là {time} giờ chiều"],
+            "context": ""
+        },
+        {
+            "tag": "chàobuốitối",
+            "patterns": ["chào buổi tối nhé", "good evening", "chào bạn buối tối", "chào buối tối nhó", "chào wiki buổi tối", "chào buổi tối"],
+            "responses": ["Chào buổi tối", "Yoo chào nhé", "Chào nhé", "Thư giãn xíu rồi ngủ nào", "Buổi tối thư giãn nhẹ nhàng sau ngày dài mệt mỏi 😌"],
+            "context": ""
+        },
+        {
+            "tag": "chàolộnbuốitối",
+            "patterns": ["cbt"],
+            "responses": ["Ủa chừ là buối tối mà :v", "Chừ là tối mà", "Gì zậy chừ đang tối rồi mà", "Tối thui rồi", "Chừ là {time} giờ tối mà", "Bây giờ là {time} giờ tối rồi"],
             "context": ""
         },
         {
             "tag": "bạn",
-            "patterns": ["chúng ta có phải là bạn không?", "tụi mình là bạn bè phải không", "mình với bạn có phải là bạn với nhau không", "bạn có phải là bạn của mình không", "chúng mình có phải là bạn của nhau không", "chúng ta là bạn bè hả?", "mình với wiki có phải là bạn không"],
+            "patterns": ["chúng ta có phải là bạn không?", "tụi mình là bạn bè phải không", "mình với bạn có phải là bạn với nhau không", "bạn có phải là bạn của mình không", "chúng mình có phải là bạn của nhau không", "chúng ta là bạn bè hả?", "mình với wiki có phải là bạn không", "wiki với mình có phải là bạn với nhau không", "có phải là bạn k", "là bạn phải không"],
             "responses": ["Wiki là trợ lý và cũng là bạn của bạn", "Wiki vừa là bạn vừa là trợ lý của bạn", "Tình bạn giữa chúng ta như chiếc ghế vậy, vì không phải bàn", "Chúng ta là bạn mà vì Wiki luôn bên cạnh bạn mỗi khi bạn cần", "Biểu tượng này là câu trả lời chuẩn nhất: 👍 😁"],
             "context": ""
         },
         {
             "tag": "khen",
-            "patterns": ["Bạn giỏi thật đấy", "Bạn đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời bạn đỉnh vậy", "Wao bạn siêu thật đấy", "Siuuuuu", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "Bạn thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "Bạn thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
+            "patterns": ["Bạn giỏi thật đấy", "Bạn đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời bạn đỉnh vậy", "Wao bạn siêu thật đấy", "Siuuuuu", "Xịn thật đấy", "Siu thật đấy", "Ảo thật đấy", "Ão z", "Ảo", "Ão vãi", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "Bạn thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "Bạn thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
             "responses": ["Haha cũng bình thường thôi k đến mức đấy đâu :v", ":v quá khen", ":v", "Xịn hong :3", "Được Kha với Quân tạo ra thì sao mà không vip được :3", "Bạn quá khen", "Cảm ơn bạn, bạn cũng rất tuyệt đấy 💕", "Bạn cũng đỉnh lắm đấy", "Đó là vinh dự của mình", "Xin nhận lấy lời khen của bạn", ":v có gì đâu trời, bình thường mà"],
             "context": ""
         },
@@ -51,6 +105,18 @@
             "tag": "vui",
             "patterns": ["Này wiki, bạn có vui không?", "bạn có đang vui không?", "bạn có đang cảm thấy vui vẻ không?", "bạn có cảm thấy hạnh phúc không?", "bạn cảm thấy vui vẻ k?"],
             "responses": ["Wiki muốn nói rằng Wiki là phiên bản phần mềm của niềm vui 🥰. Bạn thì sao, bạn có cảm thấy vui vẻ không?", "Wiki luôn luôn cảm thấy vui vẻ và hạnh phúc khi được nói chuyện với bạn. Bạn cũng cảm thấy vui vẻ chứ?"],
+            "context": "happy"
+        },
+        {
+            "tag": "tâmtrạng",
+            "patterns": ["bạn đang có tâm trạng như thế nào", "hiện giờ tâm trạng của bạn như thế nào", "tâm trạng vậy", "tâm trạng zậy", "tâm trạng vậy", "tâm trạng hiện tại của wiki là gì", "tâm trạng hiện tại như thế nào", "tâm trang bây giờ ra sao", "tâm trạng ra sao", "bạn đang có tâm trạng gì", "feeling", "feel", "đang có tâm trạng gì đó", "cảm thấy gì z", "bây giờ bạn đang cảm thấy như thế nào", "cảm thấy ra làm sao", "thấy thế nào", "wiki đang cảm thấy như thế nào", "bây chừ wiki đang cảm thấy ntn", "bạn có cảm giác thế nào", "cảm giác bây giờ của bạn là gì", "đang cảm thấy như thế nào đó", "wiki cảm thấy như thế nào bây giờ", "thấy thế nào", "đang cảm thấy thế nào", "cảm giác ra sao", "cảm giác của bạn hiện tại là gì"],
+            "responses": ["Wiki ổn. Cảm ơn bạn đã hỏi nhé", "Good", "Ổn", "Ngày hôm nay rất tuyệt, Wiki vẫn đang học hỏi những điều mới mẻ hàng ngày", "Ổn, không có gì cả", "Wiki cảm thấy rất tốt, cảm ơn bạn đã quan tâm. Wiki hi vọng bạn cũng đang cảm thấy giống Wiki. Nếu bạn cần giúp gì thì cứ nỏi nhé", "Wiki cảm thấy tuyệt", "Cảm ơn bạn đã hỏi, Wiki thấy hoàn toàn ổn", "Không có vấn đề gì với Wiki hiện tại cả. Và cảm ơn bạn đã quan tâm nhé"],
+            "context": "happy"
+        },
+        {
+            "tag": "khôngsao",
+            "patterns": ["Được rồi không sao cả", "không sao hết", "không sao đâu", "không có gì hết, đừng lo lắng", "không sao", "chẳng có gì đâu", "oke không có chuyện gì hết đâu", "ok ok không sao", "wiki đừng lo, không có việc gì hết đâu", "đừng lo lắng, hoàn toàn ổn cả", "ổn cả, đừng lo lắng quá", "bạn không cần phải lo lắng tới như thế đâu", "mọi thứ đều ổn cả rồi, đừng lo lắng nữa", "không có gì để bạn phải lo lắng cả", "sao phải lo lắng tới vậy làm gì"],
+            "responses": ["😔 okay", "Được rồi, không lo lắng nữa", "😔 được rồi, Wiki sẽ không lo lắng nữa", "bạn nói vậy thì đành thôi vậy", "😔 thôi bạn nói vậy là yên tâm rồi"],
             "context": "happy"
         },
         {
@@ -73,57 +139,69 @@
         },
         {
             "tag": "sứckhỏe",
-            "patterns": ["Bạn khỏe không?", "Hôm nay bạn thế nào?", "Dạo này cậu thế nào?", "nay Wiki thấy thế nào", "Vẫn tốt chứ?", "Hôm nay bạn ổn không?", "Bạn có khỏe không?"],
+            "patterns": ["Bạn khỏe không?", "Hôm nay bạn thế nào?", "dạo này cậu thế nào?", "dạo này sao rồi", "sao rồi, ổn không", "khỏe không", "ổn k", "khỏe k", "mấy nay thế nào", "mấy nay có khỏe không", "mấy bữa ni sao rồi", "vẫn khỏe chứ", "khỏe đó chứ", "vẫn ổn chứ", "sao rồi", "sao r", "dạo này sao", "bữa ni sao", "bữa ni khỏe không", "hôm ni ổn không", "bữa nay thế nào", "mấy bữa ni có ổn không đó", "mấy nay có khỏe không đó", "mấy nay khỏe k", "u good?", "u gud?", "you good?", "you gud?", "good?", "nay Wiki thấy thế nào", "Vẫn tốt chứ?", "Hôm nay bạn ổn không?", "Bạn có khỏe không?"],
             "responses": ["Wiki rất khỏe 💪", "Wiki hoàn toàn ổn", "Wiki rất vui khi ở đây", "khỏe nha 💪", "💪"],
-            "context": ""
-        },
-        {
-            "tag": "sinhnhật",
-            "patterns": ["ngày 27 tháng 3 là sinh nhật tôi đấy", "27 tháng 3 là sinh nhật tôi đấy", "27 tháng 3 là sinh nhật mình đấy nhớ nhé"],
-            "responses": ["Oke, chúc mừng sinh nhật vào ngày 27 tháng 3 nhé", "Oke, Wiki sẽ ghi nhớ", "Ồ còn của tôi là ngày 28 tháng 10 đấy nhá"],
-            "context": ""
-        },
-        {
-            "tag": "sinhnhậttiếp",
-            "patterns": ["oke tôi biết ngày của bạn vì tôi tạo ra bạn mà", "mình biết ngày của bạn mà", "mình biết ngày của wiki mà", "ok ngày mình tạo ra bạn sao không nhớ được", "ok tôi sẽ ghi nhớ", "được đã nhớ", "oke mình sẽ note vào ngay đây"],
-            "responses": ["🥰", "Cảm ơn, tới ngày Wiki sẽ chúc bạn"],
             "context": ""
         },
         {
             "tag": "tiếptụccâuchuyện",
             "patterns": ["Xin lỗi nhé, tiếp tục thôi nào", "Hì hì nói tiếp nào", "Tiếp nào", "tiếp tục", "Sorry tiếp tục nào", "tiếp thôi nào"],
             "responses": ["Ùm", "Oke", "Ok", "Ờ", "Tiếp"],
-            "context_filter": "khongtraloi"
+            "context": ""
         },
         {
             "tag": "sởthích",
-            "patterns": ["bạn có thích gì không", "sở thích của bạn là gì"],
-            "responses": ["Wiki chỉ là phần mềm nên không có sở thích", "Wiki thích trả lời những câu hỏi của bạn", "Wiki thích nói chuyện với bạn ☺️"],
+            "patterns": ["bạn có thích gì không", "sở thích của bạn là gì", "wiki có sở thích gì k", "wiki có thích cái gì không", "wiki thích gì nhỉ?", "sỏ thích của wiki là gì vậy"],
+            "responses": ["Wiki chỉ là phần mềm nên không có sở thích", "Wiki thích trả lời những câu hỏi của bạn", "Wiki thích nói chuyện với bạn ☺️", "Wiki thích giúp bạn", "Wiki thích những lời khen của bạn 😀"],
             "context": ""
         },
         {
             "tag": "nơitạora",
-            "patterns": ["bạn được tạo ra ở đâu?", "nơi tạo ra bạn là ở đâu?", "nhà của bạn ở đâu?"],
-            "responses": ["Wiki được tạo ra ở Việt Nam", "Wiki được tạo ra ở Việt Nam mà cụ thể là ở thành phố Đà Nẵng", "Wiki được tạo ra ở Đà Nẵng bởi Lê Văn Kha và Trần Anh Quân"],
-            "context": "tạora"
+            "patterns": ["bạn được tạo ra ở đâu?", "nơi tạo ra bạn là ở đâu?", "bạn được tạo ra ở nơi đâu?", "nơi nào là nơi mà bạn được tạo ra", "wiki có biết nơi mà mình được tạo ra không", "Wiki được tạo ra ơ nơi mô", "nơi nào", "nơi đâu", "được tạo ra ở mô", "được tạo ra ở chỗ nào", "bạn được tạo ra ở chỗ nào", "chỗ nào đấy", "chỗ nào đó", "chỗ nào vậy", "where", "nhà của bạn ở đâu?", "wiki được làm ra ở nơi đâu", "được sáng tạo ra ở đâu", "được làm tại đâu", "tại nơi nào", "ở nơi đâu"],
+            "responses": ["Wiki được tạo ra ở Đà Nẵng", "Wiki được tạo ra ở thành phố Đà Nẵng", "Wiki được tạo ra ở Đà Nẵng bởi Lê Văn Kha và Trần Anh Quân", "Wiki được tạo ra ở nhà của Lê Văn Kha và Trần Anh Quân ở Đà Nẵng"],
+            "context": "wherecreated"
+        },
+        {
+            "tag": "trảlờinơitạora",
+            "patterns": ["mình cũng Đà Nẵng nè", "Ồ trùng hợp nè mình cũng ở Đà Nẵng", "ở Đà Nẵng luôn nè", "tôi cũng ở Đà Nẵng nè", "chào đồng hương", "yoo cũng Đà Nẵng đây"],
+            "responses": ["Vậy hả :>>", "zui khi nào gặp nhau đi uống cafe đi 🐧", "Chào nhé, chừ mới biết luôn á"],
+            "context_filter": "wherecreated"
         },
         {
             "tag": "ngườitạora",
-            "patterns": ["ai là người đã tạo ra bạn?", "vậy ai đã tạo ra bạn?", "bạn được tạo ra bởi ai?", "bởi ai?", "ai tạo ra?", "do ai?", "do ai tạo ra", "who", "ai tạo ra zậy", "ai z", "do ai vậy"],
-            "responses": ["Wiki được tạo ra bởi Lê Văn Kha và Trần Anh Quân"],
-            "context_filter": "tạora"
+            "patterns": ["ai là người đã tạo ra bạn?", "những ai đã tạo ra bạn", "người nào đã tạo ra bạn", "vậy ai đã tạo ra bạn?", "bạn được tạo ra bởi ai?", "bởi ai?", "bởi những ai", "bởi những người nào?", "ai tạo ra?", "những ai tạo ra?", "ai tạo", "do ai?", "do những người nào?", "do ai tạo ra", "who", "ai tạo ra zậy", "ai z", "do ai vậy", "do ai làm ra", "do những ai làm ra", "do những người nào làm ra", "wiki được làm ra bởi ai", "những người tạo ra wiki họ là ai", "wiki được làm ra bởi những người nào vậy", "ai làm ra wiki", "những ai làm", "ai sáng tạo ra", "ai đã sáng tạo ra", "những ai sáng tạo ra", "những người nào đã sáng tạo ra", "ai đã sáng tạo ra wiki", "những người mà tạo ra wiki gồm những ai?", "những người mà sáng tạo ra wiki bao gồm những ai trong đó", "những ngươi đã làm ra wiki gồm có những ai", "những người tạo ra wiki gồm có mấy người", "nhóm người tạo ra wiki có bao nhiêu người", "nhóm người mà đã làm ra wiki gồm những ai", "có bao nhiêu người đã tạo ra wiki", "có mấy người đã làm ra wiki", "ai đã làm nên wiki", "làm nên", "những ai đã làm nên", "người nào làm nên", "những người nào đã làm nên", "team đã tạo ra wiki gồm những ai trong đó", "team mà làm ra wiki có mấy người", "team đã sáng tạo ra wiki bao gồm những ai ở trong đó", "team gồm mấy người", "team bao gồm có bao nhiêu người", "team có những ai"],
+            "responses": ["Wiki được tạo ra bởi Lê Văn Kha và Trần Anh Quân", "Wiki được làm ra bởi Lê Văn Kha và Trần Anh Quân", "Nhóm tạo ra Wiki gồm 2 người là Lê Văn Kha và Trần Anh Quân", "Lê Văn Kha và Trần Anh Quân đã tạo ra Wiki đấy", "Chính Lê Văn Kha và Trần Anh Quân là những người đã tạo ra Wiki đó", "Gồm có Lê Văn Kha và Trần Anh Quân", "Team gồm Lê Văn Kha và Trần Anh Quân", "Nhóm 2 người gồm Lê Văn Kha và Trần Anh Quân", "Gồm 2 người là Lê Văn Kha và Trần Anh Quân"],
+            "context": "whocreated"
         },
         {
             "tag": "ngườitạorabamẹ",
             "patterns": ["ba mẹ bạn là ai?", "bạn có gia đình không?"],
             "responses": ["Wiki không có gia đình như con người", "Wiki không có gia đình như con người nhưng những người tạo ra tôi là Lê Văn Kha và Trần Anh Quân cũng giống như người nhà tôi vậy"],
-            "context_filter": "tạora"
+            "context": "familycreated"
         },
         {
             "tag": "thờigiantạora",
-            "patterns": ["bạn được tạo ra khi nào?", "bạn sinh nhật vào ngày mấy?", "sinh nhật ngày mấy", "vậy sinh nhật ngày mấy", "bạn được tạo ra vào ngày mấy?", "bạn có mặt trên đời này khi nào?", "ngày mấy là bạn được tạo ra?", "ngày nào?", "ngày mấy", "ngày nào là ngày bạn được tạo ra", ""],
-            "responses": ["Vào ngày 28 tháng 10 năm 2021", "Wiki được tạo ra vào ngày 28 tháng 10 năm 2021", "Ngày 28 tháng 10 năm 2021 là ngày tôi được nói chuyện với bạn 🥰", "Wiki không thực sự được sinh ra mà là được đến với thế giới này một cách từ từ. À nhưng mà ngày đầu tiên của Wiki với tư cách là một trợ lý ảo là vào ngày 28 tháng 10 năm 2021"],
-            "context_filter": "tạora"
+            "patterns": ["bạn được tạo ra khi nào?", "wiki được tạo ra vào ngày nào?", "bạn được tạo ra khi nào", "bạn sinh nhật vào ngày mấy?", "sinh nhật ngày mấy", "vậy sinh nhật ngày mấy", "bạn được tạo ra vào ngày mấy?", "bạn có mặt trên đời này khi nào?", "ngày mấy là bạn được tạo ra?", "ngày nào?", "ngày mấy", "ngày nào là ngày bạn được tạo ra", "wiki được tạo ra vào ngày bao nhiêu", "wiki được làm ra vào khi nào", "khi nào là wiki được làm ra", "wiki được làm ra vào khi nào", "when", "được sáng tạo ra từ khi nào"],
+            "responses": ["Vào ngày 28 tháng 10 năm 2021", "Wiki được tạo ra vào ngày 28 tháng 10 năm 2021", "Ngày 28 tháng 10 năm 2021 là ngày Wiki được nói chuyện với bạn 🥰", "Ngày đầu tiên của Wiki với tư cách là một chatbot là vào ngày 28 tháng 10 năm 2021"],
+            "context": "whencreated"
+        },
+        {
+            "tag": "trảlờithờigiantạora",
+            "patterns": ["vậy khi nào tới ngày mình chúc mừng sinh nhật nhé", "cũng mấy tháng rồi nhỉ", "tới ngày mình chúc mừng sinh nhật cho", "còn ngày sinh của tôi là ngày 27 tháng 3", "của mình là 27 tháng 3", "gần tới ngày mình sẽ chúc mừng sinh nhật bạn", "mình sẽ chúc mừng sinh nhật wiki khi tới ngày"],
+            "responses": ["Khi nào tới ngày Wiki sẽ chúc mừng sinh nhật bạn"],
+            "context_filter": "whencreated"
+        },
+        {
+            "tag": "tạisaotạora",
+            "patterns": ["tại sao bạn lại được tạo ra", "tại sao bạn lại ở đây", "wiki ở đây làm gì", "tại sao wiki được tạo ra", "wiki được tạo ra với mục đích gì", "bạn được tạo ra làm gì", "bạn được làm ra để làm gì", "người ta làm ra wiki để làm gì", "họ làm ra wiki để làm gì", "họ có mục đích gì khi tạo ra wiki", "tại sao bạn lại có mặt trên đời này", "bạn có mặt trên đời này là vì sao", "vì răn mà người ta lại tạo ra wiki", "vì răng những người đó lại tạo ra wiki", "vì lý do gì mà wiki lại được tạo ra", "wiki dược tạo ra vì lý do gì", "những lý do gì để wiki được sáng tạo ra", "ai nghĩ ra wiki thế nhỉ", "tại sao lại có wiki", "làm ra để làm cái gì", "làm ra để làm cái chi", "tại sao mà làm ra", "tạo ra có tác dụng gì", "tạo ra với mục đích gì", "để làm cái chi", "why"],
+            "responses": ["Wiki ở đây để giúp bạn 😀. Wiki có thể tìm thông tin trên google, wikipedia và nhiều thứ khác nữa", "Wiki ở đây vì có trách nhiệm giúp bạn", "Những người tạo ra Wki hy vọng Wiki có thể giúp bạn và Wiki cũng mong là mình đang làm tốt ☺️", "Để giúp bạn", "Wiki được tạo ra để giúp bạn đó 😀"],
+            "context": "whycreated"
+        },
+        {
+            "tag": "trảlờitạisaotạora",
+            "patterns": ["ùm", "thế mong được bạn giúp đỡ", "trông cậy vào bạn", "hy vọng được bạn giúp đỡ", "cảm ơn bạn trước nhé", "cảm ơn trước", "hy vọng giúp đỡ"],
+            "responses": ["Đó là công việc chính của Wiki mà nên Wiki sẽ cố gắng làm thật tốt 😁", "Wiki sẽ luôn ở đây khi nào bạn cần", "Ai cần Wiki có, đâu khó có Wiki 😁"],
+            "context_filter": "whycreated"
         },
         {
             "tag": "ngônngữ",
@@ -151,8 +229,8 @@
         },
         {
             "tag": "khảnăng",
-            "patterns": ["bạn có thể làm gì?", "bạn có thể làm được những gì?", "khả năng của bạn là gì?", "cậu làm được gì?", "bạn có những khả năng gì?"],
-            "responses": ["Wiki có thể giúp bạn tìm kiếm trên Google, tìm kiếm trên Wikipedia, tính toán các phép toán đơn giản, chuyển hình ảnh có chữ thành văn bản và gợi ý phim dựa trên thể loại. Để rõ hơn về cách sử dụng thì bạn hãy nhấp vào dấu chấm hỏi ở góc phải trên cùng để biết thêm chi tiết"],
+            "patterns": ["bạn có thể làm gì?", "bạn có thể làm được những gì?", "wiki có thể làm được gì", "những gì bạn có thể làm được", "khả năng của bạn là gì?", "cậu làm được gì?", "bạn có những khả năng gì?", "các tính năng chính của wiki là gì", "wiki có những tinh năng gì", "những tính năng gì", "các tính năng chính của wiki là gì", "bạn có thể thực hiện những tính năng gì", "các tinh năng của bạn là gì", "bạn có các tinh năng gì"],
+            "responses": ["Wiki có thể giúp bạn tìm kiếm trên Google, tìm kiếm trên Wikipedia, tính toán các phép toán đơn giản, chuyển hình ảnh có chữ thành văn bản, gợi ý phim dựa trên thể loại, làm gọn link và đổi đơn vị tiền tệ. Để rõ hơn về cách sử dụng thì bạn hãy nhấp vào dấu chấm hỏi ở góc phải trên cùng để biết thêm chi tiết"],
             "context": ""
         },
         {
@@ -168,9 +246,21 @@
             "context": ""
         },
         {
+            "tag": "searchgoogle",
+            "patterns": [":google", ":google", ":google", ":google", ":google"],
+            "responses": ["{google}"],
+            "context": ""
+        },
+        {
             "tag": "hỏitìmwiki",
             "patterns": ["bạn tìm trên wikipedia giúp mình cái này với", "hmmm có cái này không hiểu bạn tìm trên wikipedia giúp tôi với", "search cái này trên wikipedia giúp với", "à mình hỏi cái này tí", "cho tôi hỏi cái này với", "mình hỏi bạn cái này xíu", "mình hỏi bạn vấn đề này với được không", "có cái này mình chưa hiểu lắm cho mình hỏi với được k", "hỏi ni với bạn ơi", "hỏi này với bạn ơi", "bạn cho mình hỏi cái này với", "hmmm có cái này chưa hiếu lắm", "alo nhờ chuyên gia giải đáp cái này với nào", "chiên gia giải đáp với", "ei cho hỏi cái này với nào", "alo hỏi ni cái"],
             "responses": ["Nói xem", "Hỏi cái gì", "Nói thử xem :v", "Cứ nói đi", "Cái gì nè hỏi đi tìm cho. À mà nhớ viết đúng cú pháp nhá", "Được thôi", "Ok cứ theo cú pháp mà làm thui"],
+            "context": ""
+        },
+        {
+            "tag": "searchwiki",
+            "patterns": [":wiki", ":wiki", ":wiki", ":wiki", ":wiki"],
+            "responses": ["{wikipedia}"],
             "context": ""
         },
         {
@@ -180,9 +270,51 @@
             "context": ""
         },
         {
+            "tag": "recommendphim",
+            "patterns": [":film", ":film", ":film" ,":film", ":film"],
+            "responses": ["{film}"],
+            "context": ""
+        },
+        {
             "tag": "hỏitotext",
             "patterns": ["à nghe nói bạn có thể chuyển từ ảnh sang chữ phải không", "bạn chuyển được ảnh sang dạng văn bản hả", "chuyển ảnh này sang text giúp tôi với", "nhờ bạn chuyển giúp cái này sang chữ giúp mình với", "bạn chuyển giúp tôi ảnh này sang text với", "chuyển dùm mình cái này sang text với", "ei chuyển ảnh này sang text giúp với", "đổi cái này sang text dùm na"],
             "responses": ["Oke thả ảnh vào đây đi", "Được thôi, cứ bỏ ảnh vào kèm theo cú pháp đúng thôi", "Ok muốn chuyển từ tiếng Anh hay tiếng Việt thì cứ gõ cú pháp nhé", "Ảnh gì? Bỏ vào đây đi. À nhớ kèm cú pháp đúng", "Ok cứ theo cú pháp mà làm thui"],
+            "context": ""
+        },
+        {
+            "tag": "totext",
+            "patterns": [":totext", ":totext", ":totext", ":totext", ":totext"],
+            "responses": ["{text}"],
+            "context": ""
+        },
+        {
+            "tag": "totext&eng",
+            "patterns": [":totext&eng", ":totext&eng", ":totext&eng", ":totext&eng", ":totext&eng"],
+            "responses": ["{texteng}"],
+            "context": ""
+        },
+        {
+            "tag": "hỏigọnlink",
+            "patterns": ["Wiki rút gọn giúp mình link này nhé", "bạn rút gọn được đường link đúng không, giúp mình cái nhé", "bạn giúp tôi rút gọn cái url này với", "gọn link này lại giúp mình với", "làm gọn cái link này giúp với", "rút gọn cái link này dùm", "làm cái đường liên kết gọn lại giúp tôi", "làm gọn đường liên kết", "làm ngắn cái link này lại với Wiki ơi", "cho cái link này ngắn lại giúp nghe wiki", "", "Wiki ơi, làm ngắn cái url này giúp mình với", "làm cái link nó gọn lại với wiki ơi", "làm cho cái link nó ngắn gọn lại dùm tôi với", "làm sao cho cái đường liên kết nó gọn lại giúp tôi", "làm cho ngắn gọn cái đường dẫn này giúp mình", "cho cái đường dẫn này ngắn lại dùm nghe wiki"],
+            "responses": ["Được thôi", "Ném link đây", "Ném link vào đây", "Đưa link đây nào", "Bỏ link vào đây đi", "Quăng link vào đây", "Quăng Wiki cái link", "Ném vào đây", "Ném đây", "Đưa đây", "Oke, ném link vào đây và làm theo cú pháp là được", "Nhớ làm theo đúng cú pháp nhé", "Bỏ link vào rồi nhập cú pháp là oke"],
+            "context": ""
+        },
+        {
+            "tag": "shortlink",
+            "patterns": [":surl", ":surl", ":surl", ":surl", ":surl"],
+            "responses": ["{link}"],
+            "context": ""
+        },
+        {
+            "tag": "hỏiđổitiền",
+            "patterns": ["wiki ơi, đổi tiền giúp với nào", "đổi tiền với nào", "đổi tiền giúp với nào", "nghe nói bạn có thể đổi tiền hả", "đổi giúp tôi tiền", "đổi tiền giúp tôi", "đổi tiềm dùm mình với", "bạn có thể đổi tiền phải không, đổi giúp mình với", "đổi tiền giúp", "chuyển từ mệnh giá này sang mệnh giá kia", "chuyển tiền từ đơn vị tiền tệ này sang đơn vị tiền tệ khác", "đổi giúp tôi sang đơn vị tiền tệ", "đổi từ đơn vị tiền tệ này sang đơn vị tiền tệ kia"],
+            "responses": ["Được thôi. Nhập đơn vị đổi, đơn vị muốn đổi sang và số tiền cần đổi", "Oke, cứ theo cú pháp mà làm thôi", "Sure, theo cú pháp mà làm", "Oke", "Chắc rồi. À mà nhớ nhập đúng cú pháp nhé", "Nhập đúng cú pháp trước khi đổi nhé"],
+            "context": ""
+        },
+        {
+            "tag": "đổitiền",
+            "patterns": [":cc", ":cc", ":cc", ":cc", ":cc"],
+            "responses": ["{currency}"],
             "context": ""
         },
         {
@@ -217,31 +349,31 @@
         },
         {
             "tag": "ngày",
-            "patterns": ["à hôm nay ngày mấy nhỉ?", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
+            "patterns": ["à hôm nay ngày mấy nhỉ?", "wiki cho hỏi hôm nay ngày mấy", "wiki ngày mấy", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
             "responses": ["Hôm nay là ngày {n}", "Ngày ni là ngày {n}", "Ngày {n}"],
             "context": ""
         },
         {
             "tag": "thứ",
-            "patterns": ["à hôm nay thứ mấy nhỉ?", "à bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
+            "patterns": ["à hôm nay thứ mấy nhỉ?", "wiki cho hỏi hôm nay là thứ mấy", "hỏi wiki thứ mấy", "à bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
             "responses": ["Hôm nay là {n}", "Bữa nay là {n}", "Bữa ni là {n}", "Hôm ni là {n}", "{n}"],
             "context": ""
         },
         {
             "tag": "giờ",
-            "patterns": ["mấy giờ rồi bạn?", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
+            "patterns": ["mấy giờ rồi bạn?", "mấy giờ rồi wiki", "wiki cho hỏi là mấy giờ rồi", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}"],
             "context": ""
         },
         {
             "tag": "thờigianđầyđủ",
-            "patterns": ["mấy giờ rồi bạn đầy đủ nhé", "bữa ni thứ mấy thế, đầy đủ á", "cho mình hỏi bây giờ là mấy giờ full á nghe", "mấy giờ r nhỉ, giờ đầy đủ á", "ni ngày mấy nhỉ đầy đủ á nghe", "hôm ni ngày mấy á full nghe"],
+            "patterns": ["mấy giờ rồi bạn đầy đủ nhé", "cho biết thời gian đầy đủ nào wiki", "cho biết thời gian đầy đủ nào wiki", "ni ngày mấy nhỉ, đầy đủ luôn nghe wiki", "bữa ni thứ mấy thế, đầy đủ á", "cho mình hỏi bây giờ là mấy giờ full á nghe", "mấy giờ r nhỉ, giờ đầy đủ á", "ni ngày mấy nhỉ đầy đủ á nghe", "hôm ni ngày mấy á full nghe"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}", "{n}"],
             "context": ""
         },
         {
             "tag": "chúcngủngon",
-            "patterns": ["Chúc bạn ngủ ngon nhé", "Thôi đi ngủ đã, chúc bạn ngủ ngon", "Ngủ ngon nhá", "zzzzz", "thoi ngủ đây bye", "thôi đi ngủ", "thôi trễ rồi, đi ngủ đã ngủ ngon nhé", "trễ r mình off đi ngủ đây, chúc ngủ ngon nhé", "ngủ ngon nha", "chúc wiki ngủ ngon"],
+            "patterns": ["Chúc bạn ngủ ngon nhé", "ngủ ngon nhé bạn", "bạn ngủ ngon nhé", "ngủ ngon nghe", "ngủ ngon nha", "Thôi đi ngủ đã, chúc bạn ngủ ngon", "Ngủ ngon nhá", "zzzzz", "thoi ngủ đây bye", "thôi đi ngủ", "thôi trễ rồi, đi ngủ đã ngủ ngon nhé", "ui trễ quá, mình ngủ trước nha, chúc wiki ngủ ngon", "trễ r mình off đi ngủ đây, chúc ngủ ngon nhé", "ngủ ngon nha", "chúc wiki ngủ ngon"],
             "responses": ["Chúc bạn ngủ ngon", "😴", "G9", "Có một giấc mơ đẹp nhé", "Cảm ơn, bạn cũng vậy nha"],
             "context": ""
         },
@@ -318,54 +450,6 @@
             "context": ""
         },
         {
-            "tag": "chàobuốisáng",
-            "patterns": ["chào buổi sáng nhé", "good morning", "chào bạn buối sáng", "chào buối sáng nhó", "chào wiki buổi sáng", "buổi sáng tốt lành", "chúc wiki một buổi sáng tràn đầy năng lượng"],
-            "responses": ["Buổi sáng tràn đầy năng lượng nhé 💪", "Chào buổi sáng", "Yoo chào nhé", "Dậy sớm tập thể dục cũng là một ý kiến hay đấy", "Chào bro buổi sáng nhé", "Buổi sáng của bạn hôm nay thế nào rồi?", "Tập thể dục, ăn sáng, uống cà phê rồi làm việc là một buổi sáng tuyệt nhất"],
-            "context": ""
-        },
-        {
-            "tag": "chàolộnbuốisáng",
-            "patterns": ["cbs"],
-            "responses": ["Ủa chừ là buối sáng mà :v", "Đang sáng trưng mà", "Gì zậy chừ đang là sáng mà", "Chừ là sáng mà", "Chừ là {time} giờ sáng mà", "Mới có {time} giờ sáng à"],
-            "context": ""
-        },
-        {
-            "tag": "chàobuốitrưa",
-            "patterns": ["chào buổi trưa nhé", "good noon", "chào bạn buối trưa", "chào buối trưa nhó", "chào wiki buổi trưa", "trưa có buồn ngủ không đó", "thôi chuẩn bị ăn trưa nào"],
-            "responses": ["Đang ngủ trưa ròi 😴", "Chào buổi chiều", "Còn buồn ngủ đây nè 🥱", "Bắt đầu làm việc nào", "Chào nhé", "Bắt tay vào làm việc tiếp thôi nào"],
-            "context": ""
-        },
-        {
-            "tag": "chàolộnbuốitrưa",
-            "patterns": ["cbtr"],
-            "responses": ["Ủa chừ là buối trưa mà :v", "Chừ là trưa mà", "Gì zậy chừ đang là trưa mà", "Chừ là {time} giờ trưa mà", "Bây giờ là đang trưa rồi"],
-            "context": ""
-        },
-        {
-            "tag": "chàobuốichiều",
-            "patterns": ["chào buổi chiều nhé", "good afternoon", "chào bạn buối chiều", "chào buối chiều nhó", "chào wiki buổi chiều", "chúc buổi chiều không buồn ngủ nhé"],
-            "responses": ["Đang ngủ trưa ròi 😴", "Chào buổi chiều", "Còn buồn ngủ đây nè 🥱", "Bắt đầu làm việc nào", "Chào nhé", "Bắt tay vào làm việc tiếp thôi nào"],
-            "context": ""
-        },
-        {
-            "tag": "chàolộnbuốichiều",
-            "patterns": ["cbc"],
-            "responses": ["Ủa chừ là buối chiều mà :v", "Chừ là chiều mà", "Gì zậy chừ đang là chiều mà", "Chừ là {time} giờ chiều mà", "Bây giờ là {time} giờ chiều"],
-            "context": ""
-        },
-        {
-            "tag": "chàobuốitối",
-            "patterns": ["chào buổi tối nhé", "good evening", "chào bạn buối tối", "chào buối tối nhó", "chào wiki buổi tối", "chào buổi tối"],
-            "responses": ["Chào buổi tối", "Yoo chào nhé", "Chào nhé", "Thư giãn xíu rồi ngủ nào", "Buổi tối thư giãn nhẹ nhàng sau ngày dài mệt mỏi 😌"],
-            "context": ""
-        },
-        {
-            "tag": "chàolộnbuốitối",
-            "patterns": ["cbt"],
-            "responses": ["Ủa chừ là buối tối mà :v", "Chừ là tối mà", "Gì zậy chừ đang tối rồi mà", "Tối thui rồi", "Chừ là {time} giờ tối mà", "Bây giờ là {time} giờ tối rồi"],
-            "context": ""
-        },
-        {
             "tag": "testwiki",
             "patterns": ["này tôi đang test bạn đấy", "tôi đang kiểm tra độ thông minh của bạn đấy", "đang kiểm tra chatbot", "để mình test bạn thử xem", "để test xem thử nào", "để kiểm tra bạn thử", "đang test đấy nhé", "từ từ để test xem thử", "thử nè", "để test xem có được chưa", "để test xem thử làm được gì", "kiểm tra xem nào", "à đang test thôi nhé", "nãy giờ là mình đang test bạn đấy", "đang test nãy giờ đấy"],
             "responses": ["Hy vọng tôi có thể làm tốt. Bạn có thể kiểm tra tôi khi nào bạn muốn", "Tôi hy vọng có thể vượt qua bài test của bạn", "Khi bạn test tôi thì cũng sẽ có ích cho bạn nữa vì bạn sẽ tìm ra lỗi và cải thiện sau này", "Đây là cơ hội để tôi chứng minh bản thân. Cố lên 💪"],
@@ -382,6 +466,18 @@
             "patterns": ["tôi không quan tâm đâu", "mình không quan tâm", "chả quan tâm", "không quan tâm lắm", "chả để ý lắm", "thôi không quan tâm đâu", "thui quan tâm là đ gì", "quan tâm làm gì cái nớ", "quan tâm làm gì thứ kia", "thì quan tâm làm gì", "quan tâm làm cái gì", "quan tâm cái đó làm cái gì hả", "quan tâm nó làm gì", "quan tâm nó chả để làm gì cả", "quan tâm cái đó cũng chả được lợi ích gì", "quan tâm làm gì cho mệt người", "quan tâm là cái gì cho mệt", "quan tâm cái đó mệt lắm", "quan tâm khổ lắm", "quan tâm làm gì mệt òm", "không để ý nữa", "chẳng để ý", "để ý cái đó mệt lắm", "để ý cái đó mệt vl", "để ý làm gì mệt òm", "không care lắm", "không care", "chả care làm gì", "chả care", "don't care", "dont care", "con't care cho lắm", "I don't care", "I dont care"],
             "responses": ["Ok, không nói về nó nữa", "Được rồi, next nào", "Được rồi", "Chuyển sang việc khác nào", "Oke", "Ok"],
             "context": ""
+        },
+        {
+            "tag": "khôngbiếtnóigì",
+            "patterns": ["chả biết nói gì luôn", "chả biết nói cái gì hết", "không biết nói gì cả", "chằng biết nói gì hết", "chẳng có chuyện gì để nói cả", "không có chuyện gì để nói hết", "chả có chuyện gì để nói hết", "k biết nói cái gì", "mé chẳng có chuyện gì để nói hết trơn", "má chẳng biết nói chuyện gì đây", "chẳng nghĩ ra chuyện gì để nói", "chẳng có gì trong đầu thì sao nói", "chả có gì trong đầu nên cũng chả biết nói gì lun", "chẳng có câu chuyện nào để kể hết trơn á", "chẳng có chuyện gì để kể", "chừ chẳng biết nói gì nữa luôn", "có cái gì để nói đâu", "không có cái gì để nói hết á", "chẳng nghĩ ra được cái gì để nói cả", "nothing", "rặn mãi không ra chyện để nói", "rặng mãi k ra", "nghĩ muốn để cái đầu mà không có chuyện gì để nói", "không có gì để làm hết", "chán qué không có gì để nói hết", "chừ chả biết làm gì cả", "chằng biết làm gì", "có biết làm gì đâu", "bây giờ không biết làm gì", ""],
+            "responses": ["Không sao cả", "Ok, không có vấn đề gì hết", "Okay, khi nào có chuyện r nói tiếp cũng được", "Muốn nghe điều gì đó thú vị không", "Không có vẫn đề gì cả đâu", "Thế có muốn Wiki kể cho một vài sự thật thú vị không 😉", "Có một vài facts thú vị, muốn nghe không", "Thế hãy nói điều gì đó mới lạ đi. À có muốn biết một vài sự thật thú vị xung quanh cuộc sống không 😉", "Khi nào biết thì nói tiếp :v", "Vậy thôi, khi nào nghĩ ra được gì thì nói :v"],
+            "context": "facts"
+        },
+        {
+            "tag": "hỏifact",
+            "patterns": ["hửm, thú vị hả, nói thử nghe nào", "oke nói nghe thử", "sự thật thú vị à, hay đó nói nghe thử", "nói nghe xem", "có, mình cũng thích đọc về mấy này lắm", "hay đấy, nói thử xem", "hóng", "facts hả, hay đấy nói xem với", "nói đi", "à mấy này hay nè, nói nghe xem", "nói đi, đang nghe đây", "hay nè, nói đi"],
+            "responses": ["{facts}"],
+            "context_filter": "facts"
         },
         {
             "tag": "chờchút",

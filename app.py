@@ -61,50 +61,8 @@ def chatbot_response():
     msg = request.form['msg']
     not_recognize_words = nltk.word_tokenize(msg)
 
-    # currency converter ====================================================
-    if ':convert' in msg:
-        url_currencyconverter_tool = "https://currency-converter5.p.rapidapi.com/currency/convert"
-
-        fromm = msg.replace(':convert', '').strip().split(',')[0]
-        to = msg.replace(':convert', '').strip().split(',')[1]
-        amount = msg.replace(':convert', '').strip().split(',')[2]
-
-        querystring = {"format": "json", "from": fromm, "to": to, "amount": amount}
-        headers_currency_converter = {
-            'x-rapidapi-host': "currency-converter5.p.rapidapi.com",
-            'x-rapidapi-key': RAPIDAPI_CURRENCYCONVERTER_KEY
-        }
-
-        currency_converted = requests.get(url_currencyconverter_tool, headers=headers_currency_converter,
-                                          params=querystring)
-        currency_converter_json = json.loads(currency_converted.text)\
-
-        if currency_converter_json['status'] == 'failed':
-            return f"Xin hãy nhập đúng đơn vị tiền tệ '{fromm}'"
-        else:
-            if not currency_converter_json['rates']:
-                return f"Xin hãy nhập đúng đơn vị tiền tệ '{to}'"
-            else:
-                currency_converter_response = 'Đã chuyển {from_amount} {from_code} ({from_name}) sang {to_amount} {to_code} ({to_name}) với tỉ giá cập nhật ngày {updated_date} là {rate} {rate_code}'
-                return currency_converter_response.replace('{from_amount}', '{0:,.0f}'.format(
-                    float(currency_converter_json['amount']))).replace('{from_code}', currency_converter_json[
-                    'base_currency_code']).replace('{from_name}',
-                                                   currency_converter_json['base_currency_name']).replace(
-                    '{to_amount}',
-                    '{0:,.0f}'.format(float(currency_converter_json['rates']['VND']['rate_for_amount']))).replace(
-                    '{to_code}', ''.join(list(currency_converter_json['rates'].keys()))).replace('{to_name}',
-                                                                                                 currency_converter_json[
-                                                                                                     'rates'][
-                                                                                                     'VND'][
-                                                                                                     'currency_name']).replace(
-                    '{updated_date}', currency_converter_json['updated_date']).replace('{rate}', '{0:,.0f}'.format(
-                    float(currency_converter_json['rates']['VND']['rate']))).replace('{rate_code}', ''.join(
-                    list(currency_converter_json['rates'].keys())))
-
-    # ====================================================
-
     # get tag 'giớithiệu' patterns
-    patterns = intents['intents'][5]['patterns']
+    patterns = intents['intents'][6]['patterns']
     for w in not_recognize_words:
         if w.lower() in words:
 
@@ -113,6 +71,7 @@ def chatbot_response():
             if not ints:
                 return 'Xin lỗi, Wiki không hiểu bạn đang nói gì cả'
             else:
+
                 intro_ints = predict_class(msg, model)
                 intro_res = getResponse(intro_ints, show_details=True)
 
@@ -181,10 +140,10 @@ def chatbot_response():
                 session_ints = predict_class(msg, model)
                 session_res = getResponse(session_ints, show_details=True)
 
-                morning_ressponse = intents['intents'][54]['responses']
-                noon_ressponse = intents['intents'][56]['responses']
-                afternoon_ressponse = intents['intents'][58]['responses']
-                night_ressponse = intents['intents'][60]['responses']
+                morning_ressponse = intents['intents'][8]['responses']
+                noon_ressponse = intents['intents'][10]['responses']
+                afternoon_ressponse = intents['intents'][12]['responses']
+                night_ressponse = intents['intents'][14]['responses']
 
                 if session_ints[0]['intent'] == 'chàobuốisáng':
                     if session == 'Trưa':
@@ -278,13 +237,13 @@ def chatbot_response():
                     return stillbored_res.replace('{n}', random.choice(quot))
 
                 # appease
-                URL2 = 'https://vinapool.vn/tin-tuc/nhung-cau-noi-an-ui-dong-vien-khich-le-tinh-than-ban-be'
-                requestt2 = requests.get(URL2)
-                content2 = requestt2.content
-                soup2 = BeautifulSoup(content2, 'lxml')
+                APPEASE_URL = 'https://vinapool.vn/tin-tuc/nhung-cau-noi-an-ui-dong-vien-khich-le-tinh-than-ban-be'
+                appease_request = requests.get(APPEASE_URL)
+                content2 = appease_request.content
+                appease_soup = BeautifulSoup(content2, 'lxml')
 
                 # Extract data of appeasement
-                sentences = soup2.find('h2')
+                sentences = appease_soup.find('h2')
                 bunch_of_sentences = sentences.find_next_siblings('p')
                 only_appeasement = [i.text for i in bunch_of_sentences]
                 rs = []
@@ -308,8 +267,9 @@ def chatbot_response():
                 # ===============================================================================================================
                 # google search ========================================
                 fallback = 'Xin lỗi, Wiki không tìm thấy kết quả'
-                if ':search' in msg:
-                    search_result_list = list(search(msg.replace(':search', '').strip(), lang='vi', num_results=10))
+                google_ints = predict_class(msg, model)
+                if google_ints[0]['intent'] == 'searchgoogle':
+                    search_result_list = list(search(msg.replace(':google', '').strip(), lang='vi', num_results=10))
                     if len(search_result_list) > 0:
                         return json.dumps(search_result_list)
                     else:
@@ -318,7 +278,8 @@ def chatbot_response():
 
                 # summary search result from wikipedia ====================================================
                 wikipedia.set_lang('vi')
-                if ':wiki' in msg:
+                wiki_ints = predict_class(msg, model)
+                if wiki_ints[0]['intent'] == 'searchwiki':
                     try:
                         rs = wikipedia.summary(msg.replace(':wiki', '').strip())
                         return rs
@@ -327,7 +288,8 @@ def chatbot_response():
                 # ====================================================
 
                 # url shortener ====================================================
-                if ':surl' in msg:
+                surl_ints = predict_class(msg, model)
+                if surl_ints[0]['intent'] == 'shortlink':
                     url_shortener_tool = "https://url-shortener-service.p.rapidapi.com/shorten"
                     headers_url_shortener = {
                         'content-type': "application/x-www-form-urlencoded",
@@ -335,7 +297,9 @@ def chatbot_response():
                         'x-rapidapi-key': RAPIDAPI_URLSHORTENER_KEY
                     }
 
-                    url_shortened = requests.post(url_shortener_tool, data={'url': msg.replace(':surl', '').strip()}, headers=headers_url_shortener)
+                    url_shortened = requests.post(url_shortener_tool,
+                                                  data={'url': msg.replace(':surl', '').strip()},
+                                                  headers=headers_url_shortener)
                     return json.loads(url_shortened.text)['result_url']
                 # ====================================================
 
@@ -354,11 +318,14 @@ def chatbot_response():
 
                 # if the user input is text
                 if calculator_ints[0]['intent'] == 'tínhtoán':
-                    lst_patterns = [c for c in nltk.word_tokenize(msg) if c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[1:].isdigit()]
+                    lst_patterns = [c for c in nltk.word_tokenize(msg) if
+                                    c in signs or c.isnumeric() or isfloat(c) or c.startswith('-') and c[
+                                                                                                       1:].isdigit()]
                     res = client.query(' '.join(lst_patterns))
                     output = next(res.results).text
                     if isfloat(output):
-                        return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', str(round(float(output), 5)))
+                        return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', str(round(
+                            float(output), 5)))
                     else:
                         return calculator_res.replace('{m}', ' '.join(lst_patterns)).replace('{n}', output)
                 # else:
@@ -374,25 +341,74 @@ def chatbot_response():
                 # ====================================================
 
                 # image to text feature ====================================================
-                vie = 'vie'
-                eng = 'eng'
-                if msg == ':totext':
+                totext_ints = predict_class(msg, model)
+                if totext_ints[0]['intent'] == 'totext':
                     return flask.redirect(flask.url_for('recognize_vietext_img'), code=307)
-                if msg == f':totext&{eng}':
+                if totext_ints[0]['intent'] == 'totext&eng':
                     return flask.redirect(flask.url_for('recognize_engtext_img'), code=307)
                 # ====================================================
 
                 # recommendation ====================================================
-                if ':movie' in msg:
-                    # return 'Được rồi bắt đầu thôi'
-                    # get_genres(msg)
-                    # get_actors(msg)
-                    # get_directors(msg)
-                    # get_keywords(msg)
-                    if msg.replace(':movie', '').strip() in movieGenres:
-                        return json.dumps(make_recommendation(msg.replace(':movie', '').strip()))
+                film_ints = predict_class(msg, model)
+                if film_ints[0]['intent'] == 'recommendphim':
+                    if msg.replace(':film', '').strip() in movieGenres:
+                        return json.dumps(make_recommendation(msg.replace(':film', '').strip()))
                     else:
-                        return 'Xin lỗi, tôi không tìm thấy phim nào phù hợp với thể loại này'
+                        return 'Xin lỗi, Wiki không tìm thấy phim nào phù hợp với thể loại này'
+                # ====================================================
+
+                # currency converter ====================================================
+                cc_ints = predict_class(msg, model)
+                if cc_ints[0]['intent'] == 'đổitiền':
+                    url_currencyconverter_tool = "https://currency-converter5.p.rapidapi.com/currency/convert"
+
+                    fromm = msg.replace(':cc', '').strip().split(',')[0].upper()
+                    to = msg.replace(':cc', '').strip().split(',')[1].strip().upper()
+                    amount = msg.replace(':cc', '').strip().split(',')[2].strip()
+
+                    querystring = {"format": "json", "from": fromm, "to": to, "amount": amount}
+                    headers_currency_converter = {
+                        'x-rapidapi-host': "currency-converter5.p.rapidapi.com",
+                        'x-rapidapi-key': RAPIDAPI_CURRENCYCONVERTER_KEY
+                    }
+
+                    currency_converted = requests.get(url_currencyconverter_tool,
+                                                      headers=headers_currency_converter,
+                                                      params=querystring)
+                    currency_converter_json = json.loads(currency_converted.text)
+                    if currency_converter_json['status'] == 'failed':
+                        return f"Xin hãy nhập đúng đơn vị tiền tệ '{fromm}'"
+                    else:
+                        if not currency_converter_json['rates']:
+                            return f"Xin hãy nhập đúng đơn vị tiền tệ '{to}'"
+                        else:
+                            currency_converter_response = 'Đã chuyển {from_amount} {from_code} ({from_name}) sang {to_amount} {to_code} ({to_name}) với tỉ giá cập nhật ngày {updated_date} là {rate} {rate_code}'
+                            cc_response = currency_converter_response.replace('{from_amount}', '{0:,.0f}'.format(
+                                float(currency_converter_json['amount']))).replace('{from_code}',
+                                                                                   currency_converter_json[
+                                                                                       'base_currency_code']).replace(
+                                '{from_name}',
+                                currency_converter_json['base_currency_name']).replace(
+                                '{to_amount}',
+                                '{0:,.0f}'.format(float(
+                                    currency_converter_json['rates'][to]['rate_for_amount']))).replace(
+                                '{to_code}',
+                                ''.join(list(currency_converter_json['rates'].keys()))).replace('{to_name}',
+                                                                                                currency_converter_json[
+                                                                                                    'rates'][
+                                                                                                    to][
+                                                                                                    'currency_name']).replace(
+                                '{updated_date}', currency_converter_json['updated_date']).replace('{rate}',
+                                                                                                   '{0:,.0f}'.format(
+                                                                                                       float(
+                                                                                                           currency_converter_json[
+                                                                                                               'rates'][
+                                                                                                               to][
+                                                                                                               'rate']))).replace(
+                                '{rate_code}', ''.join(
+                                    list(currency_converter_json['rates'].keys())))
+                            return cc_response
+
                 # ====================================================
 
                 # ask weather ====================================================
@@ -415,6 +431,24 @@ def chatbot_response():
                         '{pressure}', str(w.pressure["press"])).replace('{visibility}',
                                                                         str(w.visibility_distance / 1000))
                     return weather_info
+                # ====================================================
+
+                # facts ====================================================
+                FACTS_URL = 'https://kienthuctonghop.vn/nhung-dieu-thu-vi-trong-cuoc-song'
+                fact_request = requests.get(FACTS_URL)
+                fact_content = fact_request.content
+                fact_soup = BeautifulSoup(fact_content, 'lxml')
+
+                # facts
+                facts_div = fact_soup.find('div', class_='article')
+                facts = facts_div.find_all('li')
+                response_facts = [fact.text.replace('\xa0', '').replace('\n', '') for fact in facts][3:-5]
+
+                facts_ints = predict_class(msg, model)
+                facts_res = getResponse(facts_ints, show_details=True)
+                if facts_ints[0]['intent'] == 'hỏifact':
+                    return facts_res.replace('{facts}', random.choice(response_facts))
+
                 # ====================================================
 
                 # ===============================================================================================================
