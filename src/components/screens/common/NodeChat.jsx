@@ -243,20 +243,21 @@ export default function NodeChat({
                   ))
                 ) : URL(data[1]?.message) ? (
                   <View>
-                    <Text
-                      onLongPress={() => copyToClipboard(data[1]?.message)}
-                      style={{
-                        color: "blue",
-                        textDecorationLine: "underline",
-                      }}
-                      onPress={() =>
-                        navigation.navigate("Webview", {
-                          url: data[1]?.message,
-                        })
-                      }
+                    <TouchableOpacity
+                      style={globalStyles.message_botText_shortLink_div}
                     >
-                      {data[1]?.message}
-                    </Text>
+                      <Text
+                        onLongPress={() => copyToClipboard(data[1]?.message)}
+                        style={globalStyles.message_botText_shortLink}
+                        onPress={() =>
+                          navigation.navigate("Webview", {
+                            url: data[1]?.message,
+                          })
+                        }
+                      >
+                        {data[1]?.message}
+                      </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate("Webview", {

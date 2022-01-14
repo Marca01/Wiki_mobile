@@ -76,11 +76,6 @@ export const globalStyles = StyleSheet.create({
     messages_botText: {
         color: "black"
     },
-    message_botText_icon: {
-        width: 35,
-        height: 35,
-        backgroundColor: "red"
-    },
     messages_botImage_modal_closeButton: {
         alignSelf: 'flex-end',
         position: 'absolute',
@@ -97,6 +92,19 @@ export const globalStyles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'contain'
+    },
+    message_botText_icon: {
+        width: 35,
+        height: 35,
+        backgroundColor: "red"
+    },
+    message_botText_shortLink_div: {
+        alignItems: "center",
+    },
+    message_botText_shortLink: {
+        color: "blue",
+        textDecorationLine: "underline",
+        paddingBottom: 5,
     },
     textInput: {
         marginBottom: 20,
