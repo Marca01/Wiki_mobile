@@ -35,7 +35,9 @@ export const globalStyles = StyleSheet.create({
     },
     messages_userText_link: {
         color: 'white',
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        paddingBottom: 5,
+
     },
     messages_userText: {
         color: "white"
@@ -173,6 +175,11 @@ export const globalStyles = StyleSheet.create({
     },
     guideHeader_title: {
         marginVertical: 25
+    },
+    guideFeature_header: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginTop: 5
     },
     guideFeature: {},
     guideFeature_title: {

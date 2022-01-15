@@ -2569,6 +2569,13 @@
   "resolved" "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
   "version" "1.0.1"
 
+"compare-urls@^2.0.0":
+  "integrity" "sha512-eCJcWn2OYFEIqbm70ta7LQowJOOZZqq1a2YbbFCFI1uwSvj+TWMwXVn7vPR1ceFNcAIt5RSTDbwdlX82gYLTkA=="
+  "resolved" "https://registry.npmjs.org/compare-urls/-/compare-urls-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "normalize-url" "^2.0.1"
+
 "compare-versions@^3.4.0":
   "integrity" "sha512-W6Af2Iw1z4CB7q4uU4hv646dW9GQuBM+YpC0UvUCWSD8w90SJjp+ujJuXaEMtAXBtSqGfMPuFOVn4/+FlaqfBA=="
   "resolved" "https://registry.npmjs.org/compare-versions/-/compare-versions-3.6.0.tgz"
@@ -3502,7 +3509,14 @@
     "resolve-from" "^5.0.0"
     "uuid" "^3.4.0"
 
-"expo@~43.0.0":
+"expo-web-browser@^10.1.0":
+  "integrity" "sha512-/sT+YovMxtR2AYVtZdeyjJLPYQrUXr06KAee2bbLeiPQbk0PPwVJNBK6w5/3GoQZIhNScR3K3P3xx6pNfm4X1A=="
+  "resolved" "https://registry.npmjs.org/expo-web-browser/-/expo-web-browser-10.1.0.tgz"
+  "version" "10.1.0"
+  dependencies:
+    "compare-urls" "^2.0.0"
+
+"expo@*", "expo@~43.0.0":
   "integrity" "sha512-1F98CftAvTDNQPkhTSSYpcr5eiw/R0op3RXcV5GkJBTw67FvZ6JI+CsQ5iu2FICKnE51WKjH2y26V7+cjXboIg=="
   "resolved" "https://registry.npmjs.org/expo/-/expo-43.0.1.tgz"
   "version" "43.0.1"
@@ -6327,6 +6341,15 @@
   "resolved" "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   "version" "3.0.0"
 
+"normalize-url@^2.0.1":
+  "integrity" "sha512-D6MUW4K/VzoJ4rJ01JFKxDrtY1v9wrgzCX5f2qj/lzH1m/lW6MhUZFKerVsnyjOhOsYzI9Kqqak+10l4LvLpMw=="
+  "resolved" "https://registry.npmjs.org/normalize-url/-/normalize-url-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "prepend-http" "^2.0.0"
+    "query-string" "^5.0.1"
+    "sort-keys" "^2.0.0"
+
 "npm-run-path@^2.0.0":
   "integrity" "sha1-NakjLfo11wZ7TLLd8jV7GHFTbF8="
   "resolved" "https://registry.npmjs.org/npm-run-path/-/npm-run-path-2.0.2.tgz"
@@ -6766,6 +6789,11 @@
   "resolved" "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz"
   "version" "1.0.4"
 
+"prepend-http@^2.0.0":
+  "integrity" "sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc="
+  "resolved" "https://registry.npmjs.org/prepend-http/-/prepend-http-2.0.0.tgz"
+  "version" "2.0.0"
+
 "preserve@^0.2.0":
   "integrity" "sha1-gV7R9uvGWSb4ZbMQwHE7yzMVzks="
   "resolved" "https://registry.npmjs.org/preserve/-/preserve-0.2.0.tgz"
@@ -6858,6 +6886,15 @@
   "integrity" "sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.5.2.tgz"
   "version" "6.5.2"
+
+"query-string@^5.0.1":
+  "integrity" "sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw=="
+  "resolved" "https://registry.npmjs.org/query-string/-/query-string-5.1.1.tgz"
+  "version" "5.1.1"
+  dependencies:
+    "decode-uri-component" "^0.2.0"
+    "object-assign" "^4.1.0"
+    "strict-uri-encode" "^1.0.0"
 
 "query-string@^7.0.0":
   "integrity" "sha512-uIw3iRvHnk9to1blJCG3BTc+Ro56CBowJXKmNNAm3RulvPBzWLRqKSiiDk+IplJhsydwtuNMHi8UGQFcCLVfkA=="
@@ -7755,6 +7792,13 @@
     "source-map-resolve" "^0.5.0"
     "use" "^3.1.0"
 
+"sort-keys@^2.0.0":
+  "integrity" "sha1-ZYU1WEhh7JfXMNbPQYIuH1ZoQSg="
+  "resolved" "https://registry.npmjs.org/sort-keys/-/sort-keys-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "is-plain-obj" "^1.0.0"
+
 "source-map-resolve@^0.5.0":
   "integrity" "sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw=="
   "resolved" "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.5.3.tgz"
@@ -7924,6 +7968,11 @@
   "integrity" "sha512-AiisoFqQ0vbGcZgQPY1cdP2I76glaVA/RauYR4G4thNFgkTqr90yXTo4LYX60Jl+sIlPNHHdGSwo01AvbKUSVQ=="
   "resolved" "https://registry.npmjs.org/stream-shift/-/stream-shift-1.0.1.tgz"
   "version" "1.0.1"
+
+"strict-uri-encode@^1.0.0":
+  "integrity" "sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM="
+  "resolved" "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz"
+  "version" "1.1.0"
 
 "strict-uri-encode@^2.0.0":
   "integrity" "sha1-ucczDHBChi9rFC3CdLvMWGbONUY="

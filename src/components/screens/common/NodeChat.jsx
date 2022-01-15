@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -16,6 +16,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { PinchGestureHandler } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import RNUrlPreview from "react-native-url-preview";
+import * as WebBrowser from "expo-web-browser";
+import * as Font from "expo-font";
 
 export default function NodeChat({
   user_message,
@@ -53,6 +55,27 @@ export default function NodeChat({
   };
 
   const [dialog, setDialog] = useState(null);
+  const [result, setResult] = useState(null);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  const handlePressButtonAsync = async (url) => {
+    let result = await WebBrowser.openBrowserAsync(url);
+    setResult(result);
+  };
+
+  // font for links
+  let customFonts = {
+    Helvetica: require("../../../../assets/fonts/Helvetica.ttf"),
+  };
+
+  const loadFontsAsync = async () => {
+    await Font.loadAsync(customFonts);
+    setFontsLoaded(true);
+  };
+
+  useEffect(() => {
+    loadFontsAsync();
+  });
 
   return (
     <View>
@@ -60,15 +83,56 @@ export default function NodeChat({
         <View style={globalStyles.messages_user}>
           <View style={globalStyles.messages_userStyle}>
             {URL(data[0].message) ? (
-              <Text
-                style={globalStyles.messages_userText_link}
-                onLongPress={() => copyToClipboard(data[0].message)}
-                onPress={() =>
-                  navigation.navigate("Webview", { url: data[0].message })
-                }
-              >
-                {data[0].message}
-              </Text>
+              fontsLoaded && (
+                <>
+                  <TouchableOpacity
+                    style={globalStyles.message_botText_shortLink_div}
+                  >
+                    <Text
+                      style={globalStyles.messages_userText_link}
+                      onLongPress={() => copyToClipboard(data[0].message)}
+                      onPress={() => handlePressButtonAsync(data[0].message)}
+                    >
+                      {data[0].message}
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onLongPress={() => copyToClipboard(data[0]?.message)}
+                    onPress={() => handlePressButtonAsync(data[0]?.message)}
+                  >
+                    <RNUrlPreview
+                      text={data[0]?.message}
+                      titleStyle={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                      }}
+                      containerStyle={{
+                        flexDirection: "column",
+                        height: 250,
+                        width: 200,
+                        backgroundColor: "#f7f7f8",
+                        borderRadius: 20,
+                        // justifyContent: 'center',
+                        alignItems: "center",
+                        // padding: 20
+                      }}
+                      imageStyle={{
+                        width: 200,
+                        height: 150,
+                        borderRadius: 20,
+                        marginBottom: 3,
+                        resizeMode: "cover",
+                        // backgroundColor: 'red'
+                      }}
+                      textContainerStyle={{
+                        padding: 10,
+                        // justifyContent: 'center',
+                        // alignItems: 'center'
+                      }}
+                    />
+                  </TouchableOpacity>
+                </>
+              )
             ) : (
               <Text
                 style={globalStyles.messages_userText}
@@ -89,9 +153,7 @@ export default function NodeChat({
                   i === 0 ? (
                     <TouchableOpacity
                       onLongPress={() => copyToClipboard(url)}
-                      onPress={() =>
-                        navigation.navigate("Webview", { url: url })
-                      }
+                      onPress={() => handlePressButtonAsync(url)}
                     >
                       <RNUrlPreview
                         text={url}
@@ -131,9 +193,7 @@ export default function NodeChat({
                         color: "blue",
                         textDecorationLine: "underline",
                       }}
-                      onPress={() =>
-                        navigation.navigate("Webview", { url: url })
-                      }
+                      onPress={() => handlePressButtonAsync(url)}
                     >
                       {url}
                     </Text>
@@ -151,10 +211,13 @@ export default function NodeChat({
                           data[1]?.message?.length - 1 !== i ? 10 : 0,
                       },
                     ]}
+                    onLongPress={() =>
+                      copyToClipboard(`https://www.imdb.com/title/${url[1]}`)
+                    }
                     onPress={() =>
-                      navigation.navigate("Webview", {
-                        url: `https://www.imdb.com/title/${url[1]}`,
-                      })
+                      handlePressButtonAsync(
+                        `https://www.imdb.com/title/${url[1]}`
+                      )
                     }
                     key={i}
                   >
@@ -247,25 +310,21 @@ export default function NodeChat({
                       style={globalStyles.message_botText_shortLink_div}
                     >
                       <Text
-                        onLongPress={() => copyToClipboard(data[1]?.message)}
                         style={globalStyles.message_botText_shortLink}
-                        onPress={() =>
-                          navigation.navigate("Webview", {
-                            url: data[1]?.message,
-                          })
-                        }
+                        onLongPress={() => copyToClipboard(data[1]?.message)}
+                        onPress={() => handlePressButtonAsync(data[1]?.message)}
                       >
                         {data[1]?.message}
                       </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("Webview", {
-                          url: data[0]?.message.replace(":surl", ""),
-                        })
-                      }
                       onLongPress={() =>
                         copyToClipboard(data[0]?.message.replace(":surl", ""))
+                      }
+                      onPress={() =>
+                        handlePressButtonAsync(
+                          data[0]?.message.replace(":surl", "")
+                        )
                       }
                     >
                       <RNUrlPreview
