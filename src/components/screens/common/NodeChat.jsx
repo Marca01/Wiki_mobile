@@ -114,56 +114,54 @@ export default function NodeChat({ user_message, bot_message, data, tag, navigat
               )
             ) : (
               <>
-                <Text style={globalStyles.messages_userText} onLongPress={() => copyToClipboard(data[0].message)}>
+                <Text
+                  style={globalStyles.messages_userText}
+                  onLongPress={() => copyToClipboard(data[0].message)}
+                  onPress={() => (regUrl.test(data[0].message) ? handlePressButtonAsync(data[0].message.match(regUrl)[0]) : () => {})}>
                   {data[0].message}
                 </Text>
-                {console.log(
-                  regUrl.test(data[0].message),
-                  data[0].message.match(regUrl).map(u => u)
-                )}
-                {regUrl.test(data[0].message) &&
-                  data[0].message.match(regUrl).map(u => (
-                    <RNUrlPreview
-                      text={u}
-                      titleStyle={{
-                        fontSize: 18,
-                        fontWeight: "bold"
-                      }}
-                      containerStyle={{
-                        flexDirection: "column",
-                        width: width * 0.6,
-                        backgroundColor: "#f7f7f8",
-                        borderRadius: 20,
-                        // justifyContent: 'center',
-                        alignItems: "center",
-                        marginTop: 10,
-                        marginBottom: 10,
-                        shadowColor: "#000",
-                        shadowOffset: {
-                          width: 0,
-                          height: 10
-                        },
-                        shadowOpacity: 0.53,
-                        shadowRadius: 13.97,
+                {regUrl.test(data[0].message) && (
+                  <RNUrlPreview
+                    text={data[0].message.match(regUrl)[0]}
+                    titleStyle={{
+                      fontSize: 18,
+                      fontWeight: "bold"
+                    }}
+                    containerStyle={{
+                      flexDirection: "column",
+                      width: width * 0.6,
+                      backgroundColor: "#f7f7f8",
+                      borderRadius: 20,
+                      // justifyContent: 'center',
+                      alignItems: "center",
+                      marginTop: 10,
+                      marginBottom: 10,
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 10
+                      },
+                      shadowOpacity: 0.53,
+                      shadowRadius: 13.97,
 
-                        elevation: 21
-                      }}
-                      imageStyle={{
-                        width: width * 0.6,
-                        height: width * 0.5 * 0.75,
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20,
-                        marginBottom: 5,
-                        resizeMode: "cover"
-                        // backgroundColor: 'red'
-                      }}
-                      textContainerStyle={{
-                        padding: 10
-                        // justifyContent: 'center',
-                        // alignItems: 'center'
-                      }}
-                    />
-                  ))}
+                      elevation: 21
+                    }}
+                    imageStyle={{
+                      width: width * 0.6,
+                      height: width * 0.5 * 0.75,
+                      borderTopLeftRadius: 20,
+                      borderTopRightRadius: 20,
+                      marginBottom: 5,
+                      resizeMode: "cover"
+                      // backgroundColor: 'red'
+                    }}
+                    textContainerStyle={{
+                      padding: 10
+                      // justifyContent: 'center',
+                      // alignItems: 'center'
+                    }}
+                  />
+                )}
               </>
             )}
           </View>
