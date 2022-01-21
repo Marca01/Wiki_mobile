@@ -484,6 +484,100 @@ def recognize_engtext_img():
     base64_image = b64encode(byte_image_value)
     return json.dumps({'image': str(base64_image.decode('utf-8')), 'text': text}, ensure_ascii=False)
 
+
+@app.route('/chat/news', methods=['POST'])
+def get_news():
+    news_category = request.form['news_cat']
+
+    # news ====================================================
+    CATEGORY_URL = 'https://vnexpress.net/rss'
+    request_cat = requests.get(CATEGORY_URL)
+    content_cat = request_cat.content
+    soup_cat = BeautifulSoup(content_cat, 'lxml')
+
+    list_cat = soup_cat.find_all('ul', class_='list-rss')
+    cat = [cat.find_all('li') for cat in list_cat]
+    cat_title = [title.find('a').text.replace('RSS', '').strip() for titles in cat for title in titles]
+
+    # cat_link = [title.find('a').get('href') for titles in cat for title in titles]
+    #
+    # news = []
+
+    def categories_link(category):
+        if category == 'Trang chủ':
+            return '/rss/tin-moi-nhat.rss'
+        elif category == 'Thế giới':
+            return '/rss/the-gioi.rss'
+        elif category == 'Thời sự':
+            return '/rss/thoi-su.rss'
+        elif category == 'Kinh doanh':
+            return '/rss/kinh-doanh.rss'
+        elif category == 'Startup':
+            return '/rss/startup.rss'
+        elif category == 'Giải trí':
+            return '/rss/giai-tri.rss'
+        elif category == 'Thể thao':
+            return '/rss/the-thao.rss'
+        elif category == 'Pháp luật':
+            return '/rss/phap-luat.rss'
+        elif category == 'Giáo dục':
+            return '/rss/giao-duc.rss'
+        elif category == 'Tin mới nhất':
+            return '/rss/tin-moi-nhat.rss'
+        elif category == 'Tin nổi bật':
+            return '/rss/tin-noi-bat.rss'
+        elif category == 'Sức khỏe':
+            return '/rss/suc-khoe.rss'
+        elif category == 'Đời sống':
+            return '/rss/gia-dinh.rss'
+        elif category == 'Du lịch':
+            return '/rss/du-lich.rss'
+        elif category == 'Khoa học':
+            return '/rss/khoa-hoc.rss'
+        elif category == 'Số hóa':
+            return '/rss/so-hoa.rss'
+        elif category == 'Xe':
+            return '/rss/oto-xe-may.rss'
+        elif category == 'Ý kiến':
+            return '/rss/y-kien.rss'
+        elif category == 'Tâm sự':
+            return '/rss/tam-su.rss'
+        elif category == 'Cười':
+            return '/rss/cuoi.rss'
+        elif category == 'Tin xem nhiều':
+            return '/rss/tin-xem-nhieu.rss'
+
+    # for cat in cat_title:
+    cat_link = categories_link(news_category)
+    URL = f'https://vnexpress.net{cat_link}'
+    request_news = requests.get(URL)
+    content = request_news.content
+
+    # soup xml
+    soup_xml = BeautifulSoup(content, 'xml')
+    channel_xml = soup_xml.find('channel')
+    title = channel_xml.find('title').text.replace(' - VnExpress RSS', '').strip()
+    items_xml = channel_xml.find_all('item')
+    # soup html
+    soup_html = BeautifulSoup(content, 'lxml')
+    channel_html = soup_html.find('channel')
+    items_html = channel_html.find_all('item')
+
+    # title
+    # f'Title: {title}'
+    # item_title = [item.find('title').text.replace("\'", '') for item in items_xml]
+    # item_description = [item.find('description').text.replace(']]>', '') for item in items_html if
+    #                     item.find('description').text]
+    item_date = [item.find('pubDate').text for item in items_xml]
+    item_link = [item.find('link').text for item in items_xml]
+
+    # title, item_title, item_description, item_date, item_link
+    all_news = json.dumps([{'title': title, 'item_date': item_date, 'data': item_link}], ensure_ascii=False)
+    # news.append(json.loads(all_news))
+    return all_news
+    # cat_link
+    # news
+
 @app.route('/botMessages', methods=['GET'])
 def chatbot_messages():
     bot_messages = None

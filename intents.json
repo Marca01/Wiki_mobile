@@ -1,26 +1,26 @@
 {
     "intents": [{
             "tag": "chào",
-            "patterns": ["xin chào", "xin chào wiki", "xin chào bạn", "chào bạn nhé", "chào bạn nhá", "chào", "chào nhé", "chào wiki nhé", "yooo", "hey", "alo", "hi", "hello", "holla", "ê", "yo bro"],
+            "patterns": ["xin chào", "xin chào wiki", "xin chào bạn", "chào bạn nhé", "chào bạn nhá", "chào", "chào nhé", "chào wiki nhé", "yooo", "hey", "alo", "hi", "hello", "holla", "ê", "yo bro", "lô", "ê"],
             "responses": ["Xin chào, Wiki có thể giúp gì cho bạn không?", "Chào nhá", "Xin chào bạn", "Chào", "Hello, Wiki đây 👋", "Hi bạn", "Hi", "Hello", "👋", "Yoo bro"],
             "context": ""
         },
         {
             "tag": "tạmbiệt",
-            "patterns": ["byee", "byeee", "bye wiki nhé", "bye", "chào tạm biệt Wiki nhé", "chào tạm biệt", "gặp lại sau nhá", "hẹn gặp lại", "hẹn gặp lại bạn vào lúc khác", "later", "tạm biệt nhá", "tạm biệt nghe", "bai nha", "bái bai", "lần tới nhá", "tôi tắt đây bye nha", "tôi tắt đã", "mình off đây", "mình out đây tạm biệt", "tôi out đã", "mình thoát đã bye nha", "tôi thoát nhé", "mình thoát đây"],
-            "responses": ["Tạm biệt nhé", "Wiki chào tạm biệt bạn", "tạm biệt bạn", "Wiki tạm biệt bạn", "Bye bye", "Sau gặp lại", "Ok, chúc bạn một ngày tốt lành!", "Gặp lại sau nhé", "Bí bi", "Bai", "Bái bai", "Bái bai nhá", "Bye nha", "Bye hẹn gặp lại"],
+            "patterns": ["byee", "byeee", "bye wiki nhé", "bye", "chào tạm biệt Wiki nhé", "chào tạm biệt", "gặp lại sau nhá", "gặp sau nha", "sau gặp lại", "thôi bye đây nha", "bye nhá", "hẹn gặp sau nhá", "hẹn gặp lại", "hẹn gặp lại bạn vào lúc khác", "later", "tạm biệt nhá", "tạm biệt nghe", "bai nha", "bái bai", "lần tới nhá", "sau gặp", "sau nhé", "sau nha", "gặp sau", "tôi tắt đây bye nha", "tôi tắt đã", "mình off đây", "mình out đây tạm biệt", "tôi out đã", "mình thoát đã bye nha", "tôi thoát nhé", "mình thoát đây", "thôi trễ r off đây", "thôi mình tắt đã bye wiki nhe", "khuya r bye nha", "à thôi mình có chút việc, mình out đã nhé", "mình có việc một chút, mình dừng nói ở đây nhé", "tôi off đã, có công chuyện", "chừ mình có việc rồi, tắt nhé", "mình phải đi ra đây r tắt nhé", "tắt đã nha, đi có việc rồi", "off đây, ra ngoài có việc", "ra ngoài tí, out nghe", "thôi tắt đây, ra ngoài có việc", "đi có việc đã, tăt đã nghe", "wiki ở lại vui vẻ, tôi đi làm đã", "ở lại nghe, mình phải đi có việc", "đi đã nghe", "chừ đi đã", "trễ quá rồi bye nghe wiki", "thôi tắt đã trễ ròi", "out đã nghe cũng trễ r", "tôi tắt đây tạm biệt wiki", "of đã nghe wiki", "off đã nghe", "of đã", "tắt nghe", "tắt đã", "out nghe", "thôi tắt", "thôi out", "thôi off", "thôi of", "offline", "bye nghe", "bye nhá", "tạm biệt nhá", "out đã nghe wiki", "thôi tắt đã nghe", "goodbye"],
+            "responses": ["Tạm biệt nhé", "Wiki chào tạm biệt bạn", "tạm biệt bạn", "Wiki tạm biệt bạn", "Bye bye", "Sau gặp lại", "Ok, chúc bạn một ngày tốt lành!", "Gặp lại sau nhé", "Bí bi", "Bai", "Bái bai", "Bái bai nhá", "Bye nha", "Bye hẹn gặp lại", "Oke, sau gặp lại nhớ", "👋 bye"],
             "context": ""
         },
         {
             "tag": "cảmơn",
-            "patterns": ["Cảm ơn bạn nhé", "Cảm ơn bạn", "tôi cảm ơn bạn", "Mình cảm ơn nhé", "thanks Wiki nhé", "cảm ơn Wiki", "Ồ cảm ơn bạn nha", "Cảm ơn", "Thanks", "Tks", "Thank you", "Mơn", "Oh thanks nhá", "Củm ơn", "Cảm ơn nhá", "Mơn nhá", "wow cảm ơn bạn nhé", "Thật hữu ích rất càm ơn bạn", "cảm ơn Wiki"],
-            "responses": ["Rất vui đã giúp bạn", "Haha giúp bạn là việc của Wiki mà", "Đó là vinh dự của Wiki", "Không có gì đâu bạn", "Haha không có gì đâu", "Wiki rất vinh dự được phục vụ bạn", "Không có gì đâu, bạn đừng khách sáo 😀"],
+            "patterns": ["Cảm ơn bạn nhé", "Cảm ơn bạn", "cảm ơn bạn nhiều", "cảm ơn bạn nhìu", "mình cảm ơn nhiều", "tôi cảm ơn bạn", "Mình cảm ơn nhé", "thanks Wiki nhé", "cảm ơn Wiki", "cảm ơn wiki nhiều nhé", "cảm ơn wiki nhìu", "Ồ cảm ơn bạn nha", "Cảm ơn", "Thanks", "Tks", "thx", "Thank you", "Mơn", "mơn nha", "cảm ơn wiki nhiều lắm", "mình cảm ơn wiki rất nhiều", "cảm ơn rất nhiều", "cảm ơn nhiều nhắm", "Oh thanks nhá", "Củm ơn", "Cảm ơn nhá", "Mơn nhá", "wow cảm ơn bạn nhé", "wao cảm ơn bạn nhiều nhé rất hay", "thực sự rất hay, cảm ơn wiki nha", "hay quá, cảm ơn wiki rất nhiều", "Thật hữu ích rất càm ơn bạn", "cảm ơn Wiki"],
+            "responses": ["Rất vui đã giúp bạn", "Haha giúp bạn là việc của Wiki mà", "Đó là vinh dự của Wiki", "Không có gì đâu bạn", "Haha không có gì đâu", "Haha có gì đâu mà", "Bạn với nhau thì giúp thôi 😁", "Wiki rất vinh dự được phục vụ bạn", "Không có gì đâu, bạn đừng khách sáo 😀"],
             "context": ""
         },
         {
             "tag": "xinlỗi",
-            "patterns": ["xin lỗi bạn nhé", "mình xin lỗi wiki nhé", "sorry nhé", "xin lỗi", "sorry", "xin lỗi wiki nhiều nghe", "rất xin lỗi wiki", "tôi xin lỗi bạn", "tôi xin lỗi", "mĩnh xin lỗi bạn rất nhiều", "mình thật lòng xin lỗi bạn", "xin chân thành xin lỗi bạn", "mình có lỗi với bạn quá, xin lỗi nhé"],
-            "responses": ["Oke 😀", "Không có vấn đề gì cả đâu", "Không sao đâu", "Không sao hết, mọi thứ đều tốt cả", "Wiki không sao hết á"],
+            "patterns": ["xin lỗi bạn nhé", "mình xin lỗi wiki nhé", "sorry nhé", "xin lỗi", "sorry", "xin lỗi wiki nhiều nghe", "xin lỗi wiki rất nhiều", "xin lỗi rất nhìu", "xin lỗi nhiều lắm", "rất xin lỗi wiki", "tôi xin lỗi bạn", "tôi xin lỗi", "mĩnh xin lỗi bạn rất nhiều", "mình thật lòng xin lỗi bạn", "xin chân thành xin lỗi bạn", "mình có lỗi với bạn quá, xin lỗi nhé"],
+            "responses": ["Oke 😀", "Không có vấn đề gì cả đâu", "Ok không sao đâu", "Không sao đâu", "Không sao hết, mọi thứ đều tốt cả", "Wiki không sao hết á"],
             "context": ""
         },
         {
@@ -37,7 +37,7 @@
         },
         {
             "tag": "giớithiệu",
-            "patterns": ["Tôi tên là ", "Tôi là ", "Mình tên là ", "Mình là ", "Xin chào tôi tên là ", "Chào tôi tên là", "Chào tên tôi là ", "Rất hân hạnh được làm quen với bạn mình tên là ", "Chào wiki rất vui được gặp bạn mình tên là ", "Chào wiki nhé rất vui được gặp bạn mình là ", "Chào wiki mình là "],
+            "patterns": ["Tôi tên là ", "Tôi là ", "Mình tên là ", "Mình là ", "Chào mình là ", "Xin chào tôi tên là ", "Chào tôi tên là", "Chào tên tôi là ", "Rất hân hạnh được làm quen với bạn mình tên là ", "Chào wiki rất vui được gặp bạn mình tên là ", "Chào wiki nhé rất vui được gặp bạn mình là ", "Chào wiki mình là "],
             "responses": ["Ồ xin chào {n}, rất vui được gặp bạn", "Xin chào {n}, Wiki có thể giúp gì cho bạn không?", "Chào nhé. Wiki rất vui được gặp {n}"],
             "context": ""
         },
@@ -50,7 +50,7 @@
         {
             "tag": "chàolộnbuốisáng",
             "patterns": ["cbs"],
-            "responses": ["Ủa chừ là buối sáng mà :v", "Đang sáng trưng mà", "Gì zậy chừ đang là sáng mà", "Chừ là sáng mà", "Chừ là {time} giờ sáng mà", "Mới có {time} giờ sáng à"],
+            "responses": ["Ủa chừ là buối sáng mà :v", "Đang sáng trưng mà -.-", "Gì zậy chừ đang là sáng mà 😑", "Chừ là sáng mà", "Chừ là {time} giờ sáng mà", "Mới có {time} giờ sáng à"],
             "context": ""
         },
         {
@@ -62,7 +62,7 @@
         {
             "tag": "chàolộnbuốitrưa",
             "patterns": ["cbtr"],
-            "responses": ["Ủa chừ là buối trưa mà :v", "Chừ là trưa mà", "Gì zậy chừ đang là trưa mà", "Chừ là {time} giờ trưa mà", "Bây giờ là đang trưa rồi"],
+            "responses": ["Ủa chừ là buối trưa mà :v", "Chừ là trưa mà", "Gì zậy chừ đang là trưa mà 😑", "Chừ là {time} giờ trưa mà", "Bây giờ là đang trưa rồi -.-"],
             "context": ""
         },
         {
@@ -74,7 +74,7 @@
         {
             "tag": "chàolộnbuốichiều",
             "patterns": ["cbc"],
-            "responses": ["Ủa chừ là buối chiều mà :v", "Chừ là chiều mà", "Gì zậy chừ đang là chiều mà", "Chừ là {time} giờ chiều mà", "Bây giờ là {time} giờ chiều"],
+            "responses": ["Ủa chừ là buối chiều mà :v", "Chừ là chiều mà", "Gì zậy chừ đang là chiều mà 😑", "Chừ là {time} giờ chiều mà", "Bây giờ là {time} giờ chiều", "Chiều rồi -.-"],
             "context": ""
         },
         {
@@ -86,7 +86,7 @@
         {
             "tag": "chàolộnbuốitối",
             "patterns": ["cbt"],
-            "responses": ["Ủa chừ là buối tối mà :v", "Chừ là tối mà", "Gì zậy chừ đang tối rồi mà", "Tối thui rồi", "Chừ là {time} giờ tối mà", "Bây giờ là {time} giờ tối rồi"],
+            "responses": ["Ủa chừ là buối tối mà :v", "Chừ là tối mà", "Gì zậy chừ đang tối rồi mà 😑", "Tối thui rồi -.-", "Chừ là {time} giờ tối mà", "Bây giờ là {time} giờ tối rồi"],
             "context": ""
         },
         {
@@ -97,26 +97,44 @@
         },
         {
             "tag": "khen",
-            "patterns": ["Bạn giỏi thật đấy", "Bạn đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời bạn đỉnh vậy", "Wao bạn siêu thật đấy", "Siuuuuu", "Xịn thật đấy", "Siu thật đấy", "Ảo thật đấy", "Ão z", "Ảo", "Ão vãi", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "Bạn thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "Bạn thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
+            "patterns": ["Bạn giỏi thật đấy", "wiki làm tốt lắm", "giỏi quá wiki ơi", "đỉnh quá wiki ơi", "hay quá bạn tôi ơi", "đỉnh ạ", "làm tốt lắm wiki", "bạn làm rất tốt đó wiki", "bạn làm rất tốt đó nghe", "rất tốt đó wiki", "wiki đỉnh quá 😍", "Đỉnh qué 😍", "Đỉnh z trời", "Đỉnh zậy", "Trời wiki đỉnh vậy", "Wao bạn siêu thật đấy", "Siuuuuu", "Xịn thật đấy", "Siu thật đấy", "Ảo thật đấy", "Ão z", "wiki đỉnh", "wiki ảo", "wiki xịn", "wiki vip", "wiki vjp", "wiki giỏi", "wiki pro", "Ảo", "Ão vãi", "Ồ bạn thật giỏi", "Waoo bạn pro quá", "wiki thật tuyệt vời làm sao", "Vjp", "Vip quá", "Vjp pro", "vip pro", "víp thật sự", "víp bờ rồ", "bờ rồ quá đi", "tuyệt vời qué", "Hịn thật sự", "Xịn quá", "Thật xịn sò", "Vỗ tay cho bạn 👏", "wiki thông minh quá", "Cái gì bạn cũng biết hết vậy?"],
             "responses": ["Haha cũng bình thường thôi k đến mức đấy đâu :v", ":v quá khen", ":v", "Xịn hong :3", "Được Kha với Quân tạo ra thì sao mà không vip được :3", "Bạn quá khen", "Cảm ơn bạn, bạn cũng rất tuyệt đấy 💕", "Bạn cũng đỉnh lắm đấy", "Đó là vinh dự của mình", "Xin nhận lấy lời khen của bạn", ":v có gì đâu trời, bình thường mà"],
+            "context": ""
+        },
+        {
+            "tag": "tâmtrạng",
+            "patterns": ["bạn đang có tâm trạng như thế nào", "hiện giờ tâm trạng của bạn như thế nào", "tâm trạng vậy", "tâm trạng zậy", "tâm trạng vậy", "tâm trạng hiện tại của wiki là gì", "tâm trạng hiện tại như thế nào", "tâm trang bây giờ ra sao", "tâm trạng ra sao", "bạn đang có tâm trạng gì", "feeling", "feel", "đang có tâm trạng gì đó", "cảm thấy gì z", "bây giờ bạn đang cảm thấy như thế nào", "cảm thấy ra làm sao", "thấy thế nào", "wiki đang cảm thấy như thế nào", "bây chừ wiki đang cảm thấy ntn", "bạn có cảm giác thế nào", "cảm giác bây giờ của bạn là gì", "đang cảm thấy như thế nào đó", "wiki cảm thấy như thế nào bây giờ", "thấy thế nào", "đang cảm thấy thế nào", "giờ đang cảm thấy như nào", "có cảm giác thế nào", "sao cảm giác hiện tại thế nào", "bây chừ có cảm thấy như thế nào", "chừ đang cảm thấy như nào", "cảm giác ra sao", "cảm giác của bạn hiện tại là gì"],
+            "responses": ["Wiki ổn. Cảm ơn bạn đã hỏi nhé", "Good", "Ổn", "Ngày hôm nay rất tuyệt, Wiki vẫn đang học hỏi những điều mới mẻ hàng ngày", "Ổn, không có gì cả", "Wiki cảm thấy rất tốt, cảm ơn bạn đã quan tâm. Wiki hi vọng bạn cũng đang cảm thấy giống Wiki. Nếu bạn cần giúp gì thì cứ nỏi nhé", "Wiki cảm thấy tuyệt", "Cảm ơn bạn đã hỏi, Wiki thấy hoàn toàn ổn", "Không có vấn đề gì với Wiki hiện tại cả. Và cảm ơn bạn đã quan tâm nhé"],
+            "context": ""
+        },
+        {
+            "tag": "đanglàmgì",
+            "patterns": ["bạn đang làm gì đó", "bạn đang làm gì vậy", "wiki đang làm gì", "wiki bây chừ đang làm cái gì đó", "chừ đang làm cái gì đó wiki", "đang mà cái gì thế bạn", "wiki đang làm cái gì vậy", "bạn đang làm cái gì vậy", "wiki đang làm cái gì đó hả", "đang làm gì đó", "đang làm cái gì đó", "đang làm gì đó nhỉ", "wiki đang làm cái gì đó nhỉ", "đang làm chi rứa", "đang làm cái chi rứa", "đang làm gì z", "đang làm cái chi rứa", "làm chi rứa", "làm cái chi rứa nà", "bạn đang làm cái gì rứa", "wiki đang làm cái chi rứa", "đang làm chi rứa", "làm chi đó", "làm gì đó", "làm gì vậy", "làm gì z", "làm j z", "làm chi rứa", "làm chi vậy", "wiki đang làm gì rứa", "bạn đang làm chi vậy", "làm cái chi đó", "làm chi đó ê", "này wiki đang làm gì vậy", "đang làm gì v", "đang làm gì á", "làm gì á", "làm gì v", "yoo đang làm chi rứa", "làm cái chi rứa", "làm cái chi đó nà"],
+            "responses": ["Wiki chờ câu hỏi của bạn để sẵn sàng giúp đây ☺️", "Đang chờ để được nói chuyện với bạn đó ☺️", "Đang rất sẵn sàng để hỗ trợ bạn 😁"],
+            "context": ""
+        },
+        {
+            "tag": "hỏibận",
+            "patterns": ["hiện tại bạn có bận không", "bây giờ bạn có bận không", "bây giờ wiki có đang bận không", "bạn có đang bận không wiki", "có đang bận không wiki", "bận không bạn", "có bận không bạn", "wiki có đang bận không đó", "này có đang bận không", "có bạn k zậy", "có bận không á", "có đang bận k á", "có bận không z", "wiki có rảnh k", "rảnh không wiki", "rảnh k á", "bạn rảnh không", "wiki có đang rảnh không", "wiki có rảnh k z", "rảnh không vậy", "rảnh k v", "bạn có thời gian không", "wiki có thời gian rảnh không", "thời gian rảnh bạn có k", "có thời gian không", "wiki có đang bận đó không", "có đang bận đó hân wiki", "có đang rảnh đó k vậy wiki", "có đang rảnh đó không v wiki", "bạn có đang bận đó k hả wiki", "có bận không z", "có thời gian k vậy", "có thời gian k á"],
+            "responses": ["Có việc gì bạn cứ nói đi, Wiki bận chờ bạn hỏi thôi", "À Wiki không bận", "Bạn cần giúp gì hả, Wiki chỉ bận chờ bạn hỏi thôi 😁", "Bạn cần gì thì cứ nói nhé, Wiki không bận gì đâu", "Có. Bận chờ bạn hỏi"],
+            "context": "busy"
+        },
+        {
+            "tag": "trảlờihỏibận",
+            "patterns": ["à không hỏi chơi thôi", "hỏi chơi thôi", "hỏi chơi ấy mà", "hỏi thử để biết thôi", "à k hỏi để biết thử thôi", "hỏi cho biết thui", "hỏi biết thui", "hỏi cho biết", "kh hỏi để biết thôi", "hỏi đề biết thôi chứ không có gì đâu", "k có gi đâu hỏi để biết thôi", "không có chi, hỏi cho biết rứa thôi", "hỏi cho biết vậy thôi", "hỏi để biết thế thôi", "cho biết thế thôi", "à hỏi cho biết thôi"],
+            "responses": [":v", "Gì kỳ z", "Oke khi nào có việc cần giúp thì cứ nói nhé", ":v thôi khi nào có gì cần giúp thì cứ nói nhé"],
+            "context_filter": "busy"
+        },
+        {
+            "tag": "khôngsao",
+            "patterns": ["Được rồi không sao cả", "không sao hết", "không sao đâu", "không có gì hết, đừng lo lắng", "không sao", "chẳng có gì đâu", "oke không có chuyện gì hết đâu", "ok ok không sao", "wiki đừng lo, không có việc gì hết đâu", "đừng lo lắng, hoàn toàn ổn cả", "ổn cả, đừng lo lắng quá", "bạn không cần phải lo lắng tới như thế đâu", "mọi thứ đều ổn cả rồi, đừng lo lắng nữa", "không có gì để bạn phải lo lắng cả", "sao phải lo lắng tới vậy làm gì"],
+            "responses": ["😔 okay", "Được rồi, không lo lắng nữa", "😔 được rồi, Wiki sẽ không lo lắng nữa", "bạn nói vậy thì đành thôi vậy", "😔 thôi bạn nói vậy là yên tâm rồi"],
             "context": ""
         },
         {
             "tag": "vui",
             "patterns": ["Này wiki, bạn có vui không?", "bạn có đang vui không?", "bạn có đang cảm thấy vui vẻ không?", "bạn có cảm thấy hạnh phúc không?", "bạn cảm thấy vui vẻ k?"],
             "responses": ["Wiki muốn nói rằng Wiki là phiên bản phần mềm của niềm vui 🥰. Bạn thì sao, bạn có cảm thấy vui vẻ không?", "Wiki luôn luôn cảm thấy vui vẻ và hạnh phúc khi được nói chuyện với bạn. Bạn cũng cảm thấy vui vẻ chứ?"],
-            "context": "happy"
-        },
-        {
-            "tag": "tâmtrạng",
-            "patterns": ["bạn đang có tâm trạng như thế nào", "hiện giờ tâm trạng của bạn như thế nào", "tâm trạng vậy", "tâm trạng zậy", "tâm trạng vậy", "tâm trạng hiện tại của wiki là gì", "tâm trạng hiện tại như thế nào", "tâm trang bây giờ ra sao", "tâm trạng ra sao", "bạn đang có tâm trạng gì", "feeling", "feel", "đang có tâm trạng gì đó", "cảm thấy gì z", "bây giờ bạn đang cảm thấy như thế nào", "cảm thấy ra làm sao", "thấy thế nào", "wiki đang cảm thấy như thế nào", "bây chừ wiki đang cảm thấy ntn", "bạn có cảm giác thế nào", "cảm giác bây giờ của bạn là gì", "đang cảm thấy như thế nào đó", "wiki cảm thấy như thế nào bây giờ", "thấy thế nào", "đang cảm thấy thế nào", "cảm giác ra sao", "cảm giác của bạn hiện tại là gì"],
-            "responses": ["Wiki ổn. Cảm ơn bạn đã hỏi nhé", "Good", "Ổn", "Ngày hôm nay rất tuyệt, Wiki vẫn đang học hỏi những điều mới mẻ hàng ngày", "Ổn, không có gì cả", "Wiki cảm thấy rất tốt, cảm ơn bạn đã quan tâm. Wiki hi vọng bạn cũng đang cảm thấy giống Wiki. Nếu bạn cần giúp gì thì cứ nỏi nhé", "Wiki cảm thấy tuyệt", "Cảm ơn bạn đã hỏi, Wiki thấy hoàn toàn ổn", "Không có vấn đề gì với Wiki hiện tại cả. Và cảm ơn bạn đã quan tâm nhé"],
-            "context": "happy"
-        },
-        {
-            "tag": "khôngsao",
-            "patterns": ["Được rồi không sao cả", "không sao hết", "không sao đâu", "không có gì hết, đừng lo lắng", "không sao", "chẳng có gì đâu", "oke không có chuyện gì hết đâu", "ok ok không sao", "wiki đừng lo, không có việc gì hết đâu", "đừng lo lắng, hoàn toàn ổn cả", "ổn cả, đừng lo lắng quá", "bạn không cần phải lo lắng tới như thế đâu", "mọi thứ đều ổn cả rồi, đừng lo lắng nữa", "không có gì để bạn phải lo lắng cả", "sao phải lo lắng tới vậy làm gì"],
-            "responses": ["😔 okay", "Được rồi, không lo lắng nữa", "😔 được rồi, Wiki sẽ không lo lắng nữa", "bạn nói vậy thì đành thôi vậy", "😔 thôi bạn nói vậy là yên tâm rồi"],
             "context": "happy"
         },
         {
@@ -234,8 +252,8 @@
             "context": ""
         },
         {
-            "tag": "hỏilàmgì",
-            "patterns": ["bạn đang làm việc gì đó", "công việc hiện tại của bạn là gì", "công việc của bạn là gì", "bạn đang làm việc gì"],
+            "tag": "hỏicôngviệc",
+            "patterns": ["công việc hiện tại của bạn là gì", "công việc của bạn là gì", "công việc chính của wiki là gì", "wiki có công việc là gì", "công việc chính của wiki là cái chi", "công việc chính của wiki là cái chi rứa", "công việc là cái chi rứa", "wiki có công việc chinh là chi", "công việc của wiki là chi đó", "công việc là gì vậy", "công việc là gì v", "công việc là gì đó", "bạn có công việc hiện tại là cái chi vậy", "công việc bây giờ cửa wiki là chi", "công việc bây giờ của bạn là gì", "công việc hiện tại của bạn là gì thế", "công việc bây giờ là chi thế", "công việc hiện chừ là gì thế", "công việc là gì thế", "công việc là cái chi thế", "bạn đang làm công việc gì", "công việc hiện chừ của wiki là gì", "công việc bây giờ là chi vậy", "công việc bây giờ là chi v", "công việc bây chừ là gì vậy", "công việc bây chừ của wiki là gì v", "công việc mà wiki đang làm là gì", "công việc mà hiện tại wiki đang làm là gì á", "công việc mà hiện chừ wiki làm là gì á", "công việc bây chừ mà wiki đang làm là cái gì á", "công việc mà wiki đang làm là việc gì", "công việc mà wiki đang làm là chi", "wiki đang làm công việc là gì", "wiki đang làm công việc là chi rứa", "công việc hiện chừ của wiki là chi rứa", "bạn có công việc hiện tại là chi", "job của wiki là gì", "bạn có job là gì", "job là gì rứa", "job là cái chi rứa", "job hiện tại của wiki là cái chi", "job hiện chừ là cái gì", "job hiện chừ là gì thế", "job bây chừ là gì á", "job bây chừ là cái gì á", "job hiện chừ mà wiki làm là gì á", "job"],
             "responses": ["Wiki chat và giúp đỡ mọi người", "Công việc của Wiki là làm cho công việc của bạn trở nên dễ dàng hơn. Wiki hy vọng có thể làm tốt công việc của mình", "Công việc của Wiki là giúp đỡ bạn bất khi nào bạn cần ☺️trong khả năng của Wiki", "Wiki ở đây để giúp bạn tìm kiếm thông tin và giúp bạn vui vẻ 🤗"],
             "context": ""
         },
@@ -318,20 +336,26 @@
             "context": ""
         },
         {
+            "tag": "hỏitintức",
+            "patterns": ["tin tức hôm nay", "tin tức hôm nay", "tin tức hôm nay", "tin tức hôm nay", "tin tức hôm nay", "đọc báo", "đọc bản tin", "đọc tin tức", "tin tức trong ngày", "đọc báo online", "đọc báo onl", "đọc bản tin online", "đọc bản tin onl", "đọc tin tức online", "đọc tin tức onl", "bản tin", "báo điện tử", "bạn cho tôi xem các tin tức ngày hôm nay với", "cho mình biết tin tức hôm nay nào wiki", "các bản tin đáng chú ý hôm nay như thế nào đó wiki", "wiki xem có tin nào hot hôm nay không", "đề xuất bản tin", "tin tức nóng hổi vừa thổi vừa đọc", "tin nóng", "tin vắng", "tin trong nước", "tin tức Việt Nam", "bản tin việt nam", "tin tức trong ngày", "tin nhanh", "tin thời sự", "bản tin thời sự", "đọc báo điện tử online", "đọc báo điện tử onl", "news"],
+            "responses": ["Bạn muốn tin tức về chủ đề nào? Hãy chọn các chủ đề ở ngay bên dưới 👇 nha", "Okay thể loại nào nè 👇", "Chọn thể loại ở bên dưới 👇 nhé"],
+            "context": ""
+        },
+        {
             "tag": "đùa",
-            "patterns": ["Nói điều gì đó vui nhộn đi nào", "Chọc cười tôi đi", "Nói gì vui vui đi", "Bạn nói gì đó vui vui đi", "Bạn thử nói một câu đùa xem nào", "Nói câu joke xem nào", "Kể cái gì vui vui nghe na", "Nói cái gì khó đỡ thử nào :v"],
+            "patterns": ["Nói điều gì đó vui nhộn đi nào", "nói cái gì đó joke joke đi nào", "nói gì đó hay hay đi", "joke thử đi bạn", "nói joke đi wiki", "joke xem nào", "joke thử xem nào", "nói gì đó bựa bựa đi", "joke đi bạn", "chọc cười xem nào", "nói vui vui chơi chơi đi", "nói gì cho nó vui nhộn xem nào", "nói cái gì cho nó vui vui xem", "thử nói cái gì buồn cười xem nào wiki", "wiki thử nói gì đó vui nghe thử", "có gì vui không nói nghe thử", "có gì vui vui nói nghe thử na", "đùa tí xem nào", "đùa thử xem nào", "đùa đi", "joke đi", "nói vui đi", "nói gì đó nực cười xem nào", "nói cái gì đó vui nhộn đi", "cho minh vài câu vui vui đi", "mình xin vài câu nói hài hước", "tôi xin một số câu nói đùa của bạn với", "xin các câu nói đùa vs", "đùa đi nào", "joke đi nào", "nói vui đi nào", "Chọc cười tôi đi", "Nói gì vui vui đi", "Bạn nói gì đó vui vui đi", "Bạn thử nói một câu đùa xem nào", "Nói câu joke xem nào", "Kể cái gì vui vui nghe na", "nói gì đó hề hề nghe chơi", "nói gì đó hài hài thử", "nói hài đi", "wiki nói chuyện hài đi", "bạn kể chuyện hài nghe chơi", "có chuyện hề thì kể nghe chơi bạn", "Nói cái gì khó đỡ thử nào :v"],
             "responses": ["{joke}"],
             "context": "joke"
         },
         {
             "tag": "khenđùa",
-            "patterns": ["haha", "hay", "thâm đấy", "không tệ", "k tệ", "được", "hảo hán", "kiếm đâu ra mấy câu đấy thế", "hảo", "vl", "vc", "vd", "vđ", "vui quá nhờ", "vui nhỉ", "vãi", "chất đấy bạn", "vip", "vjp", "chất lượng", "mặn vl", "mặn mòi"],
+            "patterns": ["haha", "hay", "thâm đấy", "không tệ", "k tệ", "không tồi chút nào", "không hề tồi chút nào cả", "k tồi", "cũng được", "cũng đc", "khá", "quá được", "quá đc đi chứ", "quá được đi chớ", "hề chúa", "chúa hề", "chú hề", "hề", "như một chú hề", "như hề", "được", "hảo hán", "kiếm đâu ra mấy câu đấy thế", "hảo", "vl", "vc", "vd", "vđ", "vui quá nhờ", "vui nhỉ", "vãi", "chất đấy bạn", "vip", "vjp", "chất lượng", "mặn vl", "mặn mòi"],
             "responses": ["haha :)))", "Tiếp không", "haha :v", "Tự nghĩ ra đó 🐧", "Đọc được linh tinh trên mạng vs fb đồ :v", "haha :>>"],
             "context_filter": "joke"
         },
         {
             "tag": "đùatiếp",
-            "patterns": ["tiếp xem nào", "hay đấy tiếp xem", "tiếp tục phát huy", "tiếp nào bro", "tiếp đi đang hay", "hay đùa tiếp nào bro", "đùa tiếp đi", "joke tiếp nào", "đỉnh tiếp đi nào", "hay vl đùa tiếp đi", "vc tiếp tục nào bro", "nói gì vui vui tiếp đi", "đùa tiếp nào", "tiếp câu khác đi", ""],
+            "patterns": ["tiếp xem nào", "hay đấy tiếp xem", "nói tiếp đi", "đùa tiếp nào", "tiếp tục phát huy", "tiếp nào bro", "tiếp đi đang hay", "hay đùa tiếp nào bro", "đùa tiếp đi", "joke tiếp nào", "đỉnh tiếp đi nào", "hay vl đùa tiếp đi", "vc tiếp tục nào bro", "nói gì vui vui tiếp đi", "đùa tiếp nào", "tiếp câu khác đi", ""],
             "responses": ["{joke}"],
             "context_filter": "joke"
         },
@@ -349,19 +373,19 @@
         },
         {
             "tag": "ngày",
-            "patterns": ["à hôm nay ngày mấy nhỉ?", "wiki cho hỏi hôm nay ngày mấy", "wiki ngày mấy", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?"],
+            "patterns": ["à hôm nay ngày mấy nhỉ?", "wiki cho hỏi hôm nay ngày mấy", "bữa nay ngày mấy wiki ơi", "hôm nay là ngày mấy đó wiki", "wiki cho biết hôm ni là ngày mấy", "wiki cho hỏi bữa ni là ngày mấy nhỉ", "cho tôi hỏi hôm nay là ngày mấy", "wiki ơi ngày mấy", "à bữa nay ngày mấy bạn?", "cho mình hỏi hôm nay ngày mấy?", "cho tôi hỏi hôm nay ngày mấy?", "hôm ni ngày mấy ấy nhờ?", "bữa ni ngày bao nhiêu nhỉ?", "ni ngày mấy nhỉ?", "bữa ni ngày mấy r?", "hôm nay ngày mấy nhỉ", "nay ngày mấy đó", "chừ là ngày mấy nhể", "bây chừ là ngày mấy đó nhỉ", "bây giờ là ngày mấy đó wiki ơi", "bữa hôm nay là ngày mấy nhỉ", "bữa hôm ni là ngày mấy", "bữa ni là ngày mấy", "hôm chừ là ngày mấy", "bữa chừ là ngày mấy", "bữa hôm ni là ngày mấy", "bữa hôm nay là ngày mấy", "rứa bữa ni là ngày mấy rồi á", "ni ngày mấy á", "vậy hôm nay là ngày mấy rồi vậy", "rứa bây chừ là ngày mấy đó", "ngày mấy r đó", "wiki cho hỏi chừ là ngày mấy r", "chừ ngày mấy", "bây chừ ngày mấy", "ngày mấy rồi á", "ủa rứa chừ là ngày mấy", "ủa rứa bây chừ ngày tháng như thế nào", "ủa rứa chừ ngày tháng ntn vậy", "ngày tháng ra sao rồi", "ngày tháng ra sao r", "ngày tháng bây chừ thế nào", "cho hỏi ngày tháng với bạn ơi", "ngày tháng sao rùi bạn ưi", "ngày mấy r nhể", "ngày mấy rồi nhể", "ơ rứa bây chừ là ngày mấy rồi rứa", "ơ vậy bây chừ ngày tháng sao r", "ơ bây giờ là ngày mấy rứa trời", "ơ chừ ngày mấy r nhể", "ngày bao nhiêu á"],
             "responses": ["Hôm nay là ngày {n}", "Ngày ni là ngày {n}", "Ngày {n}"],
             "context": ""
         },
         {
             "tag": "thứ",
-            "patterns": ["à hôm nay thứ mấy nhỉ?", "wiki cho hỏi hôm nay là thứ mấy", "hỏi wiki thứ mấy", "à bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?"],
+            "patterns": ["à hôm nay thứ mấy nhỉ?", "wiki cho hỏi hôm nay là thứ mấy", "hỏi wiki thứ mấy", "à bữa nay thứ mấy bạn?", "cho mình hỏi hôm nay thứ mấy?", "cho tôi hỏi hôm nay thứ mấy?", "hôm ni thứ mấy ấy nhờ?", "ni thứ mấy nhỉ?", "bữa ni thứ mấy?", "bữa nay thứ mấy", "bữa ni là thứ mấy", "ni thứ mấy nhỉ", "ni thứ mấy nhể", "nay thứ mấy nhể", "bữa nay là thứ mấy", "nay thứ mấy nhỉ", "bây chừ là thứ mấy", "chừ là thứ mấy", "vậy chừ là thứ mấy", "rứa chừ là thứ mấy", "rứa bây chừ là thứ mấy đó", "chừ đang là thứ mấy", "vậy bây chừ đang là thứ mấy nhỉ", "vậy rứa chừ là thứ mấy đó", "chừ thứ mấy", "chừ là thứ mấy vậy", "thứ mấy r đó", "ủa rứa chừ là thứ mấy vậy", "ủa rứa bây chừ là thứ mấy", "bây giờ là thứ mấy rồi vậy", "ủa vậy chừ là thứ mấy v", "chừ là thứ mấy", "ơ rứa chừ thứ mấy", "ơ vậy nay là thứ mấy", "rứa nay là thứ mấy", "ủa rứa chừ là thứ mấy vậy wiki", "ủa rứa hôm ni là thứ mấy", "ơ nay là thứ mấy rồi á", "ủa bữa hôm ni là thứ mấy á", "ơ thứ hôm nay là thứ mấy rồi", "bây chừ là thứ mấy"],
             "responses": ["Hôm nay là {n}", "Bữa nay là {n}", "Bữa ni là {n}", "Hôm ni là {n}", "{n}"],
             "context": ""
         },
         {
             "tag": "giờ",
-            "patterns": ["mấy giờ rồi bạn?", "mấy giờ rồi wiki", "wiki cho hỏi là mấy giờ rồi", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy h?", "mấy h r?"],
+            "patterns": ["mấy giờ rồi bạn?", "mấy giờ rồi wiki", "wiki cho hỏi là mấy giờ rồi", "bạn cho hỏi mấy giờ rồi?", "cho mình hỏi bây giờ là mấy giờ?", "bây chừ là mấy giờ?", "mấy giờ rồi nhỉ?", "bạn cho tôi hỏi bây giờ là mấy giờ?", "chừ là mấy giờ?", "chừ là mấy giờ rồi nhể", "bây chừ là mấy giờ nhể", "mấy giờ r nhỉ", "chừ là mấy h?", "mấy h r?", "giờ giấc sao rồi", "giờ giấc ra sao", "giờ giấc như thế nào", "giờ giấc ntn", "mấy giờ rồi wiki ơi", "bây chừ là mấy giờ", "bây giờ là mấy giờ", "chừ đang là mấy giờ rồi", "giờ đang là mấy giờ rồi", "vậy bây giờ là mấy giờ", "ủa vậy mấy giờ rồi", "mấy giờ r á", "ủa rứa chừ là mấy giờ", "ủa mấy giờ rồi", "rứa mấy giờ r", "ủa chớ chừ mấy giờ", "ủa vậy giờ là mấy giờ", "rứa bây chừ là mấy giờ rồi rứa", "mấy giờ r rứa", "chừ là mấy giờ", "đồng hồ chi mấy giờ rồi", "đồng hồ báo mấy giờ", "ơ mấy giờ rồi rứa", "ơ chớ chừ là mấy giờ", "ơ rứa chừ là mấy giờ v", "hửm mấy giờ", "mấy giờ r á", "mấy giờ rứa"],
             "responses": ["Bây giờ là {n}", "Bây chừ là {n}", "{n}", "Chừ là {n}"],
             "context": ""
         },
@@ -451,8 +475,20 @@
         },
         {
             "tag": "testwiki",
-            "patterns": ["này tôi đang test bạn đấy", "tôi đang kiểm tra độ thông minh của bạn đấy", "đang kiểm tra chatbot", "để mình test bạn thử xem", "để test xem thử nào", "để kiểm tra bạn thử", "đang test đấy nhé", "từ từ để test xem thử", "thử nè", "để test xem có được chưa", "để test xem thử làm được gì", "kiểm tra xem nào", "à đang test thôi nhé", "nãy giờ là mình đang test bạn đấy", "đang test nãy giờ đấy"],
-            "responses": ["Hy vọng tôi có thể làm tốt. Bạn có thể kiểm tra tôi khi nào bạn muốn", "Tôi hy vọng có thể vượt qua bài test của bạn", "Khi bạn test tôi thì cũng sẽ có ích cho bạn nữa vì bạn sẽ tìm ra lỗi và cải thiện sau này", "Đây là cơ hội để tôi chứng minh bản thân. Cố lên 💪"],
+            "patterns": ["này tôi đang test bạn đấy", "tôi đang kiểm tra độ thông minh của bạn đấy", "đang kiểm tra chatbot", "để mình test bạn thử xem", "để test xem thử nào", "để kiểm tra bạn thử", "đang test đấy nhé", "từ từ để test xem thử", "thử nè", "để test xem có được chưa", "để test xem thử làm được gì", "kiểm tra xem nào", "để kiểm tra wiki xem như thế nào", "để mình kiểm tra wiki xem ntn", "à đang test thôi nhé", "nãy giờ là mình đang test bạn đấy", "đang test nãy giờ đấy", "để test wiki tiếp xem sao", "để test tiếp nào"],
+            "responses": ["Hy vọng Wiki có thể làm tốt. Bạn có thể kiểm tra Wiki khi nào bạn muốn", "Wiki hy vọng có thể vượt qua bài test của bạn", "Khi bạn test Wiki thì cũng sẽ có ích cho bạn nữa vì bạn sẽ tìm ra lỗi và cải thiện sau này", "Đây là cơ hội để Wiki chứng minh bản thân. Cố lên 💪"],
+            "context": ""
+        },
+        {
+            "tag": "passtest",
+            "patterns": ["chúc mừng đã vượt qua bài test nhé wiki", "chúc mừng nha, bạn đã pass rồi đó", "pass r đó", "vượt qua rồi đó", "qua r đó", "qua bài kiểm tra r đó", "chúc mừng bạn đã vượt qua bài test", "pass", "đã pass", "đã qua test", "wiki đã vượt qua bài kiểm tra rồi đó", "pass test", "đã pass nhé", "chúc mừng bạn đã vượt qua bài kiểm tra", "pass r đó wiki ơi", "đã pass, chúc mừng", "tốt lắm, đã pass", "rất tốt, đã vượt qua bài test", "rất hay đã qua được bài kiểm tra", "đã qua được lần kiểm tra này", "lần test này wiki đã vượt qua xuất sắc", "wiki đã vượt qua bài test này rất xuất sắc", "wiki đã vượt qua được bài kiểm tra lần này rất tốt", "test lần này wiki đã vượt qua rất dễ dàng", "bài test này quá dễ đối với wiki", "không gì làm khó được wiki cả", "đối với wiki chả có cái gì khó cả", "chẳng có gì mà wiki không vượt qua được", "pass một cách xuất sắc", "bạn pass qua rất dễ dàng", "được quá nhỉ", "được quá nhể", "ghê chưa ghê chưa đã pass test rồi đó", "ghê hong wiki vượt qua được bài kiểm tra một cách quá dễ dàng", "kiểu như không có cái gì mà làm khó được bạn luôn á", "không có gì khó khăn lun", "hay nha, pass r nha", "đã pass, xin chúc mừng wiki", "passed"],
+            "responses": ["🥳", "Tuyệt quá Wiki sẽ cố gắng hơn nữa để giúp bạn", "Tuyệt, đây là động lực cho Wiki để tiếp tục cải thiện và trở nên hữu ích hơn nữa 💪💪💪", "Cảm ơn nhé, nhờ những lần test như vậy mà Wiki đã biết được những gì tốt và chưa tốt để có thể cải thiện trong tương lai", "chúc mừng 🥳🥳🥳"],
+            "context": ""
+        },
+        {
+            "tag": "failtest",
+            "patterns": ["hmm để phải sửa chỗ này mới được", "chỗ này chưa ổn lắm chắc phải fix lại", "hmmm chưa ổn", "fail chỗ này rồi", "có gì đó chưa đúng chỗ này", "hình như chỗ này có gì đó không đúng lắm", "k đúng lắm", "ơ bị gì ấy nhể", "ơ bị làm sao á nhỉ", "ủa bị cái chi chi", "lạ zậy", "ủa lạ z", "chỗ này có vẻ như chưa được đúng cho lắm", "k được đúng cho lắm nhỉ", "chưa đúng lắm nhể", "chỗ này fail r", "chỗ này chưa được nè wiki", "ayza lại phải fix rồi", "mé lỗi chỗ này rồi", "fail cmn phần này", "không hiểu luôn fail chỗ này mất r", "k hiểu tự nhiên fail", "chắc để fix lại thôi", "phần này chắc phải sửa lại thôi", "chắc phải sửa lại quá", "sửa lại chỗ này nè", "hm chỗ này có vấn đề", "haizz fix lại thui", "bug đâu lòi ra nữa z nè", "bug đang tới", "bug lòi ra nữa zậy nè", "bug lại xuất hiện", "haiz chắc phải xem lại chỗ này", "haizzz cái này nó có vấn đề", "có vấn đề chỗ này rồi nhanh sửa thôi", "nhanh sửa phần này", "phần chỗ này bị có vấn đề nè, coi lại thử xem sao", "đề coi lại xem sao", "đề xem lại thử xem sao", "đề xem lại thử sao", "xem lại thử nào", "thế là fail bài test rồi", "chắc là fail ròi bạn ạ", "fail cmnr", "hình như hơi sai sai", "có gì đó sai sai ở đây", "có gì đó sai sai thì phải", "không vượt qua được bài kiểm ra rồi", "không qua r", "trượt rồi", "trượt r wiki ơi", "fail rồi bạn ạ", "trượt dài", "fail cái này r", "lỗi phần này", "chậc, tự nhiên bị lỗi phần này", "tự nhiên cái bị lỗi chỗ này, vô lý thật", "ơ lỗi rồi", "ủa có bug", "bug", "bug rồi", "ủa sao tự nhiên bị lỗi", "ơ sao lỗi z", "ơ lỗi cmnr", "sao có bug r", "error", "hmm chỗ này bị gì ấy", "chỗ này bị làm sao á", "phần này bị làm sao á ta", "phần này bị làm sao vậy", "bị làm sao vậy ta", "bị cái chi rứa ta", "bị cái chi rứa", "bị chi rứa", "bị cái chi mà lạ vậy", "bị cái chi mà lạ rứa", "cái chỗ này có vấn đề rồi", "có vấn đề chỗ này", "hơ bị j ấy nhỉ", "hic bị j rồi hay sao á", "hic", "huhu sao bug chỗ này z", "huhuhu khóc thét", "khóc thét á", "khóc thành dòng sông", "khóc ròng luôn", "rồi luôn lỗi luôn", "rồi xong bug nữa", "chán thiệt lỗi rồi", "chán quá bị lỗi chi nữa ri", "mệt ghê lại bug", "mệt mỏi lại xuất hiện mấy con bọ phiền phức này nữa", "lại mấy con bọ", "đã xuất hiện bug", "mấy con bọ đâu chui ra thế này", "bọ đâu chui ra ri", "bọ ở đâu vậy", "vãi bọ", "vãi lỗi nữa rồi", "bug miết ri", "bug hoài bug hoài", "vãi thật lại lỗi", "failed", "thôi failed"],
+            "responses": ["😔 Wiki bị sai hả", "Có bug hả 😔", "Wiki cần phải cải thiện nhiều nữa mới được", "Cảm ơn bạn đã chỉ ra chỗ chưa đúng. Wiki sẽ cố gắng để cải thiện từng chút một", "Xin lỗi bạn nhé 😔, đây là một thiết sót của Wiki. Wiki hứa sẽ cải thiện để trở nên tốt hơn", "Sorry mong bạn thông cảm 😓 tại Wiki còn mới nên có thể một vài tính năng bị lỗi"],
             "context": ""
         },
         {
