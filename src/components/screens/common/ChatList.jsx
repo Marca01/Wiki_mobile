@@ -4,7 +4,7 @@ import { globalStyles } from "../../../styles/global";
 import NodeChat from "./NodeChat";
 
 export default function ChatList({ user_messages, bot_messages, navigation }) {
-  const zip = arrays => {
+  const zip = (arrays) => {
     return arrays[0].map(function (_, i) {
       return arrays.map(function (array) {
         return array[i];
@@ -14,8 +14,13 @@ export default function ChatList({ user_messages, bot_messages, navigation }) {
 
   const messages = zip([user_messages, bot_messages]);
 
-  const renderItem = useCallback(({ item, index }) => <NodeChat key={index} data={item} index={index} navigation={navigation} />, []);
-  const keyExtractor = useCallback(item => item.id, []);
+  const renderItem = useCallback(
+    ({ item, index }) => (
+      <NodeChat key={index} data={item} index={index} navigation={navigation} />
+    ),
+    []
+  );
+  const keyExtractor = useCallback((item) => item.id, []);
 
   return (
     <View style={globalStyles.messages}>
@@ -25,6 +30,7 @@ export default function ChatList({ user_messages, bot_messages, navigation }) {
         keyExtractor={keyExtractor}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
+        removeClippedSubviews
         inverted
         contentContainerStyle={{ flexDirection: "column-reverse" }}
       />

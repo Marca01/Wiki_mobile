@@ -12,8 +12,15 @@ import { globalStyles } from "../../styles/global";
 import ChatList from "./common/ChatList";
 import ChatInput from "./common/ChatInput";
 import Header from "./common/Header";
-import { getBotMessage, sendImage, sendUserMessage } from "../../api";
+import {
+  getBotMessage,
+  sendImage,
+  sendNewsCategory,
+  sendUserMessage,
+} from "../../api";
 import * as ImagePicker from "expo-image-picker";
+import { KeyboardAccessoryView } from "@flyerhq/react-native-keyboard-accessory-view";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 let nextUserId = 0;
 let nextBotId = 50;
 
@@ -154,40 +161,124 @@ export default function Main({ navigation }) {
         }
       });
   };
-  // useEffect(() => {
-  //   if (!!file) {
-  //     const [fileName, type] = file.split("/")[11].split(".");
-  //     const messageData = new FormData();
-  //     messageData.append([
-  //       "msg",
-  //       ":totext",
-  //       "file",
-  //       {
-  //         name: fileName,
-  //         type: `image/${type}`,
-  //         uri: file,
-  //       },
-  //     ]);
-  //     sendUserMessage(messageData)
-  //       .then((res) => {
-  //         setUserMessages([
-  //           ...userMessages,
-  //           { id: nextUserId++, message: message, tag: "userMessage" },
-  //         ]);
-  //         setBotMessages([
-  //           ...botMessages,
-  //           { id: nextBotId++, message: res.data, tag: "botMessage" },
-  //         ]);
-  //         console.log(...botMessages);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       })
-  //       .finally((rs) => {
-  //         setFile();
-  //       });
-  //   }
-  // }, [!!file]);
+
+  // news categories
+  const NEWS_CAT = [
+    {
+      id: 1,
+      cat: "Trang chủ",
+    },
+    {
+      id: 2,
+      cat: "Thế giới",
+    },
+    {
+      id: 3,
+      cat: "Thời sự",
+    },
+    {
+      id: 4,
+      cat: "Kinh doanh",
+    },
+    {
+      id: 5,
+      cat: "Startup",
+    },
+    {
+      id: 6,
+      cat: "Giải trí",
+    },
+    {
+      id: 7,
+      cat: "Thể thao",
+    },
+    {
+      id: 8,
+      cat: "Pháp luật",
+    },
+    {
+      id: 9,
+      cat: "Giáo dục",
+    },
+    {
+      id: 10,
+      cat: "Tin mới nhất",
+    },
+    {
+      id: 11,
+      cat: "Tin nổi bật",
+    },
+    {
+      id: 12,
+      cat: "Sức khỏe",
+    },
+    {
+      id: 13,
+      cat: "Đời sống",
+    },
+    {
+      id: 14,
+      cat: "Du lịch",
+    },
+    {
+      id: 15,
+      cat: "Khoa học",
+    },
+    {
+      id: 16,
+      cat: "Số hóa",
+    },
+    {
+      id: 17,
+      cat: "Xe",
+    },
+    {
+      id: 18,
+      cat: "Ý kiến",
+    },
+    {
+      id: 19,
+      cat: "Tâm sự",
+    },
+    {
+      id: 20,
+      cat: "Cười",
+    },
+    {
+      id: 21,
+      cat: "Tin xem nhiều",
+    },
+  ];
+
+  const renderNone = () => <></>;
+
+  const [news, setNews] = useState("");
+
+  const handleSendNewsCat = (category) => {
+    const categoryData = new FormData();
+    categoryData.append("news_cat", category);
+
+    sendNewsCategory(categoryData)
+      .then((res) => {
+        // setNews({
+        //   id: botMessages.map((messId) => messId.id++),
+        //   message: res.data,
+        //   tag: "botMessage",
+        // });
+        setUserMessages([
+          ...userMessages,
+          { id: nextUserId++, message: category, tag: "userMessage" },
+        ]);
+        setBotMessages([
+          ...botMessages,
+          { id: nextBotId++, message: res.data, tag: "botMessage" },
+        ]);
+        console.log(news);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <View style={globalStyles.container}>
@@ -196,22 +287,27 @@ export default function Main({ navigation }) {
         style={{ flex: 1 }}
         keyboardVerticalOffset={8}
       >
-        <Header title="Wiki" navigation={navigation} />
-        <ChatList
-          user_messages={userMessages}
-          bot_messages={botMessages}
-          navigation={navigation}
-        />
-        <ChatInput
-          message={message}
-          onChangeText={(message) => setMessage(message)}
-          onPress={
-            file
-              ? () => handleSendImageMessage(message)
-              : () => handleSendMessage(message)
-          }
-          onPressFile={handlePickFile}
-        />
+        <SafeAreaProvider>
+          <Header title="Wiki" navigation={navigation} />
+          <ChatList
+            user_messages={userMessages}
+            bot_messages={botMessages}
+            navigation={navigation}
+          />
+          <ChatInput
+            message={message}
+            botMessages={botMessages}
+            onChangeText={(message) => setMessage(message)}
+            onPress={
+              file
+                ? () => handleSendImageMessage(message)
+                : () => handleSendMessage(message)
+            }
+            onPressFile={handlePickFile}
+            newsCat={NEWS_CAT}
+            handleSendNewsCat={handleSendNewsCat}
+          />
+        </SafeAreaProvider>
       </KeyboardAvoidingView>
     </View>
   );

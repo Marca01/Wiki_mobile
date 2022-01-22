@@ -16,4 +16,9 @@ export const sendImage = (lang, image_file) =>
     headers: { "Content-Type": "multipart/form-data" },
   });
 
+export const sendNewsCategory = (category) =>
+  axios.post(`http://${LOCAL}/chat/news`, category, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
 export const getBotMessage = () => axios.get(`http://${LOCAL}/botMessages`);

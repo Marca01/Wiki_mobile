@@ -45,14 +45,15 @@ export const globalStyles = StyleSheet.create({
     messages_bot: {
         alignSelf: "flex-start",
         marginTop: 10,
-        marginRight: 100
+        marginRight: 100,
     },
     messages_botStyle: {
         backgroundColor: "#fff",
         borderRadius: 20,
         paddingHorizontal: 15,
         paddingVertical: 10,
-        marginVertical: 3
+        marginVertical: 3,
+        zIndex: 100
     },
     messages_botFilmText: {
         // backgroundColor: "aqua",
@@ -76,7 +77,7 @@ export const globalStyles = StyleSheet.create({
         borderRadius: 20
     },
     messages_botText: {
-        color: "black"
+        color: "black",
     },
     messages_botImage_modal_closeButton: {
         alignSelf: 'flex-end',

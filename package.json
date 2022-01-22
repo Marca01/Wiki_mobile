@@ -1,42 +1,43 @@
 {
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
-  },
-  "dependencies": {
-    "@expo/vector-icons": "^12.0.5",
-    "@react-native-voice/voice": "^3.2.2",
-    "@react-navigation/native": "^6.0.6",
-    "@react-navigation/stack": "^6.0.11",
-    "axios": "^0.24.0",
-    "expo": "~43.0.0",
-    "expo-clipboard": "~2.0.3",
-    "expo-image-picker": "~11.0.3",
-    "expo-status-bar": "~1.1.0",
-    "expo-updates": "~0.10.13",
-    "expo-web-browser": "^10.1.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-native": "0.64.3",
-    "react-native-collapsible": "^1.6.0",
-    "react-native-dotenv": "^3.3.0",
-    "react-native-gesture-handler": "~1.10.2",
-    "react-native-image-picker": "^4.3.0",
-    "react-native-reanimated": "~2.2.0",
-    "react-native-safe-area-context": "3.3.2",
-    "react-native-screens": "~3.8.0",
-    "react-native-splash-screen": "^3.2.0",
-    "react-native-url-preview": "^1.1.9",
-    "react-native-web": "0.17.1",
-    "react-native-webview": "^11.13.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.9"
-  },
-  "private": true,
-  "name": "Wiki_mobile",
-  "version": "1.0.0"
+    "scripts": {
+        "start": "expo start",
+        "android": "expo start --android",
+        "ios": "expo start --ios",
+        "web": "expo start --web",
+        "eject": "expo eject"
+    },
+    "dependencies": {
+        "@expo/vector-icons": "^12.0.5",
+        "@flyerhq/react-native-keyboard-accessory-view": "^2.3.3",
+        "@react-native-voice/voice": "^3.2.2",
+        "@react-navigation/native": "^6.0.6",
+        "@react-navigation/stack": "^6.0.11",
+        "axios": "^0.24.0",
+        "expo": "~43.0.0",
+        "expo-clipboard": "~2.0.3",
+        "expo-image-picker": "~11.0.3",
+        "expo-status-bar": "~1.1.0",
+        "expo-updates": "~0.10.13",
+        "expo-web-browser": "^10.1.0",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-native": "0.64.3",
+        "react-native-collapsible": "^1.6.0",
+        "react-native-dotenv": "^3.3.0",
+        "react-native-gesture-handler": "~1.10.2",
+        "react-native-image-picker": "^4.3.0",
+        "react-native-reanimated": "~2.2.0",
+        "react-native-safe-area-context": "^3.3.2",
+        "react-native-screens": "~3.8.0",
+        "react-native-splash-screen": "^3.2.0",
+        "react-native-url-preview": "^1.1.9",
+        "react-native-web": "0.17.1",
+        "react-native-webview": "^11.13.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.9"
+    },
+    "private": true,
+    "name": "Wiki_mobile",
+    "version": "1.0.0"
 }
